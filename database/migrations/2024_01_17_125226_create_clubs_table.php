@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('region');
             $table->string('city');
-            $table->string('postal_code');
+            $table->string('postal_code', 5);
         });
     }
 

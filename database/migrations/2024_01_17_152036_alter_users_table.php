@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('lastname');
             $table->string('region');
             $table->string('city');
-            $table->string('postal_code');            
+            $table->string('postal_code', 5);            
             $table->date('birth_date');                        
             $table->string('img_profil')->nullable();
             $table->foreignId('id_role')->constrained(table: 'roles');
