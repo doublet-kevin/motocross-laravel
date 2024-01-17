@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('licenses', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->foreignId('id_user')->constrained(table: 'users')->onDelete('cascade');
+            $table->string('license_number');
         });
     }
 

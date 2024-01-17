@@ -11,8 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('users', function (Blueprint $table) {           
             $table->foreignId('id_club')->constrained(table: 'clubs')->onDelete('cascade');
+            $table->dropColumn('name');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('region');
+            $table->string('city');
+            $table->string('postal_code');            
+            $table->date('birth_date');            
+            $table->string('role');
+            $table->string('img_profil')->nullable();
         });
     }
 
