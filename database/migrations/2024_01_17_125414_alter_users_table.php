@@ -12,7 +12,6 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {           
-            $table->foreignId('id_club')->constrained(table: 'clubs')->onDelete('cascade');
             $table->dropColumn('name');
             $table->string('firstname');
             $table->string('lastname');
@@ -22,6 +21,7 @@ return new class extends Migration
             $table->date('birth_date');            
             $table->string('role');
             $table->string('img_profil')->nullable();
+            $table->foreignId('id_club')->constrained(table: 'clubs')->onDelete('cascade');
         });
     }
 
