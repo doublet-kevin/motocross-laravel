@@ -8,40 +8,24 @@
             <div class="col-span-1">
                 <div>
                     <div class="rounded-full mt-8">
-                        <img width="800px" height="800px" class="bg-motocross-circle"></img>
+                        <img width="800px" height="800px" class="bg-motocross-circle" />
                     </div>
                 </div>
             </div>
             <div class="col-span-1">
                 <main class="container text-center lg:text-start mx-auto px-4 py-8 items-center lg:flex lg:flex-col">
                     <header class="py-4">
-                        <div class="container text-white items-center text-center flex justify-between mx-auto px-4">
-                            <ul class="hidden lg:flex font-bold gap-x-8">
-                                <li
-                                    class=" border border-orange-500 hover:bg-orange-500 duration-300  p-2 rounded-lg cursor-pointer">
-                                    <a>Accueil</a>
-                                </li>
-                                <li
-                                    class=" border border-orange-500 hover:bg-orange-500 duration-300 p-2 rounded-lg cursor-pointer">
-                                    <a>Notre circuit</a>
-                                </li>
-                                <li
-                                    class=" border border-orange-500 hover:bg-orange-500 duration-300 p-2 rounded-lg cursor-pointer">
-                                    <a>Nos entrainements</a>
-                                </li>
-                                <li
-                                    class=" border border-orange-500 hover:bg-orange-500 duration-300 p-2 rounded-lg cursor-pointer">
-                                    <a>Tarifs</a>
-                                </li>
-                                <li
-                                    class=" border-orange-500 hover:bg-orange-500 duration-300 border  p-2 rounded-lg cursor-pointer">
-                                    <a>Connexion</a>
-                                </li>
-                            </ul>
-                        </div>
+                        <x-navigation.nav>
+                            <x-navigation.nav-item name="Accueil" route="/" />
+                            <x-navigation.nav-item name="Notre circuit" route="/" />
+                            <x-navigation.nav-item name="Nos entraînements" route="/" />
+                            <x-navigation.nav-item name="Connexion" route="/" />
+                        </x-navigation.nav>
                     </header>
                     <h1
-                        class="mt-1 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-4xl font-extrabold uppercase tracking-tighter text-transparent sm:text-5xl lg:text-7xl">
+                        class="mt-1
+                                bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-4xl
+                                font-extrabold uppercase tracking-tighter text-transparent sm:text-5xl lg:text-7xl">
                         Motocross
                     </h1>
                     <h1
@@ -191,7 +175,7 @@
 
     map.on('click', onMapClick);
 </script>
-
+<!--
 <script>
     openOrCloseMenu = () => {
         const menu = document.getElementById('navbar-hamburger');
@@ -202,5 +186,6 @@
         }
     }
 </script>
+-->
 
 </html>
