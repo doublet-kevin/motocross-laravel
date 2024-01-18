@@ -43,6 +43,8 @@ class RegistrationController extends Controller
             'password' => $request->password,
             'role' => $request->role,
         ]);
+
+        return redirect()->route('registration.index');
     }
 
     public function edit($id)
@@ -77,12 +79,16 @@ class RegistrationController extends Controller
             'password' => $request->password,
             'role' => $request->role,
         ]);
+
+        return redirect()->route('registration.index');
     }
 
     public function destroy($id)
     {
         $registration = Registration::findOrFail($id);
         $registration->delete();
+
+        return redirect()->route('registration.index');
     }
 
     public function show($id)

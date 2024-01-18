@@ -29,6 +29,8 @@ class RoleController extends Controller
             'role_name' => $request->role_name,
             'role_description' => $request->role_description,
         ]);
+
+        return redirect()->route('role.index');
     }
 
     public function edit($id)
@@ -49,11 +51,15 @@ class RoleController extends Controller
             'role_name' => $request->role_name,
             'role_description' => $request->role_description,
         ]);
+
+        return redirect()->route('role.index');
     }
 
     public function destroy($id)
     {
         $role = Role::findOrFail($id);
         $role->delete();
+
+        return redirect()->route('role.index');
     }
 }
