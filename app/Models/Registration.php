@@ -24,4 +24,6 @@ class Registration extends Model
     {
         return $this->hasOne(Training::class);
     }
+
+    public $timestamps = false;
 }

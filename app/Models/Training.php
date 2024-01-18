@@ -20,4 +20,6 @@ class Training extends Model
     {
         return $this->belongsTo(Circuit::class);
     }
+
+    public $timestamps = false;
 }

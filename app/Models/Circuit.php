@@ -17,4 +17,6 @@ class Circuit extends Model
     {
         return $this->hasMany(Training::class);
     }
+
+    public $timestamps = false;
 }

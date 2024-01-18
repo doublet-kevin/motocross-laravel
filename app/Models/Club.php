@@ -21,4 +21,6 @@ class Club extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    public $timestamps = false;
 }
