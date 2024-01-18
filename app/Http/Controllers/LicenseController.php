@@ -39,6 +39,8 @@ class LicenseController extends Controller
             'license_renewal' => $request->license_renewal,
             'license_renewal_date' => $request->license_renewal_date
         ]);
+
+        return redirect()->route('license.index');
     }
 
     public function edit($id)
@@ -69,11 +71,15 @@ class LicenseController extends Controller
             'license_renewal' => $request->license_renewal,
             'license_renewal_date' => $request->license_renewal_date
         ]);
+
+        return redirect()->route('license.index');
     }
 
     public function destroy($id)
     {
         $license = License::findOrFail($id);
         $license->delete();
+
+        return redirect()->route('license.index');
     }
 }

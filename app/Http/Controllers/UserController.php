@@ -43,6 +43,8 @@ class UserController extends Controller
             'password' => $request->password,
             'role' => $request->role,
         ]);
+
+        return redirect()->route('user.index');
     }
 
     public function edit($id)
@@ -77,12 +79,16 @@ class UserController extends Controller
             'password' => $request->password,
             'role' => $request->role,
         ]);
+
+        return redirect()->route('user.index');
     }
 
     public function destroy($id)
     {
         $user = User::findOrFail($id);
         $user->delete();
+
+        return redirect()->route('user.index');
     }
 
     public function show($id)
