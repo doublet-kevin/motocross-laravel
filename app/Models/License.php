@@ -18,4 +18,6 @@ class License extends Model
     {
         return $this->hasOne(User::class);
     }
+
+    public $timestamps = false;
 }
