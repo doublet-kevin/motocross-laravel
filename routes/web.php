@@ -117,10 +117,14 @@ Route::put(
     [TrainingController::class, 'update']
 )->name('training.update');
 
+
 Route::delete(
     '/delete-training/{id}',
     [TrainingController::class, 'destroy']
 )->name('training.destroy');
+
+// User routes 
+
 Route::get(
     '/user',
     [UserController::class, 'index']
@@ -156,6 +160,8 @@ Route::get(
     [UserController::class, 'show']
 )->name('user.show');
 
+// Role routes
+
 Route::get(
     '/role',
     [RoleController::class, 'index']
@@ -186,6 +192,8 @@ Route::get(
     [RoleController::class, 'destroy']
 )->name('role.destroy');
 
+// License routes
+
 Route::get(
     '/license',
     [LicenseController::class, 'index']
@@ -215,6 +223,8 @@ Route::get(
     '/license/destroy/{id}',
     [LicenseController::class, 'destroy']
 )->name('license.destroy');
+
+// Registration routes
 
 Route::get(
     '/registration',
