@@ -13,7 +13,7 @@ class RegistrationController extends Controller
         return view('registration.index', ['registrations' => $registrations]);
     }
 
-    public function create(
+    public function create()
     {
         return view('registration.create');
     }
