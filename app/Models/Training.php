@@ -4,8 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Trainings extends Model
+class Training extends Model
 {
     use HasFactory;
 
@@ -14,4 +15,9 @@ class Trainings extends Model
         'type',
         'number_of_places',
     ];
+
+    public function circuit(): BelongsTo
+    {
+        return $this->belongsTo(Circuit::class);
+    }
 }

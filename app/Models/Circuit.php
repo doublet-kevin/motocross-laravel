@@ -12,4 +12,9 @@ class Circuit extends Model
     protected $fillable = [
         'name',
     ];
+
+    public function trainings()
+    {
+        return $this->hasMany(Training::class);
+    }
 }
