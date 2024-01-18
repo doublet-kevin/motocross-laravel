@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Club;
 
 class UserController extends Controller
 {
@@ -15,12 +16,14 @@ class UserController extends Controller
 
     public function create()
     {
-        return view('user.create');
+        $clubs = Club::all();
+        return view('user.create', ['clubs' => $clubs]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'id_club' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'region' => 'required|string|max:255',
@@ -33,6 +36,7 @@ class UserController extends Controller
         ]);
 
         $user = User::create([
+            'id_club' => $request->id_club,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'region' => $request->region,
@@ -56,6 +60,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
+            'id_club' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'region' => 'required|string|max:255',
@@ -69,6 +74,7 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
         $user->update([
+            'id_club' => $request->id_club,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'region' => $request->region,
