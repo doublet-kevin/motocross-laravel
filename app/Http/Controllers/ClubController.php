@@ -9,7 +9,7 @@ class ClubController extends Controller
 {
     public function index()
     {
-        $clubs = Club::all();       
+        $clubs = Club::all();
         return view('club.index', ['clubs' => $clubs]);
     }
 
@@ -18,30 +18,30 @@ class ClubController extends Controller
         return view('club.create');
     }
 
-    public function store()
+    public function store(Request $request)
     {
         $request->validate([
             'name' => 'required',
             'region' => 'required',
             'city' => 'required',
-            'postal_code' => 'required',                
+            'postal_code' => 'required',
         ]);
-     
+
         Club::create([
             "name" => $request->name,
             "region" => $request->region,
-            "city" => $request->city,    
+            "city" => $request->city,
             'postal_code' => $request->postal_code
         ]);
 
         return redirect()->route('club.index');
     }
 
-    public function edit()
+    public function edit($id)
     {
-       $club = Club::find($id);
+        $club = Club::find($id);
 
-       return view('club.edit', ['club' => $club]);
+        return view('club.edit', ['club' => $club]);
     }
 
     public function update(Request $request, $id)
@@ -64,11 +64,10 @@ class ClubController extends Controller
         return redirect()->route('club.index');
     }
 
-    public function destroy()
+    public function destroy($id)
     {
         $club = Club::find($id);
         $club->delete();
         return redirect()->route('club.index');
-    } 
-
+    }
 }
