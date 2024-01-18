@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+
 
 class Registration extends Model
 {
@@ -12,4 +14,14 @@ class Registration extends Model
     protected $filable = [
         'registration_date',
     ];
+
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class);
+    }
+
+    public function training(): HasOne
+    {
+        return $this->hasOne(Training::class);
+    }
 }
