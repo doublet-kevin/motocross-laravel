@@ -18,7 +18,7 @@ class Training extends Model
 
     public function circuit(): BelongsTo
     {
-        return $this->belongsTo(Circuit::class);
+        return $this->belongsTo(Circuit::class, 'id');
     }
 
     public $timestamps = false;
