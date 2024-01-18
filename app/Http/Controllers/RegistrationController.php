@@ -9,7 +9,8 @@ class RegistrationController extends Controller
 {
     public function index()
     {
-        return view('registration.index');
+        $registrations = Registration::all();
+        return view('registration.index', ['registrations' => $registrations]);
     }
 
     public function create()
