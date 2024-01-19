@@ -9,7 +9,35 @@
 </head>
 
 <body>
-    <p>Ceci est la view index de circuit</p>
+    <p>Ceci est la view index des circuits</p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">Nom</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($circuits as $circuit)
+                <tr>
+                    <td scope="row">{{ $circuit->id }}</th>
+                    <td>{{ $circuit->name }}</td>
+                    <td><a class="btn btn-primary" href="{{ route('circuit.edit', ['id' => $circuit->id]) }}">Modifier
+                            le circuit</a>
+                    </td>
+                    <td>
+                        <form action="{{ route('circuit.destroy', ['id' => $circuit->id]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Supprimer le circuit</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 </body>
 
 </html>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Circuit;
-use App\Models\Club;
 
 
 class CircuitController extends Controller

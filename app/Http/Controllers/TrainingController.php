@@ -23,17 +23,16 @@ class TrainingController extends Controller
 
     public function store(Request $request)
     {
+
         $request->validate([
-            'name_circuit' => 'required',
+            'id_circuit' => 'required',
             'date' => 'required',
             'type' => 'required',
             'number_of_places' => 'required',
         ]);
 
-        // $circuit = Circuit::where('name'= $request->)
-
         Training::create([
-            "name_circuit" => $request->id_training,
+            "id_circuit" => $request->id_circuit,
             "date" => $request->date,
             "type" => $request->type,
             "number_of_places" => $request->number_of_places,
@@ -53,7 +52,7 @@ class TrainingController extends Controller
     {
 
         $request->validate([
-            'name_circuit' => 'required',
+            'id_circuit' => 'required',
             'date' => 'required',
             'type' => 'required',
             'number_of_places' => 'required',
@@ -61,7 +60,7 @@ class TrainingController extends Controller
 
         $training = Training::find($id);
         $training->update([
-            "name_circuit" => $request->id_training,
+            "id_circuit" => $request->id_circuit,
             "date" => $request->date,
             "type" => $request->type,
             "number_of_places" => $request->number_of_places,
