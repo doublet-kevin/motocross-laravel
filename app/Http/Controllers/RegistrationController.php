@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Registration;
+use App\Models\Training;
+use App\Models\User;
 
 class RegistrationController extends Controller
 {
@@ -15,33 +17,21 @@ class RegistrationController extends Controller
 
     public function create()
     {
-        return view('registration.create');
+        $trainings = Training::all();
+        $users = User::all();
+        return view('registration.create', ['trainings' => $trainings, 'users' => $users]);
     }
 
     public function store(Request $request)
     {
         $request->validate([
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'region' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'birth_date' => 'required|string|max:255',
-            'password' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
+            'registration_date' => 'required|date',
         ]);
 
         $registration = Registration::create([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'region' => $request->region,
-            'city' => $request->city,
-            'postal_code' => $request->postal_code,
-            'email' => $request->email,
-            'birth_date' => $request->birth_date,
-            'password' => $request->password,
-            'role' => $request->role,
+            'registration_date' => $request->registration_date,
+            'id_training' => $request->id_training,
+            'id_user' => $request->id_user,
         ]);
 
         return redirect()->route('registration.index');
@@ -50,34 +40,21 @@ class RegistrationController extends Controller
     public function edit($id)
     {
         $registration = Registration::findOrFail($id);
-        return view('registration.edit', ['registration' => $registration]);
+        $trainings = Training::all();
+        return view('registration.edit', ['registration' => $registration, 'trainings' => $trainings]);
     }
 
     public function update(Request $request, $id)
     {
         $request->validate([
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'region' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
-            'birth_date' => 'required|string|max:255',
-            'password' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
+            'registration_date' => 'required|date',
         ]);
 
         $registration = Registration::findOrFail($id);
         $registration->update([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'region' => $request->region,
-            'city' => $request->city,
-            'postal_code' => $request->postal_code,
-            'email' => $request->email,
-            'birth_date' => $request->birth_date,
-            'password' => $request->password,
-            'role' => $request->role,
+            'registration_date' => $request->registration_date,
+            'id_training' => $request->id_training,
+            'id_user' => $request->id_user,
         ]);
 
         return redirect()->route('registration.index');
