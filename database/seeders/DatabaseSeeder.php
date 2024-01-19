@@ -23,6 +23,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             LicenseSeeder::class,
             CircuitSeeder::class,
+            TrainingSeeder::class,
+            RegistrationSeeder::class,
         ]);
     }
 }

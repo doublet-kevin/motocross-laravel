@@ -40,5 +40,31 @@ class UserSeeder extends Seeder
             'email' => 'test@test.test',
             'password' => Hash::make('testtest'),
         ]);
+
+        User::create([
+            'firstname' => 'James',
+            'lastname' => 'Bond',
+            'region' => 'Bretagne',
+            'city' => 'Rennes',
+            'postal_code' => '35000',
+            'birth_date' => '1998-04-01',
+            'id_role' => '1',
+            'id_club' => '1',
+            'email' => 'testt@test.test',
+            'password' => Hash::make('testttest'),
+        ]);
+
+        User::create([
+            'firstname' => 'Luffy',
+            'lastname' => 'Mugiwara',
+            'region' => 'Île-de-France',
+            'city' => 'Asnières-sur-Seine',
+            'postal_code' => '92600',
+            'birth_date' => '1967-08-16',
+            'id_role' => '2',
+            'id_club' => '1',
+            'email' => 'testtt@test.test',
+            'password' => Hash::make('testtttest'),
+        ]);
     }
 }

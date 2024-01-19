@@ -16,5 +16,13 @@ class CircuitSeeder extends Seeder
         Circuit::create([
             'name' => 'Circuit 1',
         ]);
+
+        Circuit::create([
+            'name' => 'Circuit 2',
+        ]);
+
+        Circuit::create([
+            'name' => 'Circuit 3',
+        ]);
     }
 }

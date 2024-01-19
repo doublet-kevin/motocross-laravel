@@ -19,5 +19,19 @@ class LicenseSeeder extends Seeder
                 'id_user' => '1',
             ]
         );
+
+        License::create(
+            [
+                'license_number' => '6157416844661321',
+                'id_user' => '2',
+            ]
+        );
+
+        License::create(
+            [
+                'license_number' => '415773416894661421',
+                'id_user' => '3',
+            ]
+        );
     }
 }
