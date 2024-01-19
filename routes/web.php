@@ -156,7 +156,7 @@ Route::get(
 )->name('user.destroy');
 
 Route::get(
-    '/show/{id}',
+    '/user/show/{id}',
     [UserController::class, 'show']
 )->name('user.show');
 
