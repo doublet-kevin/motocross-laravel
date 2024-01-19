@@ -276,7 +276,7 @@ Route::get(
 )->name('registration.destroy');
 
 Route::get(
-    '/show/{id}',
+    '/registration/show/{id}',
     [RegistrationController::class, 'show']
 )->name('registration.show');
 
