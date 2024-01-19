@@ -44,6 +44,7 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
     backdrop-filter: brightness(30%);
+    color: white;
 }
 
 /* permet de fixer le footer en dessous de l'element content, donc du body , meme si le body est vide */

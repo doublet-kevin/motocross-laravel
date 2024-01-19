@@ -14,14 +14,7 @@
             </div>
             <div class="col-span-1">
                 <main class="container text-center lg:text-start mx-auto px-4 py-8 items-center lg:flex lg:flex-col">
-                    <header class="py-4">
-                        <x-navigation.nav>
-                            <x-navigation.nav-item name="Accueil" route="/" />
-                            <x-navigation.nav-item name="Notre circuit" route="/" />
-                            <x-navigation.nav-item name="Nos entraînements" route="/" />
-                            <x-navigation.nav-item name="Connexion" route="/" />
-                        </x-navigation.nav>
-                    </header>
+
                     <h1
                         class="mt-1
                                 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 bg-clip-text text-4xl

@@ -16,10 +16,16 @@
 <div id="page">
 
     <body class="bg-body flex flex-col">
-        <header>
-            @include('components.layout.navbar')
+        <header class="py-4">
+            <x-navigation.nav>
+                <x-navigation.nav-item name="Accueil" route="/" />
+                <x-navigation.nav-item name="Notre circuit" route="/" />
+                <x-navigation.nav-item name="Nos entraînements" route="/" />
+                <x-navigation.nav-item name="Connexion" route="/login" />
+                <x-navigation.nav-item name="Créer un compte" route="/login" />
+            </x-navigation.nav>
         </header>
-        <main id="content">@yield('content')</main>
+        <main id="content" class="">@yield('content')</main>
         @include('components.layout.footer')
     </body>
 </div>
