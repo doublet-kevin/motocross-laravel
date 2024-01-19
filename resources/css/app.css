@@ -1,0 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* va permettre de faire une page qui permet d'avoir un footer toujours en bas */
+#page {
+    min-height: 100vh;
+    /* 1 */
+    display: flex;
+    /* 2 */
+    flex-direction: column;
+    /* 3 */
+}
+
+/* le style de la carte (la taille est obligatoire je l'ai mis directement dans la map) */
+#map {
+    margin-top: 100px;
+}
+
+.card-glass {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.bg-motocross-circle {
+    background: url("../images/motocross-bg-url.png");
+    background-size: cover;
+    background-position: center;
+    clip-path: circle(50% at 50% 50%);
+    border: 5px solid white;
+    border-radius: 500px;
+    -webkit-border-radius: 500px;
+    -moz-border-radius: 500px;
+}
+
+/* utiliser cette classe sur le layout qui utilise le body comme ça toutes les pages ont le meme body */
+.bg-body {
+    background: url("../images/bg-img.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    backdrop-filter: brightness(30%);
+}
+
+/* permet de fixer le footer en dessous de l'element content, donc du body , meme si le body est vide */
+#content {
+    flex-grow: 1;
+    /* 4 */
+}

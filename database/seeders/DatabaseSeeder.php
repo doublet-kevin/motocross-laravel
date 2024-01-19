@@ -3,7 +3,12 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Circuit;
 use Illuminate\Database\Seeder;
+use Database\Seeders\RolesTableSeeder;
+use Database\Seeders\UsersTableSeeder;
+use Termwind\Components\Li;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,11 +17,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $this->call([
+            ClubSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
+            LicenseSeeder::class,
+            CircuitSeeder::class,
+        ]);
     }
 }
