@@ -19,6 +19,7 @@ class NavItem extends Component
         $this->route = $route;
     }
 
+
     /**
      * Get the view / contents that represent the component.
      */
