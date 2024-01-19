@@ -15,7 +15,6 @@ class CircuitSeeder extends Seeder
     {
         Circuit::create([
             'name' => 'Circuit 1',
-            'id_club' => '1',
         ]);
     }
 }
