@@ -20,6 +20,8 @@
             <th scope="col">Date</th>
             <th scope="col">Type</th>
             <th scope="col">Nombre de places</th>
+            <th scope="col">Modifier le trianing</th>
+            <th scope="col">Supprimer le training</th>
         </tr>
     </thead>
     <tbody>

@@ -20,6 +20,8 @@
                 <th scope="col">Région</th>
                 <th scope="col">Ville</th>
                 <th scope="col">Code postal</th>
+                <th scope="col">Modifier le club</th>
+                <th scope="col">Supprimer le club</th>
             </tr>
         </thead>
         <tbody>

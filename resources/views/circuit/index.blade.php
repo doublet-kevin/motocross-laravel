@@ -16,6 +16,8 @@
             <tr>
                 <th scope="col">id</th>
                 <th scope="col">Nom</th>
+                <th scope="col">Modifier le circuit</th>
+                <th scope="col">Supprimer le circuit</th>
             </tr>
         </thead>
         <tbody>
