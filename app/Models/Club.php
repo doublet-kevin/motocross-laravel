@@ -22,5 +22,10 @@ class Club extends Model
         return $this->hasMany(User::class);
     }
 
+    public function circuits(): HasMany
+    {
+        return $this->hasMany(Circuit::class);
+    }
+
     public $timestamps = false;
 }
