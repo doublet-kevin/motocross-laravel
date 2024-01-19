@@ -29,7 +29,7 @@ Route::get('/', function () {
 Route::get(
     '/clubs',
     [ClubController::class, 'index']
-)->name('clubs.index');
+)->name('club.index');
 
 Route::get(
     '/create-club',
@@ -37,7 +37,7 @@ Route::get(
 )->name('club.create');
 
 Route::post(
-    '/store-club',
+    '/create-club',
     [ClubController::class, 'store']
 )->name('club.store');
 
@@ -62,7 +62,7 @@ Route::delete(
 Route::get(
     '/circuits',
     [CircuitController::class, 'index']
-)->name('circuits.index');
+)->name('circuit.index');
 
 Route::get(
     '/create-circuit',
@@ -95,7 +95,7 @@ Route::delete(
 Route::get(
     '/trainings',
     [TrainingController::class, 'index']
-)->name('trainings.index');
+)->name('training.index');
 
 Route::get(
     '/create-training',

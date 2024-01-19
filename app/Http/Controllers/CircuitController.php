@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Circuit;
+use App\Models\Club;
+
 
 class CircuitController extends Controller
 {
@@ -26,7 +28,6 @@ class CircuitController extends Controller
 
         Circuit::create([
             "name" => $request->name,
-
         ]);
 
         return redirect()->route('circuit.index');
