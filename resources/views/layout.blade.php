@@ -22,10 +22,10 @@
                 <x-navigation.nav-item name="Notre circuit" route="/" />
                 <x-navigation.nav-item name="Nos entraînements" route="/" />
                 <x-navigation.nav-item name="Connexion" route="/login" />
-                <x-navigation.nav-item name="Créer un compte" route="/register" />
+                <x-navigation.nav-item name="Créer un compte" route="/login" />
             </x-navigation.nav>
         </header>
-        <main id="content">@yield('content')</main>
+        <main id="content" class="">@yield('content')</main>
         @include('components.layout.footer')
     </body>
 </div>
