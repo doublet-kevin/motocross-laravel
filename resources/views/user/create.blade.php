@@ -9,13 +9,6 @@
 <body>
     <form action="{{ route('user.store') }}" method="post">
         @csrf
-        <select name="id_club" id="id_club">
-            <option value="">Veuillez choisir votre club</option>
-            @foreach ($clubs as $club)
-                <option value="{{ $club->id }}">{{ $club->name }}</option>
-            @endforeach
-        </select>
-
         <input type="text" id="firstname" name="firstname" placeholder="Prénom">
 
         <input type="text" id="lastname" name="lastname" placeholder="Nom">

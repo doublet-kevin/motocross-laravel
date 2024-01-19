@@ -4,13 +4,6 @@
     <form action="{{ route('user.update', $user->id) }}" method="post">
         @csrf
         @method('PUT')
-        <select name="id_club" id="id_club">
-            <option value="">Veuillez choisir votre club</option>
-            @foreach ($clubs as $club)
-                <option value="{{ $club->id }}" {{ $user->id_club == $club->id ? 'selected' : '' }}>{{ $club->name }}
-                </option>
-            @endforeach
-        </select>
 
         <input type="text" id="firstname" name="firstname" placeholder="Prénom" value="{{ $user->firstname }}">
 
