@@ -1,20 +1,19 @@
 <?php
 
-namespace App\View\Components;
+namespace App\View\Components\Home;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class GalleryItem extends Component
+class LeaftletMap extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(
-        public string $src,
-    ) {
-        $this->src = $src;
+    public function __construct()
+    {
+        //
     }
 
     /**
@@ -22,6 +21,6 @@ class GalleryItem extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.gallery-item');
+        return view('components.home.leaftlet-map');
     }
 }

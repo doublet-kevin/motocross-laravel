@@ -6,11 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Motocross</title>
     @vite('resources/css/app.css')
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <link rel="stylesheet" href="">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    @stack('styles')
+    @stack('scripts')
 </head>
 
 <div id="page">
@@ -38,13 +35,11 @@
                 </div>
             </x-layout.footer-item>
             <x-layout.footer-item title="Recent News">
-                <p>
-                    Most of our events have hard and easy
-                    route choices as we are always keen to encourage new riders.
-                </p>
+                Most of our events have hard and easy
+                route choices as we are always keen to encourage new riders.
             </x-layout.footer-item>
             <x-layout.footer-item title="Newsletter">
-                <input type="text" id="mail"" placeholder="john.doe@mail.com" required>
+                <input type="text" id="mail" placeholder="john.doe@mail.com" required>
             </x-layout.footer-item>
         </x-layout.footer>
     </body>
