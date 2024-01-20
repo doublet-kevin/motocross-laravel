@@ -13,16 +13,18 @@
 <div id="page">
 
     <body class="bg-body flex flex-col">
-        <header class="py-4">
+        <header class="flex justify-between py-4 mx-12">
             <x-navigation.nav>
                 <x-navigation.nav-item name="Accueil" route="/" />
                 <x-navigation.nav-item name="Notre circuit" route="/" />
                 <x-navigation.nav-item name="Nos entraînements" route="/" />
+            </x-navigation.nav>
+            <x-navigation.nav>
                 <x-navigation.nav-item name="Connexion" route="/login" />
                 <x-navigation.nav-item name="Créer un compte" route="/login" />
             </x-navigation.nav>
         </header>
-        <main id="content" class="">@yield('content')</main>
+        <main id="content">@yield('content')</main>
         <x-layout.footer>
             <x-layout.footer-item title="Find us on..">
                 <div class="flex gap-x-6">
