@@ -14,6 +14,10 @@ body {
     color: var(--light-color);
 }
 
+input {
+    @apply bg-dark border border-light text-light focus:outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5;
+}
+
 /* va permettre de faire une page qui permet d'avoir un footer toujours en bas */
 #page {
     min-height: 100vh;

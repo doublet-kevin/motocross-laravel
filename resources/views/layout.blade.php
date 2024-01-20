@@ -27,8 +27,7 @@
         </header>
         <main id="content" class="">@yield('content')</main>
         <x-layout.footer>
-            <x-layout.footer-item title="Motocross">
-                Most of our events have hard and easy route choices as we are always keen to encourage new riders.
+            <x-layout.footer-item title="Find us on..">
                 <div class="flex gap-x-6">
                     <x-social.icon url="https://www.facebook.com/"
                         src="{{ Vite::asset('resources/images/icons/twitter.svg') }}" />
@@ -45,9 +44,7 @@
                 </p>
             </x-layout.footer-item>
             <x-layout.footer-item title="Newsletter">
-                <input type="text" id="first_name"
-                    class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="John" required>
+                <input type="text" id="mail"" placeholder="john.doe@mail.com" required>
             </x-layout.footer-item>
         </x-layout.footer>
     </body>
