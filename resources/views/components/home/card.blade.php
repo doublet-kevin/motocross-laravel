@@ -1,10 +1,9 @@
-<div
-    class="max-w-sm p-6 mt-10 card-glass bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div class="max-w-sm p-6 mt-10 card-glass border rounded-md shadow bg-gray-800 border-gray-700">
     <a href="#">
-        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-light">
             {{ $title }}</h5>
     </a>
-    <p class="mb-3 font-normal text-gray-200 dark:text-gray-400">
+    <p class="mb-3 font-normal text-light">
         {{ $slot }}
     </p>
     <a href=""

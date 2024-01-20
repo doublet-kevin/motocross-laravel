@@ -49,7 +49,7 @@
                 </main>
             </div>
         </div>
-        <div class="w-full mb-8 lg:flex justify-center gap-x-10 p-2 lg:p-0">
+        <div class="w-full mb-8 flex flex-col lg:flex-row justify-center items-center gap-x-10 p-2 lg:px-8 ">
             <x-home.card title="technology acquisitions 2021" button="Learn more" link="/">
                 Lorem ipsum dolor sit amet,
                 consectetur adipiscing elit. Sed euismod,
