@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --light-color: #f1ecdd;
+    --dark-color: #0a0906;
+    --primary-color: #f7bf18;
+    --secondary-color: #7f6822;
+    --accent-color: #d6b348;
+}
+
+body {
+    color: var(--light-color);
+}
+
 /* va permettre de faire une page qui permet d'avoir un footer toujours en bas */
 #page {
     min-height: 100vh;
