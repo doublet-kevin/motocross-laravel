@@ -1,3 +1,3 @@
-<li class="border-b border-orange-500 hover:bg-orange-500 duration-300  p-2 rounded-sm cursor-pointer">
+<li class="p-2 duration-300 border-b border-orange-500 rounded-sm cursor-pointer hover:bg-orange-500">
     <a href="{{ $route }}">{{ $name }}</a>
 </li>

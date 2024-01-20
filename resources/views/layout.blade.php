@@ -5,24 +5,30 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Motocross</title>
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
     @stack('scripts')
 </head>
 
 <div id="page">
 
-    <body class="bg-body flex flex-col">
-        <header class="flex justify-between py-4 mx-12">
-            <x-navigation.nav>
-                <x-navigation.nav-item name="Accueil" route="/" />
-                <x-navigation.nav-item name="Notre circuit" route="/" />
-                <x-navigation.nav-item name="Nos entraînements" route="/" />
-            </x-navigation.nav>
-            <x-navigation.nav>
-                <x-navigation.nav-item name="Connexion" route="/login" />
-                <x-navigation.nav-item name="Créer un compte" route="/login" />
-            </x-navigation.nav>
+    <body class="flex flex-col bg-body">
+        <header>
+            <!-- Desktop Navigation -->
+            <div
+                class="flex-col items-center hidden py-4 mx-12 text-center lg:flex lg:text-start lg:flex-row lg:justify-between">
+                <x-navigation.nav>
+                    <x-navigation.nav-item name="Accueil" route="/" />
+                    <x-navigation.nav-item name="Notre circuit" route="/" />
+                    <x-navigation.nav-item name="Nos entraînements" route="/" />
+                </x-navigation.nav>
+                <x-navigation.nav>
+                    <x-navigation.nav-item name="Connexion" route="/login" />
+                    <x-navigation.nav-item name="Créer un compte" route="/login" />
+                </x-navigation.nav>
+            </div>
+            <!-- Desktop Navigation -->
+            <x-navigation.mobile-nav />
         </header>
         <main id="content">@yield('content')</main>
         <x-layout.footer>
