@@ -4,11 +4,11 @@
 @section('content')
     <div class="p-2 lg:p-0">
         <div class="hidden lg:grid grid-cols-[repeat(auto-fit,minmax(100px,_1fr))] max-w-7xl m-auto my-8">
-            <img class="header-img" src="{{ Vite::asset('resources/images/moto-header-1.jpg') }}" alt="Image 1">
-            <img class="header-img" src="{{ Vite::asset('resources/images/moto-header-2.jpg') }}" alt="Image 2">
-            <img class="header-img" src="{{ Vite::asset('resources/images/moto-header-3.jpg') }}" alt="Image 3">
-            <img class="header-img" src="{{ Vite::asset('resources/images/moto-header-4.jpg') }}" alt="Image 4">
-            <img class="header-img" src="{{ Vite::asset('resources/images/moto-header-5.png') }}" alt="Image 4">
+            <img class="header-img shadow-2xl " src="{{ Vite::asset('resources/images/moto-header-1.jpg') }}" alt="Image 1">
+            <img class="header-img shadow-2xl" src="{{ Vite::asset('resources/images/moto-header-2.jpg') }}" alt="Image 2">
+            <img class="header-img shadow-2xl" src="{{ Vite::asset('resources/images/moto-header-3.jpg') }}" alt="Image 3">
+            <img class="header-img shadow-2xl" src="{{ Vite::asset('resources/images/moto-header-4.jpg') }}" alt="Image 4">
+            <img class="header-img shadow-2xl" src="{{ Vite::asset('resources/images/moto-header-5.png') }}" alt="Image 4">
         </div>
         <div
             class="grid lg:grid-cols-2 max-w-6xl font-bold text-light gap-8 my-20 text-center lg:text-start mx-6 lg:mx-auto m-auto">
