@@ -43,14 +43,11 @@ input {
 }
 
 .bg-motocross-circle {
-    background: url("../images/motocross-bg-url.png");
-    background-size: cover;
-    background-position: center;
-    clip-path: circle(50% at 50% 50%);
-    border: 5px solid white;
-    border-radius: 500px;
-    -webkit-border-radius: 500px;
-    -moz-border-radius: 500px;
+    position: absolute;
+    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+    object-fit: cover;
+    width: 500px;
+    height: 250px;
 }
 
 /* utiliser cette classe sur le layout qui utilise le body comme ça toutes les pages ont le meme body */
@@ -67,4 +64,12 @@ input {
 #content {
     flex-grow: 1;
     /* 4 */
+}
+
+.header-img {
+    height: 350px;
+    width: 300px;
+
+    clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
+    object-fit: cover;
 }
