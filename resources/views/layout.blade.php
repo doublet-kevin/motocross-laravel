@@ -26,39 +26,31 @@
             </x-navigation.nav>
         </header>
         <main id="content" class="">@yield('content')</main>
-        @include('components.layout.footer')
+        <x-layout.footer>
+            <x-layout.footer-item title="Motocross">
+                Most of our events have hard and easy route choices as we are always keen to encourage new riders.
+                <div class="flex gap-x-6">
+                    <x-social.icon url="https://www.facebook.com/"
+                        src="{{ Vite::asset('resources/images/icons/twitter.svg') }}" />
+                    <x-social.icon url="https://www.facebook.com/"
+                        src="{{ Vite::asset('resources/images/icons/linkedin.svg') }}" />
+                    <x-social.icon url="https://www.facebook.com/"
+                        src="{{ Vite::asset('resources/images/icons/instagram.svg') }}" />
+                </div>
+            </x-layout.footer-item>
+            <x-layout.footer-item title="Recent News">
+                <p>
+                    Most of our events have hard and easy
+                    route choices as we are always keen to encourage new riders.
+                </p>
+            </x-layout.footer-item>
+            <x-layout.footer-item title="Newsletter">
+                <input type="text" id="first_name"
+                    class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    placeholder="John" required>
+            </x-layout.footer-item>
+        </x-layout.footer>
     </body>
 </div>
-<script>
-    const map = L.map('map').setView([43.3521, 1.3821], 13);
-
-    const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 19,
-        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-    }).addTo(map);
-
-    const marker = L.marker([43.3521, 1.3821]).addTo(map)
-        .bindPopup('<b>Nous somme situé ici :) </b>').openPopup();
-
-    function onMapClick(e) {
-        popup
-            .setLatLng(e.latlng)
-            .setContent(`You clicked the map at ${e.latlng.toString()}`)
-            .openOn(map);
-    }
-
-    map.on('click', onMapClick);
-</script>
-
-<script>
-    openOrCloseMenu = () => {
-        const menu = document.getElementById('navbar-hamburger');
-        if (menu.classList.contains('hidden')) {
-            menu.classList.remove('hidden');
-        } else {
-            menu.classList.add('hidden');
-        }
-    }
-</script>
 
 </html>
