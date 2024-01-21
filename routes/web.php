@@ -268,3 +268,10 @@ Route::get(
     '/show/{id}',
     [RegistrationController::class, 'show']
 )->name('registration.show');
+
+Route::prefix('admin')->group(function () {
+    Route::get(
+        '/',
+        [UserController::class, 'index']
+    )->name('admin.users.index');
+});
