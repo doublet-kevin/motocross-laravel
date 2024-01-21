@@ -29,6 +29,9 @@
                         <x-navigation.nav-item name="Créer un compte" route="{{ route('register') }}" />
                     @endguest
                     @auth
+                        @if (Auth::user()->isAdmin())
+                            <x-navigation.nav-item name="Administration" route="/admin" />
+                        @endif
                         <x-navigation.nav-item name="Déconnexion" route="/logout" />
                     @endauth
                 </x-navigation.nav>

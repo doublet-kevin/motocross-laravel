@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             'city' => 'Rennes',
             'postal_code' => '35000',
             'birth_date' => '1998-04-01',
-            'role_id' => '2',
+            'role_id' => '1',
             'club_id' => '1',
             'email' => 'testt@test.test',
             'password' => Hash::make('testttest'),

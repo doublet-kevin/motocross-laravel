@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(License::class);
     }
+
+    public function isAdmin()
+    {
+        return $this->role()->where('name', 'admin')->first();
+    }
 }
