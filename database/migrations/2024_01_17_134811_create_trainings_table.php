@@ -16,7 +16,7 @@ return new class extends Migration
             $table->date('date');
             $table->string('type');
             $table->integer('number_of_places');
-            $table->foreignId('circuit_id')->constrained(table: 'circuits')->onDelete('cascade');
+            $table->foreignId('circuit_id')->constrained()->onDelete('cascade');
         });
     }
 
