@@ -25,18 +25,18 @@
 
                 <x-navigation.nav>
                     @guest
-                    <x-navigation.nav-item name="Connexion" route="/login" />
-                    <x-navigation.nav-item name="Créer un compte" route="/login" />
+                        <x-navigation.nav-item name="Connexion" route="/login" />
+                        <x-navigation.nav-item name="Créer un compte" route="/login" />
                     @endguest
                     @auth
-                    <x-navigation.nav-item name="Déconnexion" route="/logout" />
+                        <x-navigation.nav-item name="Déconnexion" route="/logout" />
                     @endauth
                 </x-navigation.nav>
             </div>
             <!-- Desktop Navigation -->
             <x-navigation.mobile-nav />
         </header>
-        <main class="flex flex-col items-center justify-center flex-grow">@yield('content')</main>
+        <main class="flex flex-col items-center justify-center flex-grow mx-4 mt-8">@yield('content')</main>
         <x-layout.footer>
             <x-layout.footer-item title="Find us on..">
                 <div class="flex gap-x-6">

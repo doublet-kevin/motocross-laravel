@@ -14,12 +14,20 @@
     display: none !important;
 }
 
-body {
-    color: var(--light-color);
+* {
+    @apply text-light;
 }
 
 input {
-    @apply bg-dark border border-light text-light focus:outline-none text-sm rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5;
+    @apply bg-transparent border border-light text-light focus:outline-none rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5;
+}
+
+.button {
+    @apply block bg-orange-500 hover:bg-orange-600 duration-500 items-center px-3 py-2 gap-2 font-medium text-center rounded-lg  focus:ring-4 focus:outline-none;
+}
+
+.button-inactive {
+    @apply block border border-orange-500 hover:bg-orange-600 duration-500 items-center px-3 py-2 gap-2  font-medium text-center rounded-lg  focus:ring-4 focus:outline-none;
 }
 
 /* va permettre de faire une page qui permet d'avoir un footer toujours en bas */
