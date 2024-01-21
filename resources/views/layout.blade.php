@@ -22,15 +22,16 @@
                     <x-navigation.nav-item name="Notre circuit" route="/" />
                     <x-navigation.nav-item name="Nos entraînements" route="/" />
                 </x-navigation.nav>
-                @guest
+
                 <x-navigation.nav>
+                    @guest
                     <x-navigation.nav-item name="Connexion" route="/login" />
                     <x-navigation.nav-item name="Créer un compte" route="/login" />
+                    @endguest
+                    @auth
+                    <x-navigation.nav-item name="Déconnexion" route="/logout" />
+                    @endauth
                 </x-navigation.nav>
-                @endguest
-                @auth
-                <x-navigation.nav-item name="Déconnexion" route="/logout" />
-            @endauth
             </div>
             <!-- Desktop Navigation -->
             <x-navigation.mobile-nav />
