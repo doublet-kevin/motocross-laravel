@@ -1,29 +1,45 @@
 @extends('layout')
 
 @section('content')
-    <div class="flex justify-around max-w-xl border rounded-sm m-auto">
-        <div class="flex flex-col gap-4 justify-around max-w-80 p-8 rounded-md">
-            <h2>Inscrivez-vous</h2>
-            <form action="{{ route('register') }}" method="POST" class="flex  flex-col gap-2">
+    <div class="flex w-full max-w-5xl border-2 rounded-md shadow-2xl border-primary backdrop-blur-lg">
+        <div class="flex flex-grow p-8">
+            <form action="{{ route('register') }}" method="POST" class="flex flex-col flex-grow gap-4">
                 @csrf
-                <input type="text" name="lastname" id="lastname" required placeholder="Nom"
-                    class="bg-transparent border rounded text-sm px-1.5 py-1" />
-                <input type="text" name="firstname" id="firstname" required placeholder="Prénom"
-                    class="bg-transparent border rounded text-sm px-1.5 py-1" />
-                <input type="text" name="firstname" id="firstname" required placeholder="Prénom"
-                    class="bg-transparent border rounded text-sm px-1.5 py-1" />
-                <input type="email" name="email" id="email" required placeholder="Adresse mail"
-                    class="bg-transparent border rounded text-sm px-1.5 py-1" />
-                <input type="password" name="password" id="password" placeholder="Mot de passe" required
-                    class="bg-transparent border rounded text-sm px-1.5 py-1" />
-                <input type="password" name="password_confirmation" id="password_confirmation"
-                    placeholder="Confirmez votre mot de passe" required
-                    class="bg-transparent border rounded text-sm px-1.5 py-1" />
-                <div>
-                    <button type="submit" class="flex">Inscription</button>
+                <h2 class="text-4xl font-bold text-accent">Inscription</h2>
+                <div class="grid grid-cols-2 gap-x-8">
+                    <div>
+                        <x-form.input-group type="text" name="firstname" placeholder="Prénom" required />
+                        <x-form.input-group type="text" name="lastname" placeholder="Nom" required />
+                        <x-form.input-group type="date" name="birth_date" placeholder="Date de naissance" required />
+                    </div>
+                    <div>
+                        <x-form.input-group type="email" name="email" placeholder="Adresse mail" required />
+                        <x-form.input-group type="password" name="password" placeholder="Mot de passe" required />
+                        <x-form.input-group type="password" name="password_confirmation"
+                            placeholder="Confirmer le mot de passe" required />
+                    </div>
+                    <div class="col-span-2">
+                        <x-form.input-group type="text" name="region" placeholder="Région" required />
+                    </div>
+                    <x-form.input-group type="text" name="city" placeholder="Ville" required />
+                    <x-form.input-group type="text" name="postal_code" placeholder="Code postal" required />
+                    <div class="col-span-2">
+                        <x-form.input-group type="text" name="license_number" placeholder="Numéro de licence" />
+                    </div>
+
                 </div>
+                <div class="justify-between gap-4 lg:flex">
+                    <div class="flex flex-col items-center gap-4 lg:flex-row">
+                        <button type="submit" class=" button">Inscription</button>
+                        <span>(*) Champs requis</span>
+                    </div>
+                    <a href="{{ route('login') }}" class="mt-4 button lg:mt-0">Déja inscrit ?
+                        Connectez-vous</a>
+                </div>
+
             </form>
         </div>
-
+        <img class="hidden md:flex w-[280px] shadow-2xl object-cover"
+            src="{{ Vite::asset('resources/images/moto-header-2.jpg') }}" alt="Image 4">
     </div>
 @endsection

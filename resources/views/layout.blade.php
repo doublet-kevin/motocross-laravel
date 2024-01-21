@@ -25,8 +25,8 @@
 
                 <x-navigation.nav>
                     @guest
-                        <x-navigation.nav-item name="Connexion" route="/login" />
-                        <x-navigation.nav-item name="Créer un compte" route="/login" />
+                        <x-navigation.nav-item name="Connexion" route="{{ route('login') }}" />
+                        <x-navigation.nav-item name="Créer un compte" route="{{ route('register') }}" />
                     @endguest
                     @auth
                         <x-navigation.nav-item name="Déconnexion" route="/logout" />

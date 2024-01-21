@@ -8,11 +8,13 @@
 
         <div class="flex relative w-[32px] h-[32px] shrink-0">
             <button x-cloak x-show="!open" class="absolute" @click.inside="open = !open" x-transition:enter.duration.300ms>
-                <img src="{{ Vite::asset('resources/images/icons/mobile-nav.svg') }}" alt="" class="w-[32px] h-[32px]"/>
+                <img src="{{ Vite::asset('resources/images/icons/mobile-nav.svg') }}" alt=""
+                    class="w-[32px] h-[32px]" />
             </button>
             <button x-cloak x-show="open" class="absolute" @click.inside="open = !open"
                 x-transition:enter.duration.300ms>
-                <img src="{{ Vite::asset('resources/images/icons/exit.svg') }}" alt="" class="flex w-[32px] h-[32px]"/>
+                <img src="{{ Vite::asset('resources/images/icons/exit.svg') }}" alt=""
+                    class="flex w-[32px] h-[32px]" />
             </button>
         </div>
     </div>
@@ -25,6 +27,6 @@
         <x-navigation.nav-item name="Notre circuit" route="/" />
         <x-navigation.nav-item name="Nos entraînements" route="/" />
         <x-navigation.nav-item name="Connexion" route="/login" />
-        <x-navigation.nav-item name="Créer un compte" route="/login" />
+        <x-navigation.nav-item name="Créer un compte" route="/register" />
     </ul>
 </div>
