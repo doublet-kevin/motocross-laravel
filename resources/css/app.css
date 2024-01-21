@@ -10,6 +10,10 @@
     --accent-color: #d6b348;
 }
 
+[x-cloak] {
+    display: none !important;
+}
+
 body {
     color: var(--light-color);
 }

@@ -1,4 +1,4 @@
-<div id="map" style="height: 400px;"></div>
+<div id="map" class="transition-all duration-300 ease-in-out brightness-75 hover:brightness-100" style="height: 300px; margin-top:0"></div>
 
 @push('styles')
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"

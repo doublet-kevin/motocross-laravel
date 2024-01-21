@@ -30,7 +30,7 @@
             <!-- Desktop Navigation -->
             <x-navigation.mobile-nav />
         </header>
-        <main id="content">@yield('content')</main>
+        <main class="flex flex-col items-center justify-center flex-grow">@yield('content')</main>
         <x-layout.footer>
             <x-layout.footer-item title="Find us on..">
                 <div class="flex gap-x-6">
