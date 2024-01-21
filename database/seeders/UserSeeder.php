@@ -16,18 +16,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        // DB::table('users')->insert([
-        //     'firstname' => Str::random(10),
-        //     'lastname' => Str::random(10),
-        //     'region' => Str::random(10),
-        //     'city' => Str::random(10),
-        //     'postal_code' => Str::random(10),
-        //     'birth_date' => CarbonPeriod::between('1980-01-01', '2010-12-31'),
-        //     'id_role' => Str::random(10),
-        //     'email' => Str::random(10) . '@example.com',
-        //     'password' => Hash::make('password'),
-        // ]);
-
         User::create([
             'firstname' => 'John',
             'lastname' => 'Doe',
@@ -35,8 +23,8 @@ class UserSeeder extends Seeder
             'city' => 'Toulouse',
             'postal_code' => '31000',
             'birth_date' => '1980-01-01',
-            'id_role' => '1',
-            'id_club' => '1',
+            'role_id' => '2',
+            'club_id' => '1',
             'email' => 'test@test.test',
             'password' => Hash::make('testtest'),
         ]);
@@ -48,8 +36,8 @@ class UserSeeder extends Seeder
             'city' => 'Rennes',
             'postal_code' => '35000',
             'birth_date' => '1998-04-01',
-            'id_role' => '1',
-            'id_club' => '1',
+            'role_id' => '2',
+            'club_id' => '1',
             'email' => 'testt@test.test',
             'password' => Hash::make('testttest'),
         ]);
@@ -61,8 +49,8 @@ class UserSeeder extends Seeder
             'city' => 'Asnières-sur-Seine',
             'postal_code' => '92600',
             'birth_date' => '1967-08-16',
-            'id_role' => '2',
-            'id_club' => '1',
+            'role_id' => '1',
+            'club_id' => '1',
             'email' => 'testtt@test.test',
             'password' => Hash::make('testtttest'),
         ]);

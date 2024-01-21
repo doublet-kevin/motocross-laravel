@@ -11,17 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {           
+        Schema::table('users', function (Blueprint $table) {
             $table->dropColumn('name');
             $table->string('firstname');
             $table->string('lastname');
             $table->string('region');
             $table->string('city');
-            $table->string('postal_code', 5);            
-            $table->date('birth_date');                        
+            $table->string('postal_code', 5);
+            $table->date('birth_date');
             $table->string('img_profil')->nullable();
-            $table->foreignId('id_role')->constrained(table: 'roles');
-            $table->foreignId('id_club')->constrained(table: 'clubs')->onDelete('cascade');
+            $table->foreignId('role_id')->constrained();
+            $table->foreignId('club_id')->constrained()->onDelete('cascade');
         });
     }
 

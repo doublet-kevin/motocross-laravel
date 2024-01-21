@@ -14,20 +14,20 @@ class RegistrationSeeder extends Seeder
     public function run(): void
     {
         Registration::create([
-            'id_user' => '1',
-            'id_training' => '1',
+            'user_id' => '1',
+            'training_id' => '1',
             'registration_date' => '2021-01-01',
         ]);
 
         Registration::create([
-            'id_user' => '2',
-            'id_training' => '2',
+            'user_id' => '2',
+            'training_id' => '2',
             'registration_date' => '2022-11-01',
         ]);
 
         Registration::create([
-            'id_user' => '3',
-            'id_training' => '3',
+            'user_id' => '3',
+            'training_id' => '3',
             'registration_date' => '2023-06-14',
         ]);
     }
