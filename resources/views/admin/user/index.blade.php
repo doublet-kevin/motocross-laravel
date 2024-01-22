@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('admin.layout')
 
 @section('content')
     <div class="flex flex-col gap-4 max-w-5xl">
