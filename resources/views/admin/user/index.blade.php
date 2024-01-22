@@ -1,9 +1,9 @@
 @extends('layout')
 
 @section('content')
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 max-w-5xl">
         @foreach ($users as $user)
-            <div class="grid  grid-cols-2 sm:grid-cols-4 md:grid-cols-9">
+            <div class="grid  grid-cols-2 sm:grid-cols-4 md:grid-cols-9 gap-4">
                 <div class="flex gap-2">
                     <form action="{{ route('user.destroy', $user->id) }}" method="post" class="shrink-0 w-[24px] h-[24px]">
                         @csrf
