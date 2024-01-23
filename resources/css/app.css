@@ -50,6 +50,7 @@ table tr {
     /* 2 */
     flex-direction: column;
     /* 3 */
+    @apply w-full;
 }
 
 /* le style de la carte (la taille est obligatoire je l'ai mis directement dans la map) */

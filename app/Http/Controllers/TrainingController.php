@@ -76,4 +76,10 @@ class TrainingController extends Controller
         $training->delete();
         return redirect()->route('training.index');
     }
+
+    public function admin()
+    {
+        $trainings = Training::all();
+        return view('admin.training.index', ['trainings' => $trainings]);
+    }
 }

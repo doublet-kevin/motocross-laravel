@@ -38,16 +38,21 @@
             </div>
             <!-- Desktop Navigation -->
             <x-navigation.mobile-nav />
-        </header>
-        <main class="flex flex-col max-w-7xl px-4 mx-auto justify-center flex-grow mt-8">
 
-            <ul class="flex gap-4 py-4">
-                <li><a href="{{ route('user.index') }}">Utilisateurs</a></li>
-                <li><a href="{{ route('training.index') }}">Entraînements</a></li>
+            <!-- Admin Dashboard Navigation -->
+            <ul class="flex justify-center gap-4 py-4">
+                <li><a href="{{ route('admin.users.index') }}">Utilisateurs</a></li>
+                <li><a href="{{ route('admin.trainings.index') }}">Entraînements</a></li>
                 <li><a href="{{ route('circuit.index') }}">Circuits</a></li>
                 <li><a href="{{ route('license.index') }}">Licenses</a></li>
             </ul>
-            @yield('content')
+        </header>
+        <main class="flex w-full max-w-6xl mx-auto items-center justify-center flex-grow mt-8">
+            <div class="flex-grow">
+                @yield('content')
+            </div>
+
+
         </main>
         <x-layout.footer>
             <x-layout.footer-item title="Find us on..">

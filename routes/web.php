@@ -133,10 +133,6 @@ Route::delete(
 
 // User routes 
 
-Route::get(
-    '/user',
-    [UserController::class, 'index']
-)->name('user.index');
 
 Route::get(
     '/user/create',
@@ -274,4 +270,8 @@ Route::prefix('admin')->group(function () {
         '/',
         [UserController::class, 'index']
     )->name('admin.users.index');
+    Route::get(
+        '/trainings',
+        [TrainingController::class, 'admin']
+    )->name('admin.trainings.index');
 });
