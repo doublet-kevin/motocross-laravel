@@ -44,7 +44,7 @@
                 <li><a href="{{ route('admin.users.index') }}">Utilisateurs</a></li>
                 <li><a href="{{ route('admin.trainings.index') }}">Entraînements</a></li>
                 <li><a href="{{ route('admin.circuits.index') }}">Circuits</a></li>
-                <li><a href="{{ route('license.index') }}">Licenses</a></li>
+                <li><a href="{{ route('admin.licenses.index') }}">Licenses</a></li>
             </ul>
         </header>
         <main class="flex items-center justify-center flex-grow w-full max-w-6xl mx-auto mt-8">

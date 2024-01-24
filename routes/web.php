@@ -288,4 +288,8 @@ Route::prefix('admin')->group(function () {
         '/circuits',
         [CircuitController::class, 'admin']
     )->name('admin.circuits.index');
+    Route::get(
+        '/licenses',
+        [LicenseController::class, 'index']
+    )->name('admin.licenses.index');
 });
