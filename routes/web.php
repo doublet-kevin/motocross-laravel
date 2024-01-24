@@ -73,6 +73,11 @@ Route::get(
 )->name('circuit.index');
 
 Route::get(
+    '/circuits/{id}',
+    [CircuitController::class, 'show']
+)->name('circuit.show');
+
+Route::get(
     '/create-circuit',
     [CircuitController::class, 'create']
 )->name('circuit.create');
@@ -279,4 +284,8 @@ Route::prefix('admin')->group(function () {
         '/trainings',
         [TrainingController::class, 'admin']
     )->name('admin.trainings.index');
+    Route::get(
+        '/circuits',
+        [CircuitController::class, 'admin']
+    )->name('admin.circuits.index');
 });

@@ -43,11 +43,11 @@
             <ul class="flex justify-center gap-4 py-4">
                 <li><a href="{{ route('admin.users.index') }}">Utilisateurs</a></li>
                 <li><a href="{{ route('admin.trainings.index') }}">Entraînements</a></li>
-                <li><a href="{{ route('circuit.index') }}">Circuits</a></li>
+                <li><a href="{{ route('admin.circuits.index') }}">Circuits</a></li>
                 <li><a href="{{ route('license.index') }}">Licenses</a></li>
             </ul>
         </header>
-        <main class="flex w-full max-w-6xl mx-auto items-center justify-center flex-grow mt-8">
+        <main class="flex items-center justify-center flex-grow w-full max-w-6xl mx-auto mt-8">
             <div class="flex-grow">
                 @yield('content')
             </div>

@@ -60,4 +60,16 @@ class CircuitController extends Controller
         $circuit->delete();
         return redirect()->route('circuit.index');
     }
+
+    public function show($id)
+    {
+        $circuit = Circuit::find($id);
+        return view('circuit.show', ['circuit' => $circuit]);
+    }
+
+    public function admin()
+    {
+        $circuits = Circuit::all();
+        return view('admin.circuit.index', ['circuits' => $circuits]);
+    }
 }
