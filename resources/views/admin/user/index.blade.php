@@ -3,25 +3,16 @@
 @section('content')
     <div class="flex flex-col gap-4">
         @foreach ($users as $user)
-            <div class="grid  grid-cols-2 sm:grid-cols-4 md:grid-cols-9 gap-4">
+            <div class="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-9">
                 <div class="flex gap-2">
-                    <form action="{{ route('user.destroy', $user->id) }}" method="post" class="shrink-0 w-[24px] h-[24px]">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" />
-                        <img src="{{ Vite::asset('resources/images/icons/trash.svg') }}" alt="Delete icon">
-                        </button>
-                    </form>
+                    <x-admin.board.actions route="{{ route('user.destroy', $user->id) }}"
+                        icon="{{ Vite::asset('resources/images/icons/trash.svg') }}" alt="Trash" />
 
-                    <button onclick="window.location.href='{{ route('user.edit', $user->id) }}'"
-                        class="shrink-0 w-[24px] h-[24px]">
-                        <img src="{{ Vite::asset('resources/images/icons/edit.svg') }}" alt="Edit icon">
-                    </button>
+                    <x-admin.board.actions route="{{ route('user.edit', $user->id) }}"
+                        icon="{{ Vite::asset('resources/images/icons/edit.svg') }}" alt="Edit" />
 
-                    <button onclick="window.location.href='{{ route('user.show', $user->id) }}'"
-                        class="shrink-0 w-[24px] h-[24px]">
-                        <img src="{{ Vite::asset('resources/images/icons/eye.svg') }}" alt="Show icon">
-                    </button>
+                    <x-admin.board.actions route="{{ route('user.show', $user->id) }}"
+                        icon="{{ Vite::asset('resources/images/icons/eye.svg') }}" alt="Show" />
                 </div>
 
                 <span class="hidden sm:flex">{{ $user->firstname }}</span>

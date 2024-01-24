@@ -11,9 +11,14 @@ class Actions extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
-    {
-        //
+    public function __construct(
+        public string $route,
+        public string $icon,
+        public string $alt,
+    ) {
+        $this->route = $route;
+        $this->icon = $icon;
+        $this->alt = $alt;
     }
 
     /**

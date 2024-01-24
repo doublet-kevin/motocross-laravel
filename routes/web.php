@@ -106,6 +106,11 @@ Route::get(
 )->name('training.index');
 
 Route::get(
+    '/trainings/{id}',
+    [TrainingController::class, 'show']
+)->name('training.show');
+
+Route::get(
     '/create-training',
     [TrainingController::class, 'create']
 )->name('training.create');
