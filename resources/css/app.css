@@ -27,7 +27,7 @@ input {
 }
 
 .button-inactive {
-    @apply block border border-orange-500 hover:bg-orange-600 duration-500 items-center px-3 py-2 gap-2  font-medium text-center rounded-lg  focus:ring-4 focus:outline-none;
+    @apply block backdrop-blur-lg border border-orange-500 hover:bg-orange-600 duration-500 items-center px-3 py-2 gap-2  font-medium text-center rounded-lg  focus:ring-4 focus:outline-none;
 }
 
 /* va permettre de faire une page qui permet d'avoir un footer toujours en bas */

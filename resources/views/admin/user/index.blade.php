@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
-    <div class="flex flex-col gap-4 mx-4 lg:mx-0">
+    <div class="flex flex-col gap-4 mx-4 lg:mx-0 backdrop-blur-lg">
         <div class="relative overflow-x-auto border rounded-lg border-primary">
             <table class="w-full text-sm truncate">
                 <thead class="uppercase bg-secondary">
