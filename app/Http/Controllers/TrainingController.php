@@ -77,7 +77,7 @@ class TrainingController extends Controller
         return back()->with('success', 'Training deleted successfully');
     }
 
-    public function admin()
+    public function board()
     {
         $trainings = Training::all();
         return view('admin.training.index', ['trainings' => $trainings]);

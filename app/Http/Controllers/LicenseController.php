@@ -60,4 +60,10 @@ class LicenseController extends Controller
 
         return redirect()->route('license.index');
     }
+
+    public function board()
+    {
+        $licenses = License::all();
+        return view('admin.license.index', ['licenses' => $licenses]);
+    }
 }

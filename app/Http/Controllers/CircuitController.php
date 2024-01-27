@@ -58,7 +58,7 @@ class CircuitController extends Controller
     {
         $circuit = Circuit::find($id);
         $circuit->delete();
-        return redirect()->route('circuit.index');
+        return back()->with('success', 'Circuit deleted!');
     }
 
     public function show($id)
@@ -67,7 +67,7 @@ class CircuitController extends Controller
         return view('circuit.show', ['circuit' => $circuit]);
     }
 
-    public function admin()
+    public function board()
     {
         $circuits = Circuit::all();
         return view('admin.circuit.index', ['circuits' => $circuits]);

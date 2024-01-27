@@ -16,7 +16,8 @@
                             <th scope="row" class="px-6 py-4 font-medium border-r border-primary whitespace-nowrap">
                                 <div class="flex items-center justify-center gap-2">
                                     <x-admin.board.actions route="{{ route('user.destroy', $license->id) }}"
-                                        icon="{{ Vite::asset('resources/images/icons/trash.svg') }}" alt="Trash" />
+                                        icon="{{ Vite::asset('resources/images/icons/trash.svg') }}" alt="Trash"
+                                        method="DELETE" />
 
                                     <x-admin.board.actions route="{{ route('user.edit', $license->id) }}"
                                         icon="{{ Vite::asset('resources/images/icons/edit.svg') }}" alt="Edit" />

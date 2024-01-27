@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClubController;
 use App\Http\Controllers\CircuitController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LicenseController;
 use App\Http\Controllers\RegistrationController;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,64 +25,64 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/logout', function () {
+    Auth::logout();
+    return redirect('/');
+});
+
 
 //User Circuits routes
-Route::resource('circuits', CircuitController::class)->only([
+Route::resource('circuit', CircuitController::class)->only([
     'index', 'show'
 ]);
 
 //Admin Circuits routes
-Route::resource('circuits', CircuitController::class)->only([
-    'create', 'destroy', 'edit', 'update', 'store'
-])->names([
-    'create' => 'admin.circuit.create',
-    'destroy' => 'admin.circuit.destroy',
-    'edit' => 'admin.circuit.edit',
-    'update' => 'admin.circuit.update',
-    'store' => 'admin.circuit.store'
-]);
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
+    Route::resource('circuit', CircuitController::class)->only([
+        'create', 'destroy', 'edit', 'update', 'store'
+    ])->names([
+        'create' => 'circuit.create',
+        'destroy' => 'circuit.destroy',
+        'edit' => 'circuit.edit',
+        'update' => 'circuit.update',
+        'store' => 'circuit.store'
+    ]);
+    Route::get('circuits', [CircuitController::class, 'board'])->name('circuit.board');
+});
 
 //User Training routes
-Route::resource('trainings', TrainingController::class)->only([
+Route::resource('training', TrainingController::class)->only([
     'index', 'show'
 ]);
 
 //Admin Training routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::resource('trainings', TrainingController::class)->only([
-        'create', 'destroy', 'edit', 'update', 'store'
+    Route::resource('training', TrainingController::class)->only([
+        'create', 'destroy', 'edit', 'update', 'store', 'index'
     ])->names([
         'create' => 'training.create',
         'destroy' => 'training.destroy',
         'edit' => 'training.edit',
         'update' => 'training.update',
-        'store' => 'training.store'
+        'store' => 'training.store',
     ]);
+    Route::get('trainings', [TrainingController::class, 'board'])->name('training.board');
 });
 
 
 //User User routes
-Route::resource('users', UserController::class)->only([
-    'show'
+Route::resource('user', UserController::class)->only([
+    'show', 'create', 'destroy', 'edit', 'store', 'update'
 ]);
 
 //Admin User routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::resource('users', UserController::class)->only([
-        'index', 'create', 'destroy', 'edit', 'update', 'store'
-    ])->names([
-        'index' => 'user.index',
-        'create' => 'user.create',
-        'destroy' => 'user.destroy',
-        'edit' => 'user.edit',
-        'update' => 'user.update',
-        'store' => 'user.store'
-    ]);
+    Route::get('users', [UserController::class, 'board'])->name('user.board');
 });
 
 //Admin Role routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::resource('roles', RoleController::class)->only([
+    Route::resource('role', RoleController::class)->only([
         'index', 'create', 'destroy', 'edit', 'update', 'store'
     ])->names([
         'index' => 'role.index',
@@ -95,7 +96,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
 
 //Admin License routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::resource('licenses', LicenseController::class)->only([
+    Route::resource('license', LicenseController::class)->only([
         'index', 'create', 'destroy', 'edit', 'update', 'store'
     ])->names([
         'index' => 'license.index',
@@ -105,11 +106,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
         'update' => 'license.update',
         'store' => 'license.store'
     ]);
+    Route::get('licenses', [LicenseController::class, 'board'])->name('license.board');
 });
 
 //Admin Registration routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.'], function () {
-    Route::resource('registrations', RegistrationController::class)->only([
+    Route::resource('registration', RegistrationController::class)->only([
         'index', 'create', 'destroy', 'edit', 'update', 'store'
     ])->names([
         'index' => 'registration.index',

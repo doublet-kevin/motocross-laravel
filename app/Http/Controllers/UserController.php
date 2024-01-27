@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Club;
 use App\Models\License;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -100,15 +101,29 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
-        $user->delete();
+        $user = User::find($id);
 
-        return back()->with('success', 'User deleted successfully');
+        if (Auth::id() == $user->id) {
+            $user->delete();
+            Auth::logout();
+            return back()->with('success', 'Votre compte a été supprimé avec succès.');
+        } else if (Auth::user()->role->name == 'admin') {
+            $user->delete();
+            return back()->with('success', 'L\'utilisateur a été supprimé avec succès.');
+        } else {
+            return back();
+        }
     }
 
     public function show($id)
     {
         $user = User::findOrFail($id);
         return view('user.show', ['user' => $user]);
+    }
+
+    public function board()
+    {
+        $users = User::all();
+        return view('admin.user.index', ['users' => $users]);
     }
 }
