@@ -18,13 +18,13 @@
                         <tr class="border-b last:border-b-0 border-primary">
                             <th scope="row" class="px-6 py-4 font-medium border-r border-primary whitespace-nowrap">
                                 <div class="flex items-center justify-center gap-2">
-                                    <x-admin.board.actions route="{{ route('user.destroy', $training->id) }}"
+                                    <x-admin.board.actions route="{{ route('training.destroy', $training->id) }}"
                                         icon="{{ Vite::asset('resources/images/icons/trash.svg') }}" alt="Trash" />
 
-                                    <x-admin.board.actions route="{{ route('user.edit', $training->id) }}"
+                                    <x-admin.board.actions route="{{ route('training.edit', $training->id) }}"
                                         icon="{{ Vite::asset('resources/images/icons/edit.svg') }}" alt="Edit" />
 
-                                    <x-admin.board.actions route="{{ route('user.show', $training->id) }}"
+                                    <x-admin.board.actions route="{{ route('training.show', $training->id) }}"
                                         icon="{{ Vite::asset('resources/images/icons/eye.svg') }}" alt="Show" />
                                 </div>
                             </th>

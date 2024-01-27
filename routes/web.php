@@ -130,6 +130,11 @@ Route::get(
     [TrainingController::class, 'edit']
 )->name('training.edit');
 
+Route::get(
+    '/delete-training/{id}',
+    [TrainingController::class, 'destroy']
+)->name('training.destroy');
+
 Route::put(
     '/edit-training/{id}',
     [TrainingController::class, 'update']

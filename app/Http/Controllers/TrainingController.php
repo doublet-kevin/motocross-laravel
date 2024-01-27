@@ -74,7 +74,7 @@ class TrainingController extends Controller
     {
         $training = Training::find($id);
         $training->delete();
-        return redirect()->route('training.index');
+        return back()->with('success', 'Training deleted successfully');
     }
 
     public function admin()
