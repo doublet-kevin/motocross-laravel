@@ -3,7 +3,7 @@
     <div class="flex flex-col gap-4 mx-4 lg:mx-0">
         <div class="relative overflow-x-auto border rounded-lg border-primary">
             <table class="w-full text-sm truncate">
-                <thead class="text-gray-700 uppercase bg-secondary">
+                <thead class="uppercase bg-secondary">
                     <tr>
                         <th scope="col" class="px-6 py-3">Actions</th>
                         <th scope="col" class="px-6 py-3">Adresse mail</th>
@@ -18,7 +18,7 @@
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
-                        <tr class="border-b last:border-b-0 border-primary odd:bg-transparent">
+                        <tr class="border-b last:border-b-0 border-primary">
                             <th scope="row" class="px-6 py-4 font-medium border-r border-primary whitespace-nowrap">
                                 <div class="flex items-center justify-center gap-2">
                                     <x-admin.board.actions route="{{ route('user.destroy', $user->id) }}"
