@@ -1,7 +1,7 @@
 @extends('admin.layout')
 
 @section('content')
-    <div class="flex flex-col gap-4">
+    <div class="flex flex-col gap-4 mx-4 lg:mx-0">
         @foreach ($trainings as $training)
             <div class="grid grid-cols-5 gap-4 min-w-7xl">
                 <div class="flex gap-2">

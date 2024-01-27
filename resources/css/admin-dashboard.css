@@ -1,0 +1,11 @@
+.col-title {
+    @apply items-center p-2 font-bold text-center bg-secondary border-b  border-primary;
+}
+
+.col-title p {
+    @apply truncate;
+}
+
+.col-content {
+    @apply overflow-scroll whitespace-nowrap items-center p-2;
+}

@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Motocross</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/css/admin-dashboard.css', 'resources/js/app.js'])
     @stack('styles')
     @stack('scripts')
 </head>
@@ -47,7 +47,7 @@
                 <li><a href="{{ route('admin.licenses.index') }}">Licenses</a></li>
             </ul>
         </header>
-        <main class="flex items-center justify-center flex-grow w-full max-w-6xl mx-auto mt-8">
+        <main class="flex items-center justify-center flex-grow w-full max-w-5xl mx-auto mt-8 xl:max-w-7xl">
             <div class="flex-grow">
                 @yield('content')
             </div>
