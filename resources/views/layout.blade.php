@@ -21,7 +21,12 @@
             <!-- Mobile Navigation -->
             <x-navigation.mobile-nav />
         </header>
-        <main class="flex flex-col items-center justify-center flex-grow mx-4 mt-8">@yield('content')</main>
+        <main class="flex flex-col items-center flex-grow mx-4 mt-8">
+            @yield('title')
+            <div class="flex flex-col items-center justify-center flex-grow">
+                @yield('content')
+            </div>
+        </main>
         <x-layout.footer>
             <x-layout.footer-item title="Find us on..">
                 <div class="flex gap-x-6">

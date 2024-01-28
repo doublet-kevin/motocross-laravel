@@ -10,7 +10,7 @@ class CircuitController extends Controller
 {
     public function index()
     {
-        $circuits = Circuit::all();
+        $circuits = Circuit::paginate(1);
         return view('circuit.index', ['circuits' => $circuits]);
     }
 
