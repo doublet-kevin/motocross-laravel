@@ -28,7 +28,6 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'id_club' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'region' => 'required|string|max:255',

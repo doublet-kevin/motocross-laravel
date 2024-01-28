@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+    {{ $errors }}
     <div class="flex w-full max-w-5xl border rounded-md shadow-2xl md:border-2 border-primary backdrop-blur-lg">
         <div class="flex flex-grow p-8">
             <form action="{{ route('register') }}" method="POST" class="flex flex-col flex-grow gap-4">
