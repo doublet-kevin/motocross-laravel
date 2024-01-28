@@ -24,7 +24,7 @@
     </div>
     <ul class="text-center lg:hidden bg-dark" x-show="open" x-collapse>
         <x-navigation.nav-item name="Accueil" route="/" />
-        <x-navigation.nav-item name="Notre circuit" route="/" />
+        <x-navigation.nav-item name="Notre circuit" route="{{ route('circuit.index') }}" />
         <x-navigation.nav-item name="Nos entraînements" route="/" />
         <x-navigation.nav-item name="Connexion" route="/login" />
         <x-navigation.nav-item name="Créer un compte" route="/register" />

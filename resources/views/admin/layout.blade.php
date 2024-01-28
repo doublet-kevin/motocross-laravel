@@ -19,7 +19,7 @@
                 class="flex-col items-center hidden py-4 mx-12 text-center lg:flex lg:text-start lg:flex-row lg:justify-between">
                 <x-navigation.nav>
                     <x-navigation.nav-item name="Accueil" route="/" />
-                    <x-navigation.nav-item name="Notre circuit" route="/" />
+                    <x-navigation.nav-item name="Notre circuit" route="{{ route('circuit.index') }}" />
                     <x-navigation.nav-item name="Nos entraînements" route="/" />
                 </x-navigation.nav>
 
@@ -62,7 +62,8 @@
                     <ul class="flex flex-col gap-2 overflow-hidden transition-all duration-300 max-h-0"
                         x-bind:style="open ? 'max-height: 500px;' : 'max-height: 0;'">
                         <li><a href="{{ route('admin.user.board') }}" class="button-inactive">Utilisateurs</a></li>
-                        <li><a href="{{ route('admin.training.board') }}" class="button-inactive">Entraînements</a></li>
+                        <li><a href="{{ route('admin.training.board') }}" class="button-inactive">Entraînements</a>
+                        </li>
                         <li><a href="{{ route('admin.circuit.board') }}" class="button-inactive">Circuits</a></li>
                         <li><a href="{{ route('admin.license.board') }}" class="button-inactive">Licenses</a></li>
                     </ul>

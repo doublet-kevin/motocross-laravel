@@ -19,7 +19,7 @@
                 class="flex-col items-center hidden py-4 mx-12 text-center lg:flex lg:text-start lg:flex-row lg:justify-between">
                 <x-navigation.nav>
                     <x-navigation.nav-item name="Accueil" route="/" />
-                    <x-navigation.nav-item name="Notre circuit" route="/" />
+                    <x-navigation.nav-item name="Notre circuit" route="{{ route('circuit.index') }}" />
                     <x-navigation.nav-item name="Nos entraînements" route="/" />
                 </x-navigation.nav>
 
