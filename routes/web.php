@@ -23,13 +23,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
-});
-
-Route::get('/logout', function () {
-    Auth::logout();
-    return redirect('/');
-});
-
+})->name('home');
 
 //User Circuits routes
 Route::resource('circuit', CircuitController::class)->only([
