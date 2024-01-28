@@ -28,6 +28,7 @@ class CircuitController extends Controller
 
         Circuit::create([
             "name" => $request->name,
+            "description" => $request->description,
         ]);
 
         return redirect()->route('circuit.index');
