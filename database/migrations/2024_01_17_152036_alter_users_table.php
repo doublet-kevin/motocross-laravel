@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('postal_code', 5);
             $table->date('birth_date');
+            $table->string('license_number')->nullable()->unique();
             $table->string('img_profil')->nullable();
             $table->foreignId('role_id')->constrained();
             $table->foreignId('club_id')->constrained()->onDelete('cascade');
