@@ -35,27 +35,10 @@ class UserController extends Controller
             'postal_code' => 'required|string|max:5',
             'email' => 'required|string|max:255',
             'birth_date' => 'required|string|max:255',
+            'license_number' => 'string|max:255',
             'password' => 'required|string|max:255',
         ]);
 
-        $license = License::findall();
-        if ($license->id == $request->id_license) {
-            $user = User::create([
-                'id_club' => $request->id_club,
-                'firstname' => $request->firstname,
-                'lastname' => $request->lastname,
-                'region' => $request->region,
-                'city' => $request->city,
-                'postal_code' => $request->postal_code,
-                'email' => $request->email,
-                'birth_date' => $request->birth_date,
-                'password' => $request->password,
-            ]);
-
-            return redirect()->route('user.index');
-        } else {
-            return redirect()->route('user.create');
-        }
     }
 
     public function edit($id)
@@ -77,6 +60,7 @@ class UserController extends Controller
             'postal_code' => 'required|string|max:5',
             'email' => 'required|string|max:255',
             'birth_date' => 'required|string|max:255',
+            'license_number' => 'string|max:255',
             'password' => 'required|string|max:255',
             'role' => 'required|string|max:255',
         ]);
@@ -91,6 +75,7 @@ class UserController extends Controller
             'postal_code' => $request->postal_code,
             'email' => $request->email,
             'birth_date' => $request->birth_date,
+            'license_number' => $request->birth_date,
             'password' => $request->password,
             'role' => $request->role,
         ]);
