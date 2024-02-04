@@ -30,13 +30,8 @@ class CreateNewUser implements CreatesNewUsers
             'region' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:5',
-            'birth_date' => 'required|string|max:255|before:-12 years',
-            'license_number' => [
-                'nullable',
-                'string',
-                'max:255',
-                Rule::exists('licenses', 'license_number')->whereNull('user_id')->where('associate_email', $input['email']),
-            ],
+            'birth_date' => 'required|string|max:255',
+            'license_number' => 'nullable|unique:users,license_number|string|max:255',
             'email' => [
                 'required',
                 'string',
