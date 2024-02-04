@@ -14,18 +14,18 @@ class RegistrationSeeder extends Seeder
     public function run(): void
     {
         Registration::create([
-            'user_id' => '1',
-            'training_id' => '1',
+            'id_user' => '1',
+            'id_training' => '1',
         ]);
 
         Registration::create([
-            'user_id' => '2',
-            'training_id' => '2',
+            'id_user' => '2',
+            'id_training' => '2',
         ]);
 
         Registration::create([
-            'user_id' => '3',
-            'training_id' => '3',
+            'id_user' => '3',
+            'id_training' => '3',
         ]);
     }
 }
