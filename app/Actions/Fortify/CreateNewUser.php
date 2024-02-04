@@ -26,7 +26,7 @@ class CreateNewUser implements CreatesNewUsers
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:5',
             'birth_date' => 'required|string|max:255',
-            'license_number' => 'string|max:255',
+            'license_number' => 'nullable|unique:users,license_number|string|max:255',
             'email' => [
                 'required',
                 'string',
