@@ -36,36 +36,11 @@ class UserController extends Controller
             'region' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:5',
-            'birth_date' => 'required|string|max:255|before:-12 years',
-            'license_number' => [
-                'nullable',
-                'string',
-                'max:255',
-                Rule::exists('licenses', 'license_number')->whereNull('user_id')->where('associate_email', $request['email']),
-            ],
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique(User::class),
-            ],
-            'password' => $this->passwordRules(),
+            'email' => 'required|string|max:255',
+            'birth_date' => 'required|string|max:255',
+            'license_number' => 'string|max:255',
+            'password' => 'required|string|max:255',
         ]);
-        $validator->setCustomMessages([
-            'license_number.exists' => "Le numéro de licence n'existe pas ou est déjà utilisé.",
-            'email.unique' => "L'adresse email est déjà utilisée.",
-            'birth_date.before' => "Vous devez avoir au moins 12 ans pour vous inscrire.",
-            'password.required' => 'Le mot de passe est requis.',
-            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
-            'password.confirmed' => 'Les mots de passe ne correspondent pas.',
-        ]);
-
-        if ($validator->fails()) {
-            throw ValidationException::withMessages($validator->errors()->toArray());
-        }
-
-        return redirect()->route('user.board')->with('message', 'Le profil a été créé avec succès.');
     }
 
     public function edit($id)
@@ -107,31 +82,11 @@ class UserController extends Controller
             'region' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:5',
-            'email' => [
-                'required',
-                'string',
-                'email',
-                'max:255',
-                Rule::unique('users')->ignore($user->id),
-                'unique_email_and_license:' . $user->id,
-            ],
-            'birth_date' => 'required|string|max:255|before:-12 years',
-            'license_number' => [
-                'nullable',
-                'string',
-                'max:255',
-                'license_already_used:' . $user->id,
-                'license_not_exists'
-            ],
-        ]);
-
-        $validator->setCustomMessages([
-            'license_number.exists' => "Le numéro de licence n'existe pas ou est déjà utilisé.",
-            'email.unique' => "L'adresse email est déjà utilisée.",
-            'birth_date.before' => "Vous devez avoir au moins 12 ans pour vous inscrire.",
-            'required' => 'Le champs est requis.',
-            'unique_email_and_license' => 'L\'adresse email est déjà utilisée.',
-            'license_already_used' => 'Le numéro de licence est déjà utilisé.',
+            'email' => 'required|string|max:255',
+            'birth_date' => 'required|string|max:255',
+            'license_number' => 'string|max:255',
+            'password' => 'required|string|max:255',
+            'role' => 'required|string|max:255',
         ]);
 
         if ($validator->fails()) {
@@ -154,7 +109,9 @@ class UserController extends Controller
             'postal_code' => $request->postal_code,
             'email' => $request->email,
             'birth_date' => $request->birth_date,
-            'license_number' => !empty($request->license_number) ? $request->license_number : $user->license_number,
+            'license_number' => $request->birth_date,
+            'password' => $request->password,
+            'role' => $request->role,
         ]);
 
         return redirect()->route('user.show', $id)->with('message', 'Le profil a été mis à jour avec succès.');
