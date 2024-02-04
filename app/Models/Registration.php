@@ -11,11 +11,7 @@ class Registration extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'id_training',
-        'id_user',
-        'registration_date',
-    ];
+    protected $fillable = [];
 
     public function user(): HasOne
     {

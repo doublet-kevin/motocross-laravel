@@ -16,19 +16,16 @@ class RegistrationSeeder extends Seeder
         Registration::create([
             'user_id' => '1',
             'training_id' => '1',
-            'registration_date' => '2021-01-01',
         ]);
 
         Registration::create([
             'user_id' => '2',
             'training_id' => '2',
-            'registration_date' => '2022-11-01',
         ]);
 
         Registration::create([
             'user_id' => '3',
             'training_id' => '3',
-            'registration_date' => '2023-06-14',
         ]);
     }
 }

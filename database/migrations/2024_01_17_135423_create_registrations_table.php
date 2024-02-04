@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('training_id')->constrained()->onDelete('cascade');
-            $table->date('registration_date');
         });
     }
 
