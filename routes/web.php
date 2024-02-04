@@ -103,6 +103,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::get('licenses', [LicenseController::class, 'board'])->name('license.board');
 });
 
+//User Registration routes
+Route::resource('registration', RegistrationController::class)->middleware('auth')->only([
+    'store'
+]);
 //Admin Registration routes
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
     Route::resource('registration', RegistrationController::class)->only([
@@ -113,6 +117,5 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
         'destroy' => 'registration.destroy',
         'edit' => 'registration.edit',
         'update' => 'registration.update',
-        'store' => 'registration.store'
     ]);
 });
