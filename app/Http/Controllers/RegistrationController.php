@@ -29,7 +29,7 @@ class RegistrationController extends Controller
             'id_user' => $request->id_user,
         ]);
 
-        return redirect()->route('registration.index');
+        return back()->with('success', 'Registration created successfully');
     }
 
     public function edit($id)
