@@ -18,7 +18,6 @@
                 !
             </h1>
             <h1 class="text-4xl">Les prochains entrainements</h1>
-
         </div>
         <div class="flex flex-col items-center justify-center w-full p-2 mb-8 lg:flex-row gap-x-10 lg:px-4">
             <x-home.card title="technology acquisitions 2021" button="Learn more" link="/">

@@ -23,7 +23,7 @@
         </header>
         <main class="flex flex-col items-center flex-grow mx-4 mt-8">
             @yield('title')
-            <div class="flex flex-col items-center justify-center flex-grow">
+            <div class="flex flex-col justify-center flex-grow">
                 @yield('content')
             </div>
         </main>

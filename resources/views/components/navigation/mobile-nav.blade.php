@@ -23,7 +23,7 @@
     <ul class="text-center lg:hidden bg-dark" x-show="open" x-collapse>
         <x-navigation.nav-item name="Accueil" route="{{ route('home') }}" />
         <x-navigation.nav-item name="Notre circuit" route="{{ route('circuit.index') }}" />
-        <x-navigation.nav-item name="Nos entraînements" route="/" />
+        <x-navigation.nav-item name="Nos entraînements" route="{{ route('training.index') }}" />
         <x-navigation.nav-item name="Connexion" route="{{ route('login') }}" />
         <x-navigation.nav-item name="Créer un compte" route="{{ route('register') }}" />
     </ul>

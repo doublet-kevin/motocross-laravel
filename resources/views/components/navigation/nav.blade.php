@@ -2,7 +2,7 @@
     <ul class="flex font-bold gap-x-8 ">
         <x-navigation.nav-item name="Accueil" route="{{ route('home') }}" />
         <x-navigation.nav-item name="Notre circuit" route="{{ route('circuit.index') }}" />
-        <x-navigation.nav-item name="Nos entraînements" route="/" />
+        <x-navigation.nav-item name="Nos entraînements" route="{{ route('training.index') }}" />
     </ul>
 </div>
 <div class="flex px-4 text-xl text-light ">
