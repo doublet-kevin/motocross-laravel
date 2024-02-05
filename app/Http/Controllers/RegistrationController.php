@@ -24,12 +24,18 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
+        $alereadyExist = Registration::where('training_id', $request->id_training)->where('user_id', $request->id_user)->first();
+
+        if ($alereadyExist) {
+            return back()->with('message', 'Vous êtes déjà inscrit à cet entrainement');
+        }
+
         Registration::create([
             'training_id' => $request->id_training,
             'user_id' => $request->id_user,
         ]);
 
-        return back()->with('success', 'Registration created successfully');
+        return back()->with('message', 'Vous avez bien été inscrit à l\'entrainement');
     }
 
     public function edit($id)
