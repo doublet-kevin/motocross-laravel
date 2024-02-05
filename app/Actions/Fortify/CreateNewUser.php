@@ -3,6 +3,7 @@
 namespace App\Actions\Fortify;
 
 use App\Models\License;
+use App\Models\License;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
@@ -10,8 +11,6 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Illuminate\Validation\ValidationException;
-use Symfony\Polyfill\Mbstring\Mbstring;
-use Illuminate\Support\Facades\Auth;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -25,13 +24,27 @@ class CreateNewUser implements CreatesNewUsers
     public function create(array $input): User
     {
         $validator = Validator::make($input, [
+        $validator = Validator::make($input, [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'region' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:5',
             'birth_date' => 'required|string|max:255',
-            'license_number' => 'nullable|unique:users,license_number|string|max:255',
+            'license_number' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::unique(User::class), // Assurez-vous que la licence est unique parmi les utilisateurs
+                function ($attribute, $value, $fail) {
+                    $list_licence = License::all();
+                    $license_numbers = $list_licence->pluck('license_number')->toArray();
+
+                    if (!in_array($value, $license_numbers)) {
+                        $fail('La licence n\'existe pas.');
+                    }
+                },
+            ],
             'email' => [
                 'required',
                 'string',
@@ -41,17 +54,9 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
         ]);
-        $validator->setCustomMessages([
-            'license_number.exists' => "Le numéro de licence n'existe pas ou est déjà utilisé.",
-            'email.unique' => "L'adresse email est déjà utilisée.",
-            'birth_date.before' => "Vous devez avoir au moins 12 ans pour vous inscrire.",
-            'password.required' => 'Le mot de passe est requis.',
-            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
-            'password.confirmed' => 'Les mots de passe ne correspondent pas.',
-        ]);
 
         if ($validator->fails()) {
-            throw ValidationException::withMessages($validator->errors()->toArray());
+            throw new ValidationException($validator);
         }
 
         return User::create([
