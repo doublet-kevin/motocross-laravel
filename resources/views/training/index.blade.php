@@ -25,14 +25,12 @@
                         circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
                 @endforeach
             </div>
-            <span class="flex py-2 w-80">(*) Les sessions jeunes pilotes sont accessibles pour les 12-18
-                ans</span>
+            <span class="flex py-2 w-80">(*) Les sessions jeunes pilotes sont accessibles pour les 12-18 ans</span>
             @if (session('message'))
                 <div>
                     {{ session('message') }}
                 </div>
             @endif
         </div>
-
     </div>
 @endsection
