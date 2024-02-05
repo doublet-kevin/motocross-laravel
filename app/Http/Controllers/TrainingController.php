@@ -35,14 +35,14 @@ class TrainingController extends Controller
             'id_circuit' => 'required',
             'date' => 'required',
             'type' => 'required',
-            'number_of_places' => 'required',
+            'max_participants' => 'required',
         ]);
 
         Training::create([
             "id_circuit" => $request->id_circuit,
             "date" => $request->date,
             "type" => $request->type,
-            "number_of_places" => $request->number_of_places,
+            "max_participants" => $request->max_participants,
         ]);
 
         return redirect()->route('training.index');
@@ -62,7 +62,7 @@ class TrainingController extends Controller
             'id_circuit' => 'required',
             'date' => 'required',
             'type' => 'required',
-            'number_of_places' => 'required',
+            'max_participants' => 'required',
         ]);
 
         $training = Training::find($id);
@@ -70,7 +70,7 @@ class TrainingController extends Controller
             "id_circuit" => $request->id_circuit,
             "date" => $request->date,
             "type" => $request->type,
-            "number_of_places" => $request->number_of_places,
+            "max_participants" => $request->max_participants,
         ]);
 
         return redirect()->route('training.index');

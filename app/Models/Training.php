@@ -15,7 +15,7 @@ class Training extends Model
         'id_circuit',
         'date',
         'type',
-        'number_of_places',
+        'max_participants',
     ];
 
     public function circuit(): BelongsTo

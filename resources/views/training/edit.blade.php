@@ -39,9 +39,9 @@
             </div>
         </fieldset>
         <br>
-        <label for="number_of_places">Nombre de places (1-75):</label>
-        <input type="number" id="number_of_places" name="number_of_places" min="1" max="100"
-            value="{{ $training->number_of_places }}" />
+        <label for="max_participants">Nombre de places (1-75):</label>
+        <input type="number" id="max_participants" name="max_participants" min="1" max="75"
+            value="{{ $training->max_participants }}" />
         <br>
         <button type="submit">Modifier le training</button>
 </body>

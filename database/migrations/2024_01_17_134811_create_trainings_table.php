@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->dateTime('date');
             $table->string('type');
-            $table->integer('number_of_places');
+            $table->integer('max_participants');
             $table->foreignId('circuit_id')->constrained()->onDelete('cascade');
         });
     }
