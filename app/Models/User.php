@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -72,5 +73,14 @@ class User extends Authenticatable
     public function isAdmin()
     {
         return $this->role()->where('name', 'admin')->first();
+    }
+
+    public function isAdult()
+    {
+        $birthdate = Carbon::parse($this->attributes['birth_date']);
+
+        $age = $birthdate->age;
+
+        return $age >= 18;
     }
 }

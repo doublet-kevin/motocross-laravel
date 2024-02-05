@@ -24,17 +24,12 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'registration_date' => 'required|date',
-        ]);
-
-        $registration = Registration::create([
-            'registration_date' => $request->registration_date,
+        Registration::create([
             'id_training' => $request->id_training,
             'id_user' => $request->id_user,
         ]);
 
-        return redirect()->route('registration.index');
+        return back()->with('success', 'Registration created successfully');
     }
 
     public function edit($id)

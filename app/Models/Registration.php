@@ -14,7 +14,6 @@ class Registration extends Model
     protected $fillable = [
         'id_training',
         'id_user',
-        'registration_date',
     ];
 
     public function user(): HasOne

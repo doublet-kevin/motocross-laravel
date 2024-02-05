@@ -11,7 +11,7 @@
                 <div class="flex w-[350px] md:w-full gap-4 overflow-x-auto">
                     @foreach ($trainings as $training)
                         <x-training.training-card :training="$training"
-                            circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
+                            circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" adult />
                     @endforeach
                 </div>
             </div>
@@ -27,6 +27,11 @@
             </div>
             <span class="flex py-2 w-80">(*) Les sessions jeunes pilotes sont accessibles pour les 12-18
                 ans</span>
+            @if (session('success'))
+                <div>
+                    {{ session('success') }}
+                </div>
+            @endif
         </div>
 
     </div>
