@@ -3,6 +3,8 @@
     <h1 class="text-4xl font-bold text-center">Inscrivez-vous sur les prochains <span
             class="text-primary">entraînements</span></h1>
 @endsection
+{{ $enfant }}
+{{ $adulte }}
 @section('content')
     <div class="flex flex-col items-center justify-start gap-2">
         <div class="flex flex-col gap-2">

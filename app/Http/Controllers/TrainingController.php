@@ -5,14 +5,34 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Circuit;
 use App\Models\Training;
+use Illuminate\Support\Facades\DB;
 
 
 class TrainingController extends Controller
 {
     public function index()
     {
-        $trainings = Training::all();
-        return view('training.index', ['trainings' => $trainings]);
+
+        $trainings = Training::select(
+            'trainings.*',
+            'type',
+            DB::raw('COUNT(registrations.id) as occupied_places')
+        )
+            ->leftJoin('registrations', 'trainings.id', '=', 'registrations.id_training')
+            ->groupBy('trainings.id', 'type')
+            ->orderBy('date', 'desc')
+            ->get();
+
+        // Séparez les entraînements pour les enfants et les adultes
+        $young_pilot = $trainings->where('type', 'enfant');
+        $veteran_pilot = $trainings->where('type', 'adulte');
+
+
+        return view('training.index')->with([
+            'enfant' => $young_pilot,
+            'adulte' => $veteran_pilot,
+            'trainings' => $trainings,
+        ]);
     }
 
     public function show($id)
