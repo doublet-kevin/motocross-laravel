@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
 class Registration extends Model
@@ -16,14 +16,14 @@ class Registration extends Model
         'user_id',
     ];
 
-    public function user(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(User::class);
+        return $this->belongsTo(User::class);
     }
 
-    public function training(): HasOne
+    public function training(): BelongsTo
     {
-        return $this->hasOne(Training::class);
+        return $this->belongsTo(Training::class);
     }
 
     public $timestamps = false;

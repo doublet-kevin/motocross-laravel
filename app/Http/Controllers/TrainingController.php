@@ -18,7 +18,8 @@ class TrainingController extends Controller
     public function show($id)
     {
         $training = Training::find($id);
-        return view('training.show', ['training' => $training]);
+        $participants = $training->registrations->map->user;
+        return view('training.show', ['training' => $training, 'participants' => $participants]);
     }
 
     public function create()
