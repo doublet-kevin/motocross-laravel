@@ -162,7 +162,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('user.show', ['user' => $user]);
+        $trainingsHistory = $user->registrations->map->training;
+        return view('user.show', ['user' => $user, 'trainingsHistory' => $trainingsHistory]);
     }
 
     public function board()

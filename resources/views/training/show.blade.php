@@ -32,9 +32,9 @@
     <div class="max-w-4xl py-8 m-auto">
         <div class="grid grid-cols-8 gap-4">
             @foreach ($participants as $participant)
-                <button class="button-inactive backdrop-blur-lg">
+                <a href="{{ route('user.show', $participant->id) }}" class="button-inactive backdrop-blur-lg">
                     {{ $participant->firstname }} {{ $participant->lastname }}
-                </button>
+                </a>
             @endforeach
             @for ($i = 1; $i <= 75 - $participants->count(); $i++)
                 <div class="p-1 text-center border rounded-lg border-primary backdrop-blur-lg">
