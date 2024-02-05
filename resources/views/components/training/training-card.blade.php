@@ -19,19 +19,25 @@
                 <img src='{{ Vite::asset('resources/images/icons/users.svg') }}' alt="users" class="w-5 h-5">
             </div>
         </div>
+
         <form method="POST"
             action="{{ route('registration.store', ['id_training' => $training->id, 'id_user' => Auth::id()]) }}">
             @csrf
-            @auth
-                @if (Auth::user()->isAdult() && $adult)
+            <div class="flex gap-2">
+                @auth
+                    <button class="flex-grow button-inactive">Liste des pilotes</button>
+                    @if (Auth::user()->isAdult() && $adult)
+                        <button type="submit" class="button">Participer</button>
+                    @elseif (!Auth::user()->isAdult() && !$adult)
+                        <button type="submit" class="button">Participer</button>
+                    @endif
+                @endauth
+                @guest
                     <button type="submit" class="w-full button">Participer</button>
-                @elseif (!Auth::user()->isAdult() && !$adult)
-                    <button type="submit" class="w-full button">Participer</button>
-                @endif
-            @endauth
-            @guest
-                <button type="submit" class="w-full button">Participer</button>
-            @endguest
+                @endguest
+            </div>
+
         </form>
     </div>
+
 </div>
