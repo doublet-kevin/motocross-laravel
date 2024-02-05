@@ -56,4 +56,5 @@
 @section('footer-items')
     <x-home.leaftlet-map />
 @endsection
+
 </html>
