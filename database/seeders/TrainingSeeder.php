@@ -31,7 +31,7 @@ class TrainingSeeder extends Seeder
         Training::create([
             'date' => Carbon::parse('2021-01-01')->setTime(14, 0, 0)->toDateTimeString(),
             'type' => 'adulte',
-            'number_of_places' => '45',
+            'max_participants' => '75',
             'circuit_id' => '3',
         ]);
     }
