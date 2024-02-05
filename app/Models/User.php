@@ -28,6 +28,7 @@ class User extends Authenticatable
         'postal_code',
         'email',
         'birth_date',
+        'license_number',
         'password',
         'role_id',
         'club_id',

@@ -25,38 +25,23 @@ class UserController extends Controller
         return view('user.create', ['clubs' => $clubs, 'regions' => $regions]);
     }
 
-    public function store(Request $request)
-    {
-        $request->validate([
-            'firstname' => 'required|string|max:255',
-            'lastname' => 'required|string|max:255',
-            'region' => 'required|string|max:255',
-            'city' => 'required|string|max:255',
-            'postal_code' => 'required|string|max:5',
-            'email' => 'required|string|max:255',
-            'birth_date' => 'required|string|max:255',
-            'password' => 'required|string|max:255',
-        ]);
+    // Cette fonction est inutile, c'est CreateNewUser dans Fortify qui se charge de créer un nvl utilisateur 
+    // public function store(Request $request)
+    // {
+        
+    //     $request->validate([
+    //         'firstname' => 'required|string|max:255',
+    //         'lastname' => 'required|string|max:255',
+    //         'region' => 'required|string|max:255',
+    //         'city' => 'required|string|max:255',
+    //         'postal_code' => 'required|string|max:5',
+    //         'email' => 'required|string|max:255',
+    //         'birth_date' => 'required|string|max:255',
+    //         'license_number' => 'unique|nullable|string|max:255',
+    //         'password' => 'required|string|max:255',
+    //     ]);
 
-        $license = License::findall();
-        if ($license->id == $request->id_license) {
-            $user = User::create([
-                'id_club' => $request->id_club,
-                'firstname' => $request->firstname,
-                'lastname' => $request->lastname,
-                'region' => $request->region,
-                'city' => $request->city,
-                'postal_code' => $request->postal_code,
-                'email' => $request->email,
-                'birth_date' => $request->birth_date,
-                'password' => $request->password,
-            ]);
-
-            return redirect()->route('user.index');
-        } else {
-            return redirect()->route('user.create');
-        }
-    }
+    // }
 
     public function edit($id)
     {
@@ -77,6 +62,7 @@ class UserController extends Controller
             'postal_code' => 'required|string|max:5',
             'email' => 'required|string|max:255',
             'birth_date' => 'required|string|max:255',
+            'license_number' => 'nulllable|string|max:255',
             'password' => 'required|string|max:255',
             'role' => 'required|string|max:255',
         ]);
@@ -91,6 +77,7 @@ class UserController extends Controller
             'postal_code' => $request->postal_code,
             'email' => $request->email,
             'birth_date' => $request->birth_date,
+            'license_number' => $request->license_number,
             'password' => $request->password,
             'role' => $request->role,
         ]);
