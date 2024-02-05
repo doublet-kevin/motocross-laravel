@@ -12,8 +12,8 @@ class Registration extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_training',
-        'id_user',
+        'training_id',
+        'user_id',
     ];
 
     public function user(): HasOne

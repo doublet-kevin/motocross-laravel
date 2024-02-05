@@ -25,7 +25,8 @@
             @csrf
             <div class="flex gap-2">
                 @auth
-                    <a href="/" class="flex-grow button-inactive">Liste des pilotes</a>
+                    <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
+                        pilotes</a>
                     @if (Auth::user()->isAdult() && $adult)
                         <button type="submit" class="button">Participer</button>
                     @elseif (!Auth::user()->isAdult() && !$adult)

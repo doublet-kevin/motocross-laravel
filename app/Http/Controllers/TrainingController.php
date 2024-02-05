@@ -15,6 +15,12 @@ class TrainingController extends Controller
         return view('training.index', ['trainings' => $trainings]);
     }
 
+    public function show($id)
+    {
+        $training = Training::find($id);
+        return view('training.show', ['training' => $training]);
+    }
+
     public function create()
     {
         $circuits = Circuit::all();

@@ -25,8 +25,8 @@ class RegistrationController extends Controller
     public function store(Request $request)
     {
         Registration::create([
-            'id_training' => $request->id_training,
-            'id_user' => $request->id_user,
+            'training_id' => $request->id_training,
+            'user_id' => $request->id_user,
         ]);
 
         return back()->with('success', 'Registration created successfully');
