@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    @stack('meta')
     <title>Motocross</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
@@ -21,9 +22,9 @@
             <!-- Mobile Navigation -->
             <x-navigation.mobile-nav />
         </header>
-        <main class="flex flex-col items-center flex-grow mx-4 mt-8">
+        <main class="flex flex-col flex-grow max-w-7xl m-auto mt-8">
             @yield('title')
-            <div class="flex flex-col justify-center flex-grow">
+            <div class="flex flex-col flex-grow">
                 @yield('content')
             </div>
         </main>

@@ -1,6 +1,32 @@
+@push('meta')
+    <!-- Balises Open Graph pour Facebook et LinkedIn -->
+    <meta property="og:url" content="{{ url()->route('training.show', ['training' => $training->id]) }}" />
+    <meta property="og:image" content="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
+    <meta property="og:title" content="Réservation d'entraînement de motocross" />
+
+    <!-- Balises Twitter Cards pour Twitter -->
+    <meta name="twitter:image" content="{{ Vite::asset('resources/images/circuit-1.jpg') }}">
+    <meta name="twitter:url" content="{{ url()->route('training.show', ['training' => $training->id]) }}" />
+    <meta name="twitter:title" content="Réservation d'entraînement de motocross" />
+@endpush
+
 @extends('layout')
 @section('title')
-    <h1 class="text-4xl font-bold text-center">Liste des <span class="text-primary">pilotes</span></h1>
+    <div class="flex flex-col items-center gap-4">
+        <h1 class="text-4xl font-bold text-center">Liste des <span class="text-primary">pilotes</span></h1>
+        <div class="flex gap-2">
+            <h2>Partager sur </h2>
+            <x-social.icon
+                url="https://www.facebook.com/sharer/sharer.php?u={{ urlencode(url()->route('training.show', ['training' => $training->id])) }}"
+                src="{{ Vite::asset('resources/images/icons/facebook.svg') }}" />
+            <x-social.icon
+                url="https://twitter.com/intent/tweet?url={{ urlencode(url()->route('training.show', ['training' => $training->id])) }}"
+                src="{{ Vite::asset('resources/images/icons/twitter.svg') }}" />
+            <x-social.icon
+                url="https://www.linkedin.com/shareArticle?url={{ urlencode(url()->route('training.show', ['training' => $training->id])) }}"
+                src="{{ Vite::asset('resources/images/icons/instagram.svg') }}" />
+        </div>
+    </div>
 @endsection
 @section('content')
     <div class="max-w-4xl py-8">
