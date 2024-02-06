@@ -1,3 +1,9 @@
+@push('styles')
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+@endpush
+@push('scripts')
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+@endpush
 @extends('layout')
 @section('title')
     <h1 class="text-4xl font-bold text-center">Inscrivez-vous sur les prochains <span
@@ -27,10 +33,24 @@
             </div>
             <span class="flex py-2 w-80">(*) Les sessions jeunes pilotes sont accessibles pour les 12-18 ans</span>
             @if (session('message'))
-                <div>
-                    {{ session('message') }}
-                </div>
+                <script>
+                    Toastify({
+                        text: " {{ session('message') }}",
+                        duration: 2000,
+                        gravity: "top",
+                        position: "right",
+                        offset: {
+                            x: 20,
+                            y: '80vh'
+                        },
+                        style: {
+                            background: "linear-gradient(to right, #00b09b, #96c93d)",
+                        },
+                        onClick: function() {}
+                    }).showToast();
+                </script>
             @endif
+
         </div>
     </div>
 @endsection
