@@ -36,8 +36,8 @@
             </div>
         </fieldset>
         <br>
-        <label for="number_of_places">Nombre de places (1-75):</label>
-        <input type="number" id="number_of_places" name="number_of_places" min="1" max="100" />
+        <label for="max_participants">Nombre de places (1-75):</label>
+        <input type="number" id="max_participants" name="max_participants" min="1" max="75" />
         <br>
         <button type="submit">Créer le training</button>
     </form>
