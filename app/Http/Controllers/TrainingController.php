@@ -18,7 +18,7 @@ class TrainingController extends Controller
             'type',
             DB::raw('COUNT(registrations.id) as occupied_places')
         )
-            ->leftJoin('registrations', 'trainings.id', '=', 'registrations.id_training')
+            ->leftJoin('registrations', 'trainings.id', '=', 'registrations.training_id')
             ->groupBy('trainings.id', 'type')
             ->orderBy('date', 'desc')
             ->get();
