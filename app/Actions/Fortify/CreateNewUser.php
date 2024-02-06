@@ -27,7 +27,7 @@ class CreateNewUser implements CreatesNewUsers
             'region' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:5',
-            'birth_date' => 'required|string|max:255',
+            'birth_date' => 'required|string|max:255|before:-12 years',
             'license_number' => [
                 'nullable',
                 'string',
