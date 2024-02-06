@@ -29,8 +29,8 @@ class TrainingController extends Controller
 
 
         return view('training.index')->with([
-            'enfant' => $young_pilot,
-            'adulte' => $veteran_pilot,
+            'youngTrainings' => $young_pilot,
+            'adultTrainings' => $veteran_pilot,
             'trainings' => $trainings,
         ]);
     }
