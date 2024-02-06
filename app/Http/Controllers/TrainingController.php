@@ -84,7 +84,7 @@ class TrainingController extends Controller
             'circuit_id' => 'required',
             'date' => 'required',
             'type' => 'required',
-            'max_participants' => 'required|numeric',
+            'max_participants' => 'required',
         ]);
 
         $training = Training::find($id);
