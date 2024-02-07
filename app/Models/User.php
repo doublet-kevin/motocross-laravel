@@ -3,12 +3,15 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Http\Controllers\TrainingController;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -70,6 +73,11 @@ class User extends Authenticatable
         return $this->belongsTo(License::class);
     }
 
+    public function registrations(): HasMany
+    {
+        return $this->hasMany(Registration::class);
+    }
+
     public function isAdmin()
     {
         return $this->role()->where('name', 'admin')->first();
@@ -82,5 +90,10 @@ class User extends Authenticatable
         $age = $birthdate->age;
 
         return $age >= 18;
+    }
+
+    public function isRegistered($training)
+    {
+        return $this->registrations()->where('training_id', $training)->exists();
     }
 }

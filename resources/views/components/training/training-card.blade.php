@@ -1,8 +1,8 @@
 @props(['adult' => false])
-<div class="flex flex-col overflow-hidden border rounded-md border-primary backdrop-blur-md shrink-0">
+<div class="flex flex-col overflow-hidden border rounded-md border-primary shrink-0">
     <img src="{{ $circuitImg }}" alt="circuit"
         class="object-cover w-[300px] h-[100px] rounded-t-md border-b border-primary">
-    <div class="flex flex-col p-2">
+    <div class="flex flex-col p-2 ">
         <span class="text-xl font-bold text-primary">{{ $training->circuit->name }}</span>
         <div class="flex justify-between gap-4 pb-2">
             <div class="flex items-center gap-2">
@@ -28,9 +28,23 @@
                     <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
                         pilotes</a>
                     @if (Auth::user()->isAdult() && $adult)
-                        <button type="submit" class="button">Participer</button>
+                        @if (!Auth::user()->isRegistered($training->id))
+                            <button type="submit" class="button">Participer</button>
+                        @else
+                            <div class="button-disabled">
+                                <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
+                                <span>Déja inscrit</span>
+                            </div>
+                        @endif
                     @elseif (!Auth::user()->isAdult() && !$adult)
-                        <button type="submit" class="button">Participer</button>
+                        @if (!Auth::user()->isRegistered($training->id))
+                            <button type="submit" class="button">Participer</button>
+                        @else
+                            <div class="button-disabled">
+                                <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
+                                <span>Déja inscrit</span>
+                            </div>
+                        @endif
                     @endif
                 @endauth
                 @guest
