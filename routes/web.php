@@ -49,7 +49,9 @@ Route::resource('training', TrainingController::class)->only([
     'index', 'show'
 ]);
 
-Route::get('/download-pilots/{id}', [TrainingController::class, 'downloadPilots'])->name('download.pilots');
+Route::get('/download-pilots-pdf/{id}', [TrainingController::class, 'dlPilotsPDF'])->name('dlPilotsPDF.pilots');
+
+Route::get('/download-pilots-csv/{id}', [TrainingController::class, 'dlPilotsCSV'])->name('dlPilotsCSV.pilots');
 
 //Admin Training routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {

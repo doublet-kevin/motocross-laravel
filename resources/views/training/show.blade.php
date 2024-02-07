@@ -28,9 +28,13 @@
         </div>
     </div>
     <h1 class="text-4xl font-bold text-center">Liste des <span class="text-primary">pilotes</span></h1>
-
-    <button class="button-inactive backdrop-blur-lg mt-3.5"> <a href="{{ route('download.pilots', ['id' => $training]) }}"
-            class="btn btn-primary">Télécharger la liste des pilotes</a></button>
+    <div class="border border border-primary p-4 flex flex-col justify-center items-center h-full mt-4">
+        <h2 class="text-1xl font-bold text-center">Télécharger la liste des <span class="text-primary">pilotes</span></h2>
+        <button class="button-inactive backdrop-blur-lg mt-3.5"> <a
+                href="{{ route('dlPilotsPDF.pilots', ['id' => $training]) }}" class="btn btn-primary">Format PDF</a></button>
+        <button class="button-inactive backdrop-blur-lg mt-3.5"> <a
+                href="{{ route('dlPilotsCSV.pilots', ['id' => $training]) }}" class="btn btn-primary">Format CSV</a></button>
+    </div>
 @endsection
 @section('content')
     <div class="max-w-4xl py-8 m-auto">
