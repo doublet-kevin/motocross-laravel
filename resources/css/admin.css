@@ -1,0 +1,41 @@
+/* Table */
+.table-container {
+    @apply overflow-x-auto board-scroll border rounded-lg border-primary;
+}
+
+table {
+    @apply text-sm truncate w-full;
+}
+
+table thead {
+    @apply bg-secondary;
+}
+
+table tbody tr {
+    @apply border-b last:border-b-0 border-primary;
+}
+
+table tbody tr td {
+    @apply px-2 py-2;
+}
+
+table tbody tr td:first-child {
+    @apply font-medium border-r border-primary whitespace-nowrap;
+}
+
+/* Scrollbar */
+.board-scroll::-webkit-scrollbar {
+    @apply w-[12px] h-[12px];
+}
+
+.board-scroll::-webkit-scrollbar-track {
+    @apply bg-secondary rounded-b-lg;
+}
+
+.board-scroll::-webkit-scrollbar-thumb {
+    @apply bg-accent rounded-b-lg;
+}
+
+.board-scroll::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary;
+}
