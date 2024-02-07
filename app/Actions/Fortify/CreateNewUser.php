@@ -4,11 +4,14 @@ namespace App\Actions\Fortify;
 
 use App\Models\License;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Illuminate\Validation\ValidationException;
+use Symfony\Polyfill\Mbstring\Mbstring;
+use Illuminate\Support\Facades\Auth;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -19,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
-    public function create(array $input): User
+    public function create(array $input): RedirectResponse
     {
         $validator = Validator::make($input, [
             'firstname' => 'required|string|max:255',
@@ -32,15 +35,7 @@ class CreateNewUser implements CreatesNewUsers
                 'nullable',
                 'string',
                 'max:255',
-                Rule::unique(User::class), // Assurez-vous que la licence est unique parmi les utilisateurs
-                function ($attribute, $value, $fail) {
-                    $list_licence = License::all();
-                    $license_numbers = $list_licence->pluck('license_number')->toArray();
-
-                    if (!in_array($value, $license_numbers)) {
-                        $fail('La licence n\'existe pas.');
-                    }
-                },
+                Rule::exists('licenses', 'license_number')->whereNull('user_id')->where('associate_email', $input['email']),
             ],
             'email' => [
                 'required',
@@ -51,12 +46,19 @@ class CreateNewUser implements CreatesNewUsers
             ],
             'password' => $this->passwordRules(),
         ]);
-
+        $validator->setCustomMessages([
+            'license_number.exists' => "Le numéro de licence n'existe pas ou est déjà utilisé.",
+            'email.unique' => "L'adresse email est déjà utilisée.",
+            'birth_date.before' => "Vous devez avoir au moins 12 ans pour vous inscrire.",
+            'password.required' => 'Le mot de passe est requis.',
+            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+            'password.confirmed' => 'Les mots de passe ne correspondent pas.',
+        ]);
         if ($validator->fails()) {
-            throw new ValidationException($validator);
+            throw ValidationException::withMessages($validator->errors()->toArray());
         }
 
-        return User::create([
+        User::create([
             'firstname' => $input['firstname'],
             'lastname' => $input['lastname'],
             'region' => $input['region'],
@@ -69,5 +71,15 @@ class CreateNewUser implements CreatesNewUsers
             'role_id' => 1,
             'club_id' => 1,
         ]);
+
+        $user = User::where('email', $input['email'])->first();
+
+
+        $license = License::where('license_number', $input['license_number'])->first();
+        if ($input['license_number']) {
+            License::where('license_number', $input['license_number'])->update(['user_id' => User::where('email', $input['email'])->first()->id]);
+        }
+        Auth::login($user);
+        return redirect()->intended('/');
     }
 }

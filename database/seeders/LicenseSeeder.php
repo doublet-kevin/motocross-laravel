@@ -16,13 +16,14 @@ class LicenseSeeder extends Seeder
         License::create(
             [
                 'license_number' => '6155416814651351',
-                'user_id' => '1',
+                'associate_email' => 'test@test.test',
             ]
         );
 
         License::create(
             [
                 'license_number' => '6157416844661321',
+                'associate_email' => 'testt@test.test',
                 'user_id' => '2',
             ]
         );
@@ -30,7 +31,7 @@ class LicenseSeeder extends Seeder
         License::create(
             [
                 'license_number' => '415773416894661421',
-                'user_id' => '3',
+                'associate_email' => 'test@user.test',
             ]
         );
     }

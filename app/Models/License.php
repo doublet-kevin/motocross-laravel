@@ -12,6 +12,7 @@ class License extends Model
 
     protected $fillable = [
         'user_id',
+        'associate_email',
         'license_number',
     ];
 
