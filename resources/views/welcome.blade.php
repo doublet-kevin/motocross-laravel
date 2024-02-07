@@ -41,7 +41,7 @@
         </div>
         <div class="flex flex-col items-center justify-center">
             <p class="mb-4 text-2xl font-bold text-light">Galerie</p>
-            <div class="container flex flex-wrap justify-center gap-8 mx-auto">
+            <div class="flex flex-wrap justify-center gap-8 mx-auto">
                 <x-home.gallery-item src="{{ Vite::asset('resources/images/bike.png') }}" />
                 <x-home.gallery-item src="{{ Vite::asset('resources/images/bike.png') }}" />
                 <x-home.gallery-item src="{{ Vite::asset('resources/images/bike.png') }}" />

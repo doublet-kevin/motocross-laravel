@@ -22,7 +22,7 @@
             <!-- Mobile Navigation -->
             <x-navigation.mobile-nav />
         </header>
-        <main class="flex flex-col flex-grow  items-center md:items-start my-auto mt-8 mx-24">
+        <main class="flex flex-col flex-grow  items-center md:items-start my-auto mt-8 mx-12">
             @yield('title')
             <div class="flex flex-col flex-grow">
                 @yield('content')
