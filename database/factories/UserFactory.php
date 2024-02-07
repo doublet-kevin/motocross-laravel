@@ -21,14 +21,21 @@ class UserFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => static::$password ??= Hash::make('password'),
-            'remember_token' => Str::random(10),
+            'club_id' => 1,
+            'firstname' => $this->faker->firstName,
+            'lastname' => $this->faker->lastName,
+            'region' => $this->faker->state,
+            'city' => $this->faker->city,
+            'postal_code' => $this->faker->randomNumber(5, true),
+            'email' => $this->faker->unique()->safeEmail,
+            'birth_date' => $this->faker->dateTimeBetween('-40 years', '-12 years')->format('Y-m-d'),
+            'license_number' => $this->faker->unique()->optional(0.5, null)->numberBetween(100000000, 999999999),
+            'password' => bcrypt('password'),
+            'role_id' => 1,
+            'img_profil' => null, // Assuming this is nullable in your model
         ];
     }
 
