@@ -14,6 +14,7 @@ use League\Csv\Writer;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
+use Dompdf\Dompdf;
 
 
 class TrainingController extends Controller
@@ -51,6 +52,7 @@ class TrainingController extends Controller
 
     public function downloadPilots($id)
     {
+
         $training = Training::find($id);
 
         $pilots = $training->registrations->map(function ($registration) {
@@ -61,31 +63,24 @@ class TrainingController extends Controller
             ];
         });
 
-        $csv = Writer::createFromString('');
-        $csv->insertOne(['Prenom', 'Nom', 'Inscrit_le']);
-
+        // Création du contenu HTML pour le PDF
+        $html = '<h1>Liste des pilotes</h1><table><tr><th>Prénom</th><th>Nom</th><th>Inscrit le</th></tr>';
         foreach ($pilots as $pilot) {
-            $csv->insertOne([$pilot['Prenom'], $pilot['Nom'], $pilot['Inscrit_le']]);
+            $html .= '<tr><td>' . $pilot['Prenom'] . '</td><td>' . $pilot['Nom'] . '</td><td>' . $pilot['Inscrit_le'] . '</td></tr>';
         }
+        $html .= '</table>';
 
-        // Enregistrement du contenu CSV dans un fichier temporaire dans le stockage Laravel
-        $filePath = 'temp/pilots.csv';
-        Storage::put($filePath, $csv->toString());
+        // Instanciation de Dompdf
+        $dompdf = new Dompdf();
 
-        // Récupération du contenu du fichier temporaire
-        $fileContent = Storage::get($filePath);
+        // Chargement du contenu HTML dans Dompdf
+        $dompdf->loadHtml($html);
 
-        // Suppression du fichier temporaire après récupération de son contenu
-        Storage::delete($filePath);
+        // Génération du PDF
+        $dompdf->render();
 
-        // Création de la réponse avec le contenu CSV
-        $response = new Response($fileContent, 200, [
-            'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="pilots.csv"',
-        ]);
-
-        // Retour de la réponse pour télécharger le fichier CSV
-        return $response;
+        // Téléchargement du PDF avec un nom de fichier spécifié
+        return $dompdf->stream('pilots.pdf');
     }
 
     public function create()
