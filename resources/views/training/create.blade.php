@@ -1,18 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
+@extends('layout')
+@section('title')
     <h1>
         Créer un training
     </h1>
-    <form action="{{ route('training.store') }}" method="POST">
+@endsection
+@section('content')
+    <form action="{{ route('admin.training.store') }}" method="POST">
         @csrf
         <label for="circuit_id">Sélectionnez un circuit</label>
         <select id="circuit_id" name="circuit_id">
@@ -41,6 +34,4 @@
         <br>
         <button type="submit">Créer le training</button>
     </form>
-</body>
-
-</html>
+@endsection
