@@ -52,14 +52,14 @@ class TrainingController extends Controller
     {
 
         $request->validate([
-            'id_circuit' => 'required',
+            'circuit_id' => 'required',
             'date' => 'required',
             'type' => 'required',
             'max_participants' => 'required',
         ]);
 
         Training::create([
-            "id_circuit" => $request->id_circuit,
+            "circuit_id" => $request->circuit_id,
             "date" => $request->date,
             "type" => $request->type,
             "max_participants" => $request->max_participants,
@@ -79,7 +79,7 @@ class TrainingController extends Controller
     {
 
         $request->validate([
-            'id_circuit' => 'required',
+            'circuit_id' => 'required',
             'date' => 'required',
             'type' => 'required',
             'max_participants' => 'required',
@@ -87,7 +87,7 @@ class TrainingController extends Controller
 
         $training = Training::find($id);
         $training->update([
-            "id_circuit" => $request->id_circuit,
+            "circuit_id" => $request->circuit_id,
             "date" => $request->date,
             "type" => $request->type,
             "max_participants" => $request->max_participants,

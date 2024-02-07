@@ -14,8 +14,8 @@
     </h1>
     <form action="{{ route('training.store') }}" method="POST">
         @csrf
-        <label for="id_circuit">Sélectionnez un circuit</label>
-        <select id="id_circuit" name="id_circuit">
+        <label for="circuit_id">Sélectionnez un circuit</label>
+        <select id="circuit_id" name="circuit_id">
             @foreach ($circuits as $circuit)
                 <option value="{{ $circuit->id }}">{{ $circuit->name }}</option>
             @endforeach

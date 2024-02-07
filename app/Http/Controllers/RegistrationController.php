@@ -24,15 +24,15 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
-        $alereadyExist = Registration::where('training_id', $request->id_training)->where('user_id', $request->id_user)->first();
+        $alereadyExist = Registration::where('training_id', $request->training_id)->where('user_id', $request->user_id)->first();
 
         if ($alereadyExist) {
             return back()->with('message', 'Vous êtes déjà inscrit à cet entrainement');
         }
 
         Registration::create([
-            'training_id' => $request->id_training,
-            'user_id' => $request->id_user,
+            'training_id' => $request->training_id,
+            'user_id' => $request->user_id,
         ]);
 
         return back()->with('message', 'Vous avez bien été inscrit à l\'entrainement');
@@ -54,8 +54,8 @@ class RegistrationController extends Controller
         $registration = Registration::findOrFail($id);
         $registration->update([
             'registration_date' => $request->registration_date,
-            'id_training' => $request->id_training,
-            'id_user' => $request->id_user,
+            'training_id' => $request->training_id,
+            'user_id' => $request->user_id,
         ]);
 
         return redirect()->route('registration.index');

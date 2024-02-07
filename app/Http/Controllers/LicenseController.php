@@ -26,7 +26,7 @@ class LicenseController extends Controller
 
         $license = License::create([
             'license_number' => $request->license_number,
-            'id_user' => $request->id_user,
+            'user_id' => $request->user_id,
         ]);
 
         return redirect()->route('license.index');
@@ -47,7 +47,7 @@ class LicenseController extends Controller
         $license = License::findOrFail($id);
         $license->update([
             'license_number' => $request->license_number,
-            'id_user' => $request->id_user,
+            'user_id' => $request->user_id,
         ]);
 
         return redirect()->route('license.index');

@@ -12,7 +12,7 @@ class Training extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_circuit',
+        'circuit_id',
         'date',
         'type',
         'max_participants',

@@ -21,7 +21,7 @@
         </div>
 
         <form method="POST"
-            action="{{ route('registration.store', ['id_training' => $training->id, 'id_user' => Auth::id()]) }}">
+            action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
             @csrf
             <div class="flex gap-2">
                 @auth

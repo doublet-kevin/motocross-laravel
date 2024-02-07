@@ -9,7 +9,7 @@
 
         <input type="text" id="lastname" name="lastname" placeholder="Nom" value="{{ $user->lastname }}">
 
-        <input type="text" id="id_license" name="id_license" placeholder="Id licence" value="{{ $user->id_license }}">
+        <input type="text" id="license_id" name="license_id" placeholder="Id licence" value="{{ $user->license_id }}">
 
         <select name="region" id="region">
             <option value="">Veuillez choisir votre région</option>

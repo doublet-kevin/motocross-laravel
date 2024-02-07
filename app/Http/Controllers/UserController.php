@@ -28,7 +28,7 @@ class UserController extends Controller
     // Cette fonction est inutile, c'est CreateNewUser dans Fortify qui se charge de créer un nvl utilisateur 
     // public function store(Request $request)
     // {
-        
+
     //     $request->validate([
     //         'firstname' => 'required|string|max:255',
     //         'lastname' => 'required|string|max:255',
@@ -54,7 +54,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'id_club' => 'required|string|max:255',
+            'club_id' => 'required|string|max:255',
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'region' => 'required|string|max:255',
@@ -69,7 +69,7 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
         $user->update([
-            'id_club' => $request->id_club,
+            'club_id' => $request->club_id,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'region' => $request->region,

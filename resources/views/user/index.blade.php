@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Index</title>
 </head>
+
 <body>
-    <table> 
+    <table>
         <thead>
             <tr>
                 <th>Prénom</th>
@@ -27,7 +29,7 @@
                 <tr>
                     <td>{{ $user->firstname }}</td>
                     <td>{{ $user->lastname }}</td>
-                    <td>{{ $user->id_license }}</td>
+                    <td>{{ $user->license_id }}</td>
                     <td>{{ $user->region }}</td>
                     <td>{{ $user->city }}</td>
                     <td>{{ $user->postal_code }}</td>
@@ -42,12 +44,14 @@
                         </form>
                     </td>
                     <td>
-                        <button onclick="window.location.href='{{ route('user.show', $user->id) }}'">Afficher le profil</button>
+                        <button onclick="window.location.href='{{ route('user.show', $user->id) }}'">Afficher le
+                            profil</button>
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
-        <button onclick="window.location.href='{{ route('user.create') }}'">Ajouter un utilisateur</button>
+    <button onclick="window.location.href='{{ route('user.create') }}'">Ajouter un utilisateur</button>
 </body>
+
 </html>
