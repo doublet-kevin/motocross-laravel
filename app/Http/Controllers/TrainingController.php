@@ -10,6 +10,11 @@ use App\Mail\EventMail;
 use App\Models\Registration;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
+use League\Csv\Writer;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+
 
 class TrainingController extends Controller
 {
@@ -42,6 +47,45 @@ class TrainingController extends Controller
         $training = Training::find($id);
         $participants = $training->registrations->map->user;
         return view('training.show', ['training' => $training, 'participants' => $participants]);
+    }
+
+    public function downloadPilots($id)
+    {
+        $training = Training::find($id);
+
+        $pilots = $training->registrations->map(function ($registration) {
+            return [
+                'Prenom' => $registration->user->firstname,
+                'Nom' => $registration->user->lastname,
+                'Inscrit_le' => Carbon::parse($registration->user->created_at)->format('d/m/Y à H:i'),
+            ];
+        });
+
+        $csv = Writer::createFromString('');
+        $csv->insertOne(['Prenom', 'Nom', 'Inscrit_le']);
+
+        foreach ($pilots as $pilot) {
+            $csv->insertOne([$pilot['Prenom'], $pilot['Nom'], $pilot['Inscrit_le']]);
+        }
+
+        // Enregistrement du contenu CSV dans un fichier temporaire dans le stockage Laravel
+        $filePath = 'temp/pilots.csv';
+        Storage::put($filePath, $csv->toString());
+
+        // Récupération du contenu du fichier temporaire
+        $fileContent = Storage::get($filePath);
+
+        // Suppression du fichier temporaire après récupération de son contenu
+        Storage::delete($filePath);
+
+        // Création de la réponse avec le contenu CSV
+        $response = new Response($fileContent, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="pilots.csv"',
+        ]);
+
+        // Retour de la réponse pour télécharger le fichier CSV
+        return $response;
     }
 
     public function create()

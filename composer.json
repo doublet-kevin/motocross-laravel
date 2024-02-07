@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
         "mailgun/mailgun-php": "^4.0",
+        "league/csv": "^9.14",
         "nesbot/carbon": "^2.72"
     },
     "require-dev": {

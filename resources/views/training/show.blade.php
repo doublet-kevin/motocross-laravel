@@ -28,7 +28,9 @@
         </div>
     </div>
     <h1 class="text-4xl font-bold text-center">Liste des <span class="text-primary">pilotes</span></h1>
-    <button class="button-inactive backdrop-blur-lg">Télécharger la liste des pilotes</button>
+
+    <button class="button-inactive backdrop-blur-lg mt-3.5"> <a href="{{ route('download.pilots', ['id' => $training]) }}"
+            class="btn btn-primary">Télécharger la liste des pilotes</a></button>
 @endsection
 @section('content')
     <div class="max-w-4xl py-8 m-auto">

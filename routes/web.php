@@ -49,6 +49,8 @@ Route::resource('training', TrainingController::class)->only([
     'index', 'show'
 ]);
 
+Route::get('/download-pilots/{id}', [TrainingController::class, 'downloadPilots'])->name('download.pilots');
+
 //Admin Training routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('training', TrainingController::class)->only([
