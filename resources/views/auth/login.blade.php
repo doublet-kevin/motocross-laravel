@@ -1,7 +1,8 @@
 @extends('layout')
 
 @section('content')
-    <div class="flex w-full max-w-4xl rounded-md shadow-2xl md:border-2 border-primary backdrop-blur-lg">
+    <div
+        class="flex justify-center w-full max-w-4xl m-auto rounded-md shadow-2xl md:border-2 border-primary backdrop-blur-lg">
         <div class="flex flex-grow p-8">
             <form action="{{ route('login') }}" method="POST" class="flex flex-col justify-between flex-grow flew-grow">
                 @csrf
