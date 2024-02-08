@@ -1,19 +1,19 @@
-@extends('admin.layout')
-@section('content')
+@extends('board-layout')
+@section('dashboard-content')
     <div class="table-container">
         <table>
             <thead>
                 <tr>
                     <th scope="col" class="py-2">Actions</th>
-                    <th scope="col" class="text-start pl-2 py-2">Adresse mail</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 sm:table-cell">Nom</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 sm:table-cell">Prénom</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 md:table-cell">Licence</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 md:table-cell">Statut</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 md:table-cell">Date de naissance</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 lg:table-cell">Région</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 lg:table-cell">Ville</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 xl:table-cell">Code postal</th>
+                    <th scope="col" class="py-2 pl-2 text-start">Adresse mail</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start sm:table-cell">Nom</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start sm:table-cell">Prénom</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start md:table-cell">Licence</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start md:table-cell">Statut</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start md:table-cell">Date de naissance</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start lg:table-cell">Région</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start lg:table-cell">Ville</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start xl:table-cell">Code postal</th>
                 </tr>
             </thead>
             <tbody>

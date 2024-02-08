@@ -22,6 +22,6 @@ class FooterItem extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.layout.footer-item');
+        return view('_components.layout.footer-item');
     }
 }

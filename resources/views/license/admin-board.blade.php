@@ -1,14 +1,14 @@
-@extends('admin.layout')
+@extends('board-layout')
 
-@section('content')
+@section('dashboard-content')
     <div class="table-container">
         <table>
             <thead>
                 <tr>
                     <th scope="col" class="py-2">Actions</th>
-                    <th scope="col" class="text-start pl-2 py-2">Numéro de license</th>
-                    <th scope="col" class="text-start pl-2 py-2">Pilote</th>
-                    <th scope="col" class="text-start pl-2 py-2">Mail associé</th>
+                    <th scope="col" class="py-2 pl-2 text-start">Numéro de license</th>
+                    <th scope="col" class="py-2 pl-2 text-start">Pilote</th>
+                    <th scope="col" class="py-2 pl-2 text-start">Mail associé</th>
 
                 </tr>
             </thead>

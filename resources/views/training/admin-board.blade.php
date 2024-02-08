@@ -1,6 +1,6 @@
-@extends('admin.layout')
+@extends('board-layout')
 
-@section('content')
+@section('dashboard-content')
     <div class="table-container">
         <table>
             <thead>

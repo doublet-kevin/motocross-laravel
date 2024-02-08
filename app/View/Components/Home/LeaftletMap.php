@@ -21,6 +21,6 @@ class LeaftletMap extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.home.leaftlet-map');
+        return view('_components.home.leaftlet-map');
     }
 }

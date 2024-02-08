@@ -34,6 +34,6 @@
             </div>
         @endforeach
 
-        <div class="flex justify-center">{{ $circuits->links('components.navigation.pagination') }}</div>
+        <div class="flex justify-center">{{ $circuits->links('_components.navigation.pagination') }}</div>
     </div>
 @endsection

@@ -24,6 +24,6 @@ class MobileNavItem extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.navigation.mobile-nav-item');
+        return view('_components.navigation.mobile-nav-item');
     }
 }

@@ -22,6 +22,6 @@ class GalleryItem extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.home.gallery-item');
+        return view('_components.home.gallery-item');
     }
 }

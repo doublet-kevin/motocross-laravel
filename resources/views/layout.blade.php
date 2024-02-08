@@ -5,21 +5,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @stack('meta')
-    <title>Motocross</title>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
     @stack('scripts')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <title>Motocross</title>
 </head>
 
 <body class="flex flex-col bg-body">
     <div id="page">
         <header>
-            <!-- Desktop Navigation -->
-            <div
-                class="flex-col items-center hidden py-4 mx-12 text-center lg:flex lg:text-start lg:flex-row lg:justify-between">
-                <x-navigation.nav />
-            </div>
-            <!-- Mobile Navigation -->
+            <x-navigation.nav />
             <x-navigation.mobile-nav />
         </header>
         <main class="flex flex-col items-center flex-grow w-[80vw] m-auto mt-8 md:items-start">

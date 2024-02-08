@@ -26,6 +26,6 @@ class InputGroup extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form.input-group');
+        return view('_components.form.input-group');
     }
 }

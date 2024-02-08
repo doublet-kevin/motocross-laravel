@@ -24,6 +24,6 @@ class Icon extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.social.icon');
+        return view('_components.social.icon');
     }
 }

@@ -26,6 +26,6 @@ class Actions extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.admin.board.actions');
+        return view('_components.admin.board.actions');
     }
 }

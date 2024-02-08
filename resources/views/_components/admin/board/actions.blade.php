@@ -1,7 +1,7 @@
 @props(['method' => 'POST'])
 
 @if ($method === 'DELETE')
-    <form action="{{ $route }}" method="POST" class='flex'>
+    <form action="{{ $route }}" method="POST" class='flex m-0'>
         @csrf
         @method('DELETE')
         <button type="submit" class="shrink-0 w-[20px] h-[20px]">

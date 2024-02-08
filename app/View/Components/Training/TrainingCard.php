@@ -24,6 +24,6 @@ class TrainingCard extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.training.training-card');
+        return view('_components.training.training-card');
     }
 }

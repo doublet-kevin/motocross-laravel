@@ -33,8 +33,7 @@
                     @endforeach
                 </div>
             </div>
-            <span class="flex py-2 ">(*) Les sessions jeunes pilotes sont accessibles pour les 12-18
-                ans</span>
+
             @if (session('message'))
                 <script>
                     Toastify({
@@ -55,5 +54,7 @@
             @endif
 
         </div>
+        <span class="flex py-2 ">(*) Les sessions jeunes pilotes sont accessibles pour les 12-18
+            ans</span>
     </div>
 @endsection

@@ -25,6 +25,6 @@ class NavItem extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.navigation.nav-item');
+        return view('_components.navigation.nav-item');
     }
 }
