@@ -15,11 +15,7 @@
         <input type="text" name="name" id="name">
         <br>
 
-        <label for="circuit_name">Description du circuit</label>
-        <textarea id="description" name="description" rows="5" cols="33"></textarea>
-        <br>
-
-        <button type="submit" class="flex justify-center col-span-3 button whitespace-nowrap">Créer le nouveau
-            circuit</button>
+        <button type="submit">Créer le circuit</button>
     </form>
+    </body>
 @endsection
