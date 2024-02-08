@@ -1,14 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Create</title>
-</head>
-
-<body>
+@extends('layout')
+@section('title')
+    <div>
+        <button onclick="window.location.href='{{ route('admin.user.board') }}'"
+            class="flex justify-center col-span-3 button whitespace-nowrap">Revenir au tableau de bord des
+            utilisateurs</button>
+    </div>
+    <h1>
+        Créer un nouvel utilisateur
+    </h1>
+@endsection
+@section('content')
     <form action="{{ route('user.store') }}" method="post">
         @csrf
         <input type="text" id="firstname" name="firstname" placeholder="Prénom">
@@ -34,7 +35,6 @@
 
         <input type="password" id="password" name="password" placeholder="Mot de passe">
 
-        <input type="submit" value="Créer">
-</body>
-
-</html>
+        <button type="submit" class="flex justify-center col-span-3 button whitespace-nowrap">Créer le nouvel
+            utilisateur</button>
+    @endsection

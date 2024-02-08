@@ -16,7 +16,7 @@ class UserController extends Controller
         $clubs = Club::all();
         $regions = Http::get('https://geo.api.gouv.fr/regions')->json();
 
-        return view('user.create', ['clubs' => $clubs, 'regions' => $regions]);
+        return view('admin.user.create', ['clubs' => $clubs, 'regions' => $regions]);
     }
 
     // Cette fonction est inutile, c'est CreateNewUser dans Fortify qui se charge de créer un nvl utilisateur 
