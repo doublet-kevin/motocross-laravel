@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 })->name('home');
 
 //User Circuits routes
