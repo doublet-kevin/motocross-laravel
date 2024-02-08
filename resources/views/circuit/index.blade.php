@@ -1,15 +1,15 @@
 @extends('layout')
 @section('title')
-    <h1 class="text-4xl font-bold text-center pb-4">Découvrez notre circuit <span class="text-primary">Aventure MX Park</span>
+    <h1 class="pb-4 text-4xl font-bold text-center">Découvrez notre circuit <span class="text-primary">Aventure MX Park</span>
     </h1>
 @endsection
 @section('content')
     <div class="flex flex-col gap-4">
         @foreach ($circuits as $circuit)
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
                 <img src="{{ Vite::asset('resources/images/circuit-1.jpg') }}" alt="Aventure MX Park picture"
                     class="object-cover rounded-md col-span-2 lg:col-span-1 h-[150px] w-full lg:h-full">
-                <div class="flex flex-col w-full col-span-2 gap-4  text-xl rounded-md">
+                <div class="flex flex-col w-full col-span-2 gap-4 text-xl text-center rounded-md md:text-start">
                     <p class="text-xl">
                         <span class="font-bold">Aventure MX Park</span> est un circuit de motocross offrant une expérience
                         palpitante pour les amateurs de
