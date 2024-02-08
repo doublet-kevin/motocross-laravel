@@ -68,9 +68,9 @@ class User extends Authenticatable
         return $this->belongsTo(Club::class);
     }
 
-    public function license(): HasOne
+    public function license(): BelongsTo
     {
-        return $this->hasOne(License::class, 'license_number', 'license_number');
+        return $this->belongsTo(License::class, 'license_number', 'license_number');
     }
 
     public function registrations(): HasMany

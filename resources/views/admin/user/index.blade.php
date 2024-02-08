@@ -43,7 +43,11 @@
                             {{ $user->lastname }}
                         </td>
                         <td class="hidden md:table-cell">
-                            {{ $user->license_number }}
+                            @if ($user->license)
+                                {{ $user->license_number }}
+                            @else
+                                Aucune licence
+                            @endif
                         </td>
                         <td class="hidden md:table-cell">
                             @php

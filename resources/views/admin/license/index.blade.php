@@ -8,6 +8,8 @@
                     <th scope="col" class="py-2">Actions</th>
                     <th scope="col" class="text-start pl-2 py-2">Numéro de license</th>
                     <th scope="col" class="text-start pl-2 py-2">Pilote</th>
+                    <th scope="col" class="text-start pl-2 py-2">Mail associé</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -27,9 +29,14 @@
                             {{ $license->license_number }}
                         </td>
                         <td>
-                            @if ($license->user_id)
-                                {{ $license }}
+                            @if ($license->user)
+                                {{ $license->user->firstname }} {{ $license->user->lastname }}
+                            @else
+                                <span class="text-red-500">Pilote non enregistré</span>
                             @endif
+                        </td>
+                        <td>
+                            {{ $license->associate_email }}
                         </td>
                     </tr>
                 @endforeach

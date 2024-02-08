@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Database\Factories\UserWithLicenseFactory;
 use Database\Factories\LicenseFactory;
+use App\Models\License;
 
 class UserSeeder extends Seeder
 {
@@ -56,13 +57,16 @@ class UserSeeder extends Seeder
         ]);
 
         //User with License
-        $usersWithLicense = User::factory()->count(10)->create();
+        $usersWithLicense = User::factory()->count(80)->create();
         foreach ($usersWithLicense as $user) {
-            $license = LicenseFactory::new()->create(['user_id' => $user->id]);
+            $license = License::factory()->create([
+                'user_id' => $user->id,
+                'associate_email' => $user->email,
+            ]);
             $user->update(['license_number' => $license->license_number]);
         }
 
         //User without License
-        User::factory()->count(10)->create();
+        User::factory()->count(80)->create();
     }
 }
