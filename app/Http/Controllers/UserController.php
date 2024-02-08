@@ -104,6 +104,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
+        dd($user);
         return view('user.show', ['user' => $user]);
     }
 

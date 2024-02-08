@@ -16,7 +16,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->count(20)->create();
         User::create([
             'firstname' => 'John',
             'lastname' => 'Doe',
@@ -55,5 +54,6 @@ class UserSeeder extends Seeder
             'email' => 'testtt@test.test',
             'password' => Hash::make('testtttest'),
         ]);
+        User::factory()->count(30)->create();
     }
 }

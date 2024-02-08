@@ -13,17 +13,17 @@ class LicenseSeeder extends Seeder
      */
     public function run(): void
     {
-        License::factory()->count(10)->create();
         License::create(
             [
-                'license_number' => '6155416814651351',
+                'license_number' => 61554168146,
                 'associate_email' => 'test@test.test',
+                'user_id' => '1',
             ]
         );
 
         License::create(
             [
-                'license_number' => '6157416844661321',
+                'license_number' => 416844661321,
                 'associate_email' => 'testt@test.test',
                 'user_id' => '2',
             ]
@@ -31,9 +31,10 @@ class LicenseSeeder extends Seeder
 
         License::create(
             [
-                'license_number' => '415773416894661421',
+                'license_number' => 4157734168946,
                 'associate_email' => 'test@user.test',
             ]
         );
+        License::factory()->count(10)->create();
     }
 }
