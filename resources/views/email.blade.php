@@ -1,0 +1,1 @@
+L'entrainement du {{ $training->date }} sur le circuit {{ $circuit->first()->name }} a été annulé.

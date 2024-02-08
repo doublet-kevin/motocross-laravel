@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Circuit;
 use App\Models\Training;
 use Illuminate\Support\Facades\DB;
-
+use App\Mail\EventMail;
+use App\Models\Registration;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
 
 class TrainingController extends Controller
 {
@@ -34,6 +37,7 @@ class TrainingController extends Controller
             'trainings' => $trainings,
         ]);
     }
+
 
     public function show($id)
     {
@@ -99,7 +103,15 @@ class TrainingController extends Controller
     public function destroy($id)
     {
         $training = Training::find($id);
+        $circuit = Circuit::where('id', $id)->get();
         $training->delete();
+
+        $destinataires = User::all();
+
+        foreach ($destinataires as $destinataire) {
+            Mail::to($destinataire->email)->send(new EventMail($training, $circuit));
+        }
+
         return back()->with('success', 'Training deleted successfully');
     }
 
