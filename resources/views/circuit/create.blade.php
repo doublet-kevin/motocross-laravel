@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title')
     <div>
-        <button onclick="window.location.href='{{ route('admin.training.board') }}'"
+        <button onclick="window.location.href='{{ route('training.board') }}'"
             class="flex justify-center col-span-3 button whitespace-nowrap">Revenir au tableau des circuits</button>
     </div>
     <h1>
@@ -9,7 +9,7 @@
     </h1>
 @endsection
 @section('content')
-    <form action="{{ route('admin.circuit.store') }}" method="POST">
+    <form action="{{ route('circuit.store') }}" method="POST">
         @csrf
         <label for="circuit_name">Nom du circuit</label>
         <input type="text" name="name" id="name">

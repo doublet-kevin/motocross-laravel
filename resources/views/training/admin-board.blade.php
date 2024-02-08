@@ -45,7 +45,7 @@
             </tbody>
         </table>
     </div>
-    <button onclick="window.location.href='{{ route('admin.training.create') }}'"
+    <button onclick="window.location.href='{{ route('training.create') }}'"
         class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter un entraînement</button>
     </div>
 @endsection

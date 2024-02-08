@@ -16,7 +16,7 @@ class UserController extends Controller
         $clubs = Club::all();
         $regions = Http::get('https://geo.api.gouv.fr/regions')->json();
 
-        return view('admin.user.create', ['clubs' => $clubs, 'regions' => $regions]);
+        return view('user.create', ['clubs' => $clubs, 'regions' => $regions]);
     }
 
     public function store(Request $request)
@@ -47,7 +47,7 @@ class UserController extends Controller
             "club_id" => 1,
         ]);
 
-        return redirect()->route('admin.user.board');
+        return redirect()->route('user.board');
     }
 
     public function edit($id)

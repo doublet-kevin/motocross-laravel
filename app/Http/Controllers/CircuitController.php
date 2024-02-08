@@ -16,7 +16,7 @@ class CircuitController extends Controller
 
     public function create()
     {
-        return view('admin.circuit.create');
+        return view('circuit.create');
     }
 
     public function store(Request $request)

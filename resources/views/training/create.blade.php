@@ -5,7 +5,7 @@
     </h1>
 @endsection
 @section('content')
-    <form action="{{ route('admin.training.store') }}" method="POST">
+    <form action="{{ route('training.store') }}" method="POST">
         @csrf
         <label for="circuit_id">Sélectionnez un circuit</label>
         <select id="circuit_id" name="circuit_id">

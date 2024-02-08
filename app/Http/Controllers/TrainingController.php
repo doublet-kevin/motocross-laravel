@@ -49,7 +49,7 @@ class TrainingController extends Controller
     public function create()
     {
         $circuits = Circuit::all();
-        return view('admin.training.create', ['circuits' => $circuits]);
+        return view('training.create', ['circuits' => $circuits]);
     }
 
     public function store(Request $request)

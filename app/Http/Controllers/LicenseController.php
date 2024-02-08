@@ -15,7 +15,7 @@ class LicenseController extends Controller
 
     public function create()
     {
-        return view('admin.license.create');
+        return view('license.create');
     }
 
     public function store(Request $request)

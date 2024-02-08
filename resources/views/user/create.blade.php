@@ -1,7 +1,7 @@
 @extends('layout')
 @section('title')
     <div>
-        <button onclick="window.location.href='{{ route('admin.user.board') }}'"
+        <button onclick="window.location.href='{{ route('user.board') }}'"
             class="flex justify-center col-span-3 button whitespace-nowrap">Revenir au tableau de bord des
             utilisateurs</button>
     </div>
