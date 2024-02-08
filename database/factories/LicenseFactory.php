@@ -18,14 +18,11 @@ class LicenseFactory extends Factory
 
     public function definition()
     {
-
-        $user = $this->faker->boolean(50) ? User::inRandomOrder()->first() : null;
-        $userLicense = $user ? $user->license_number : null;
-
+        $user = User::factory()->create();
         return [
-            'user_id' => $user ? $user->id : null,
-            'associate_email' => $user ? $user->email : $this->faker->unique()->safeEmail,
-            'license_number' => $userLicense ? $userLicense : $this->faker->unique()->numerify('MC_AUR-####'),
+            'user_id' => $user->id,
+            'associate_email' => $user->email,
+            'license_number' => $this->faker->unique()->numerify('MC_AUR-####'),
         ];
     }
 }

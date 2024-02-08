@@ -35,6 +35,5 @@ class LicenseSeeder extends Seeder
                 'associate_email' => 'test@user.test',
             ]
         );
-        License::factory()->count(10)->create();
     }
 }

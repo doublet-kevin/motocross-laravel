@@ -31,11 +31,10 @@ class UserFactory extends Factory
             'city' => $this->faker->city,
             'postal_code' => $this->faker->randomNumber(5, true),
             'email' => $this->faker->unique()->safeEmail,
-            'birth_date' => $this->faker->dateTimeBetween('-13 years', '-12 years')->format('Y-m-d'),
-            'license_number' => $this->faker->unique()->numerify('MC_AUR-####'),
+            'birth_date' => $this->faker->dateTimeBetween('-26 years', '-12 years')->format('Y-m-d'),
             'password' => bcrypt('password'),
             'role_id' => 1,
-            'img_profil' => null, // Assuming this is nullable in your model
+            'img_profil' => null,
         ];
     }
 

@@ -7,6 +7,7 @@
                 <tr>
                     <th scope="col" class="py-2">Actions</th>
                     <th scope="col" class="text-start pl-2 py-2">Numéro de license</th>
+                    <th scope="col" class="text-start pl-2 py-2">Pilote</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,11 @@
                         </td>
                         <td>
                             {{ $license->license_number }}
+                        </td>
+                        <td>
+                            @if ($license->user_id)
+                                {{ $license }}
+                            @endif
                         </td>
                     </tr>
                 @endforeach
