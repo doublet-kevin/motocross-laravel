@@ -13,6 +13,7 @@ class LicenseSeeder extends Seeder
      */
     public function run(): void
     {
+        License::factory()->count(10)->create();
         License::create(
             [
                 'license_number' => '6155416814651351',
