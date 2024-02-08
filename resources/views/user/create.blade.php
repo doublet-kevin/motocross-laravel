@@ -10,13 +10,14 @@
     </h1>
 @endsection
 @section('content')
+    {{ $errors }}
     <form action="{{ route('user.store') }}" method="post">
         @csrf
         <input type="text" id="firstname" name="firstname" placeholder="Prénom">
 
         <input type="text" id="lastname" name="lastname" placeholder="Nom">
 
-        <input type="text" id="license_id" name="license_id" placeholder="Id licence">
+        <input type="text" id="license_number" name="license_number" placeholder="N° de licence">
 
         <select name="region" id="region">
             <option value="">Veuillez choisir votre région</option>
@@ -31,7 +32,7 @@
 
         <input type="email" id="email" name="email" placeholder="Email">
 
-        <input id="birthdate" name="birthdate" type="date">
+        <input id="birth_date" name="birth_date" type="date">
 
         <input type="password" id="password" name="password" placeholder="Mot de passe">
 

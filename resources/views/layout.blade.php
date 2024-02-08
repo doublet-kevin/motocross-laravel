@@ -39,7 +39,7 @@
                 route choices as we are always keen to encourage new riders.
             </x-layout.footer-item>
             <x-layout.footer-item title="Newsletter">
-                <input type="text" id="mail" placeholder="john.doe@mail.com" required>
+                <input type="text" id="newsletter_mail" placeholder="john.doe@mail.com">
             </x-layout.footer-item>
         </x-layout.footer>
 

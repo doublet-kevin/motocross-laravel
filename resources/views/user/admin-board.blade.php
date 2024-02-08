@@ -37,10 +37,10 @@
                             {{ $user->email }}
                         </td>
                         <td class="hidden sm:table-cell">
-                            {{ $user->firstname }}
+                            {{ $user->lastname }}
                         </td>
                         <td class="hidden sm:table-cell">
-                            {{ $user->lastname }}
+                            {{ $user->firstname }}
                         </td>
                         <td class="hidden md:table-cell">
                             @if ($user->license)

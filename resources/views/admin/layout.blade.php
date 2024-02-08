@@ -31,7 +31,7 @@
                 <li><a href="{{ route('admin.user.board') }}" class="button-inactive">Utilisateurs</a></li>
                 <li><a href="{{ route('admin.training.board') }}" class="button-inactive">Entraînements</a></li>
                 <li><a href="{{ route('admin.circuit.board') }}" class="button-inactive">Circuits</a></li>
-                <li><a href="{{ route('admin.license.board') }}" class="button-inactive">Licenses</a></li>
+                <li><a href="{{ route('admin.license.board') }}" class="button-inactive">Licences</a></li>
             </ul>
 
             <div x-data="{ open: false }" class="flex flex-col m-4 sm:hidden lg:mx-0">
@@ -75,7 +75,7 @@
                 route choices as we are always keen to encourage new riders.
             </x-layout.footer-item>
             <x-layout.footer-item title="Newsletter">
-                <input type="text" id="mail" placeholder="john.doe@mail.com" required>
+                <input type="text" id="newsletter_mail" placeholder="john.doe@mail.com">
             </x-layout.footer-item>
         </x-layout.footer>
 

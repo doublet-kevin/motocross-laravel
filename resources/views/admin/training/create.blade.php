@@ -19,11 +19,11 @@
             @endforeach
         </select>
         <br>
-        <label for="date">Date du training</label>
-        <input type="date" name="date" id="date">
+        <label for="date">Date de l'entraînement</label>
+        <input name="date" id="date" type="datetime-local">
         <br>
         <fieldset>
-            <legend>Choisir le type de training</legend>
+            <legend>Choisir le type d'entraînement</legend>
             <div>
                 <input type="radio" id="type" name="type" value="Adulte" />
                 <label for="Adulte">Adulte</label>

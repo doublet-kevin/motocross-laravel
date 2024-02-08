@@ -44,5 +44,5 @@
         </table>
     </div>
     <button onclick="window.location.href='{{ route('admin.license.create') }}'"
-        class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter un licence</button>
+        class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter une licence</button>
 @endsection

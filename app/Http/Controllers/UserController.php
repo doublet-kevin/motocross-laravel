@@ -19,23 +19,36 @@ class UserController extends Controller
         return view('admin.user.create', ['clubs' => $clubs, 'regions' => $regions]);
     }
 
-    // Cette fonction est inutile, c'est CreateNewUser dans Fortify qui se charge de créer un nvl utilisateur 
-    // public function store(Request $request)
-    // {
+    public function store(Request $request)
+    {
+        $request->validate([
+            'firstname' => 'required|string|max:255',
+            'lastname' => 'required|string|max:255',
+            'region' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'postal_code' => 'required|string|max:5',
+            'email' => 'required|string|max:255',
+            'birth_date' => 'required|string|max:255',
+            'license_number' => 'unique:users,license_number|nullable|string|max:255',
+            'password' => 'required|string|max:255',
+        ]);
 
-    //     $request->validate([
-    //         'firstname' => 'required|string|max:255',
-    //         'lastname' => 'required|string|max:255',
-    //         'region' => 'required|string|max:255',
-    //         'city' => 'required|string|max:255',
-    //         'postal_code' => 'required|string|max:5',
-    //         'email' => 'required|string|max:255',
-    //         'birth_date' => 'required|string|max:255',
-    //         'license_number' => 'unique|nullable|string|max:255',
-    //         'password' => 'required|string|max:255',
-    //     ]);
+        User::create([
+            "firstname" => $request->firstname,
+            "lastname" => $request->lastname,
+            "region" => $request->region,
+            "city" => $request->city,
+            "postal_code" => $request->postal_code,
+            "email" => $request->email,
+            "birth_date" => $request->birth_date,
+            "license_number" => $request->license_number,
+            "password" => $request->password,
+            "role_id" => 1,
+            "club_id" => 1,
+        ]);
 
-    // }
+        return redirect()->route('admin.user.board');
+    }
 
     public function edit($id)
     {
