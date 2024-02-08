@@ -70,6 +70,6 @@ class CircuitController extends Controller
     public function board()
     {
         $circuits = Circuit::all();
-        return view('admin.circuit.index', ['circuits' => $circuits]);
+        return view('circuit.admin-board', ['circuits' => $circuits]);
     }
 }

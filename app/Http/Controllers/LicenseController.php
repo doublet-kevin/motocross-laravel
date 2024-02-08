@@ -10,7 +10,7 @@ class LicenseController extends Controller
     public function index()
     {
         $licenses = License::all();
-        return view('admin.license.index', ['licenses' => $licenses]);
+        return view('license.index', ['licenses' => $licenses]);
     }
 
     public function create()
@@ -64,6 +64,6 @@ class LicenseController extends Controller
     public function board()
     {
         $licenses = License::all();
-        return view('admin.license.index', ['licenses' => $licenses]);
+        return view('license.admin-board', ['licenses' => $licenses]);
     }
 }

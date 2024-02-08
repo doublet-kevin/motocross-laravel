@@ -13,7 +13,7 @@
         @endguest
         @auth
             @if (Auth::user()->isAdmin())
-                <x-navigation.nav-item name="Administration" route="{{ route('admin.user.board') }}" />
+                <x-navigation.nav-item name="Administration" route="{{ route('user.board') }}" />
             @endif
             <x-navigation.nav-item name="Déconnexion" route="{{ route('logout') }}" method="POST" />
         @endauth

@@ -31,7 +31,7 @@ Route::resource('circuit', CircuitController::class)->only([
 ]);
 
 //Admin Circuits routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('circuit', CircuitController::class)->only([
         'create', 'destroy', 'edit', 'update', 'store'
     ])->names([
@@ -50,7 +50,7 @@ Route::resource('training', TrainingController::class)->only([
 ]);
 
 //Admin Training routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('training', TrainingController::class)->only([
         'create', 'destroy', 'edit', 'update', 'store', 'index'
     ])->names([
@@ -70,12 +70,12 @@ Route::resource('user', UserController::class)->only([
 ]);
 
 //Admin User routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::get('users', [UserController::class, 'board'])->name('user.board');
 });
 
 //Admin Role routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('role', RoleController::class)->only([
         'index', 'create', 'destroy', 'edit', 'update', 'store'
     ])->names([
@@ -89,7 +89,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
 });
 
 //Admin License routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('license', LicenseController::class)->only([
         'index', 'create', 'destroy', 'edit', 'update', 'store'
     ])->names([
@@ -108,7 +108,7 @@ Route::resource('registration', RegistrationController::class)->middleware('auth
     'store'
 ]);
 //Admin Registration routes
-Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('registration', RegistrationController::class)->only([
         'index', 'create', 'destroy', 'edit', 'update', 'store'
     ])->names([

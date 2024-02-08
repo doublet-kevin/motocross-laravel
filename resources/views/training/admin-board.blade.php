@@ -6,10 +6,10 @@
             <thead>
                 <tr>
                     <th scope="col" class="py-2">Actions</th>
-                    <th scope="col" class="text-start pl-2 py-2">Date</th>
-                    <th scope="col" class="text-start pl-2 py-2">Circuit</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 sm:table-cell">Type</th>
-                    <th scope="col" class="hidden text-start pl-2 py-2 md:table-cell">Places disponibles</th>
+                    <th scope="col" class="py-2 pl-2 text-start">Date</th>
+                    <th scope="col" class="py-2 pl-2 text-start">Circuit</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start sm:table-cell">Type</th>
+                    <th scope="col" class="hidden py-2 pl-2 text-start md:table-cell">Places disponibles</th>
                 </tr>
             </thead>
             <tbody>
@@ -17,11 +17,11 @@
                     <tr>
                         <td scope="row" class="w-24">
                             <div class="flex items-center justify-center gap-2">
-                                <x-admin.board.actions route="{{ route('admin.training.destroy', $training->id) }}"
+                                <x-admin.board.actions route="{{ route('training.destroy', $training->id) }}"
                                     icon="{{ Vite::asset('resources/images/icons/trash.svg') }}" alt="Trash"
                                     method="DELETE" />
 
-                                <x-admin.board.actions route="{{ route('admin.training.edit', $training->id) }}"
+                                <x-admin.board.actions route="{{ route('training.edit', $training->id) }}"
                                     icon="{{ Vite::asset('resources/images/icons/edit.svg') }}" alt="Edit" />
 
                                 <x-admin.board.actions route="{{ route('training.show', $training->id) }}"

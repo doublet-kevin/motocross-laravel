@@ -11,12 +11,6 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        $users = User::all();
-        return view('admin.user.index', ['users' => $users]);
-    }
-
     public function create()
     {
         $clubs = Club::all();
@@ -82,7 +76,7 @@ class UserController extends Controller
             'role' => $request->role,
         ]);
 
-        return redirect()->route('user.index');
+        return redirect()->route('user.show', $id);
     }
 
     public function destroy($id)
@@ -110,6 +104,6 @@ class UserController extends Controller
     public function board()
     {
         $users = User::all();
-        return view('admin.user.index', ['users' => $users]);
+        return view('user.admin-board', ['users' => $users]);
     }
 }

@@ -118,6 +118,6 @@ class TrainingController extends Controller
     public function board()
     {
         $trainings = Training::all();
-        return view('admin.training.index', ['trainings' => $trainings]);
+        return view('training.admin-board', ['trainings' => $trainings]);
     }
 }

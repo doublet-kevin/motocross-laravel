@@ -25,13 +25,13 @@
         </header>
 
 
-        <main class="flex flex-col flex-grow  items-center md:items-start my-auto mt-8 mx-12 lg:mx-24">
+        <main class="flex flex-col items-center flex-grow mx-12 my-auto mt-8 md:items-start lg:mx-24">
             <!-- Admin Dashboard Navigation -->
             <ul class="hidden gap-4 py-4 mx-4 sm:flex lg:mx-0">
-                <li><a href="{{ route('admin.user.board') }}" class="button-inactive">Utilisateurs</a></li>
-                <li><a href="{{ route('admin.training.board') }}" class="button-inactive">Entraînements</a></li>
-                <li><a href="{{ route('admin.circuit.board') }}" class="button-inactive">Circuits</a></li>
-                <li><a href="{{ route('admin.license.board') }}" class="button-inactive">Licenses</a></li>
+                <li><a href="{{ route('user.board') }}" class="button-inactive">Utilisateurs</a></li>
+                <li><a href="{{ route('training.board') }}" class="button-inactive">Entraînements</a></li>
+                <li><a href="{{ route('circuit.board') }}" class="button-inactive">Circuits</a></li>
+                <li><a href="{{ route('license.board') }}" class="button-inactive">Licenses</a></li>
             </ul>
 
             <div x-data="{ open: false }" class="flex flex-col m-4 sm:hidden lg:mx-0">
@@ -44,16 +44,19 @@
                 </button>
                 <ul class="flex flex-col gap-2 overflow-hidden transition-all duration-300 max-h-0"
                     x-bind:style="open ? 'max-height: 500px;' : 'max-height: 0;'">
-                    <li><a href="{{ route('admin.user.board') }}" class="button-inactive">Utilisateurs</a></li>
-                    <li><a href="{{ route('admin.training.board') }}" class="button-inactive">Entraînements</a>
+                    <li><a href="{{ route('user.board') }}" class="button-inactive">Utilisateurs</a></li>
+                    <li><a href="{{ route('training.board') }}" class="button-inactive">Entraînements</a>
                     </li>
-                    <li><a href="{{ route('admin.circuit.board') }}" class="button-inactive">Circuits</a></li>
-                    <li><a href="{{ route('admin.license.board') }}" class="button-inactive">Licenses</a></li>
+                    <li><a href="{{ route('circuit.board') }}" class="button-inactive">Circuits</a></li>
+                    <li><a href="{{ route('license.board') }}" class="button-inactive">Licenses</a></li>
                 </ul>
             </div>
 
-            <div class="flex flex-col gap-4 w-full">
-                @yield('content')
+            <div class="flex flex-col w-full gap-4">
+                @yield('title')
+                <div class="flex flex-col flex-grow">
+                    @yield('content')
+                </div>
             </div>
         </main>
         <x-layout.footer>
