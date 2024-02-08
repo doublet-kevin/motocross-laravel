@@ -13,11 +13,9 @@ class InputGroup extends Component
      */
     public function __construct(
         public string $name,
-        public string $placeholder,
         public string $type,
     ) {
         $this->name = $name;
-        $this->placeholder = $placeholder;
         $this->type = $type;
     }
 

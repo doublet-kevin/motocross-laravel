@@ -5,11 +5,12 @@
         @csrf
         @method('PUT')
 
-        <input type="text" id="firstname" name="firstname" placeholder="Prénom" value="{{ $user->firstname }}">
+        <x-form.input-group type="text" name="firstname" placeholder="Prénom" value="{{ $user->firstname }}" />
 
-        <input type="text" id="lastname" name="lastname" placeholder="Nom" value="{{ $user->lastname }}">
+        <x-form.input-group type="email" name="email" placeholder="Email" value="{{ $user->email }}" disabled />
 
-        <input type="text" id="license_id" name="license_id" placeholder="Id licence" value="{{ $user->license_id }}">
+        <x-form.input-group type="text" name="license_id" placeholder="Numéro de licence"
+            value="{{ $user->license_number }}" />
 
         <select name="region" id="region">
             <option value="">Veuillez choisir votre région</option>
@@ -19,12 +20,12 @@
             @endforeach
         </select>
 
-        <input type="text" id="city" name="city" placeholder="Ville" value="{{ $user->city }}">
+        <x-form.input-group type="text" name="city" placeholder="Ville" value="{{ $user->city }}" />
+        <x-form.input-group type="text" name="postal_code" placeholder="Code postal" value="{{ $user->postal_code }}" />
 
-        <input type="text" id="postal_code" name="postal_code" placeholder="Code postal"
-            value="{{ $user->postal_code }}">
+        <x-form.input-group type="email" name="email" placeholder="Email" value="{{ $user->email }}" disabled />
 
-        <input type="email" id="email" name="email" placeholder="Email" value="{{ $user->email }}">
+        <x-form.input-group type="date" name="birthdate" value="{{ $user->birth_date }}" />
 
         <input id="birthdate" name="birthdate" type="date" value="{{ $user->birthdate }}">
 

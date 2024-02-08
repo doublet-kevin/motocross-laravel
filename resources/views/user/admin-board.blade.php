@@ -33,7 +33,6 @@
                             </div>
                         </td>
                         <td>
-                            {{ $user->id }}
                             {{ $user->email }}
                         </td>
                         <td class="hidden sm:table-cell">
