@@ -22,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
      *
      * @param  array<string, string>  $input
      */
-    public function create(array $input): RedirectResponse
+    public function create(array $input): User
     {
         $validator = Validator::make($input, [
             'firstname' => 'required|string|max:255',
@@ -54,11 +54,12 @@ class CreateNewUser implements CreatesNewUsers
             'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
             'password.confirmed' => 'Les mots de passe ne correspondent pas.',
         ]);
+
         if ($validator->fails()) {
             throw ValidationException::withMessages($validator->errors()->toArray());
         }
 
-        User::create([
+        return User::create([
             'firstname' => $input['firstname'],
             'lastname' => $input['lastname'],
             'region' => $input['region'],
@@ -71,15 +72,5 @@ class CreateNewUser implements CreatesNewUsers
             'role_id' => 1,
             'club_id' => 1,
         ]);
-
-        $user = User::where('email', $input['email'])->first();
-
-
-        $license = License::where('license_number', $input['license_number'])->first();
-        if ($input['license_number']) {
-            License::where('license_number', $input['license_number'])->update(['user_id' => User::where('email', $input['email'])->first()->id]);
-        }
-        Auth::login($user);
-        return redirect()->intended('/');
     }
 }

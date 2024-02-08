@@ -6,8 +6,9 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-
-
+use Database\Factories\UserWithLicenseFactory;
+use Database\Factories\LicenseFactory;
+use App\Models\License;
 
 class UserSeeder extends Seeder
 {
@@ -16,7 +17,6 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory()->count(20)->create();
         User::create([
             'firstname' => 'John',
             'lastname' => 'Doe',
@@ -55,5 +55,18 @@ class UserSeeder extends Seeder
             'email' => 'testtt@test.test',
             'password' => Hash::make('testtttest'),
         ]);
+
+        //User with License
+        $usersWithLicense = User::factory()->count(80)->create();
+        foreach ($usersWithLicense as $user) {
+            $license = License::factory()->create([
+                'user_id' => $user->id,
+                'associate_email' => $user->email,
+            ]);
+            $user->update(['license_number' => $license->license_number]);
+        }
+
+        //User without License
+        User::factory()->count(80)->create();
     }
 }

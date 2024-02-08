@@ -16,5 +16,10 @@ class License extends Model
         'license_number',
     ];
 
+    public function user(): HasOne
+    {
+        return $this->hasOne(User::class, 'license_number', 'license_number');
+    }
+
     public $timestamps = false;
 }

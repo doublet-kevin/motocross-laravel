@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -24,7 +25,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'club_id',
-        'license_id',
         'firstname',
         'lastname',
         'region',
@@ -70,7 +70,7 @@ class User extends Authenticatable
 
     public function license(): BelongsTo
     {
-        return $this->belongsTo(License::class);
+        return $this->belongsTo(License::class, 'license_number', 'license_number');
     }
 
     public function registrations(): HasMany

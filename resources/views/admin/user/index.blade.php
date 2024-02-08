@@ -9,6 +9,7 @@
                     <th scope="col" class="hidden text-start pl-2 py-2 sm:table-cell">Nom</th>
                     <th scope="col" class="hidden text-start pl-2 py-2 sm:table-cell">Prénom</th>
                     <th scope="col" class="hidden text-start pl-2 py-2 md:table-cell">Licence</th>
+                    <th scope="col" class="hidden text-start pl-2 py-2 md:table-cell">Statut</th>
                     <th scope="col" class="hidden text-start pl-2 py-2 md:table-cell">Date de naissance</th>
                     <th scope="col" class="hidden text-start pl-2 py-2 lg:table-cell">Région</th>
                     <th scope="col" class="hidden text-start pl-2 py-2 lg:table-cell">Ville</th>
@@ -32,6 +33,7 @@
                             </div>
                         </td>
                         <td>
+                            {{ $user->id }}
                             {{ $user->email }}
                         </td>
                         <td class="hidden sm:table-cell">
@@ -41,10 +43,21 @@
                             {{ $user->lastname }}
                         </td>
                         <td class="hidden md:table-cell">
-                            {{ $user->license_number }}
+                            @if ($user->license)
+                                {{ $user->license_number }}
+                            @else
+                                Aucune licence
+                            @endif
                         </td>
                         <td class="hidden md:table-cell">
-                            {{ $user->birth_date }}
+                            @php
+                                $birth_date = \Carbon\Carbon::parse($user->birth_date);
+                                $age = $birth_date->age;
+                            @endphp
+                            {{ $age < 18 ? 'Jeune pilote' : 'Pilote senior' }}
+                        </td>
+                        <td class="hidden md:table-cell">
+                            {{ $birth_date->format('d/m/Y') }}
                         </td>
                         <td class="hidden lg:table-cell">
                             {{ $user->region }}
