@@ -20,11 +20,12 @@ class LicenseFactory extends Factory
     {
 
         $user = $this->faker->boolean(50) ? User::inRandomOrder()->first() : null;
+        $userLicense = $user ? $user->license_number : null;
 
         return [
             'user_id' => $user ? $user->id : null,
             'associate_email' => $user ? $user->email : $this->faker->unique()->safeEmail,
-            'license_number' => $this->faker->unique()->numerify('MC_AUR-####'),
+            'license_number' => $userLicense ? $userLicense : $this->faker->unique()->numerify('MC_AUR-####'),
         ];
     }
 }
