@@ -27,8 +27,8 @@ class TrainingController extends Controller
             ->get();
 
         // Séparez les entraînements pour les enfants et les adultes
-        $young_pilot = $trainings->where('type', 'enfant');
-        $veteran_pilot = $trainings->where('type', 'adulte');
+        $young_pilot = $trainings->where('type', 'Jeune pilote');
+        $veteran_pilot = $trainings->where('type', 'Pilote senior');
 
 
         return view('training.index')->with([
@@ -86,7 +86,7 @@ class TrainingController extends Controller
             'circuit_id' => 'required',
             'date' => 'required',
             'type' => 'required',
-            'max_participants' => 'required',
+            'max_participants' => 'required|numeric',
         ]);
 
         $training = Training::find($id);
@@ -97,7 +97,7 @@ class TrainingController extends Controller
             "max_participants" => $request->max_participants,
         ]);
 
-        return redirect()->route('training.index');
+        return redirect()->route('training.board')->with('message', 'L\'entraînement est modifié !');
     }
 
     public function destroy($id)

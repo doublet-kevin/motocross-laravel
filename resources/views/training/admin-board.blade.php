@@ -29,7 +29,7 @@
                             </div>
                         </td>
                         <td>
-                            {{ $training->date }}
+                            {{ \Carbon\Carbon::parse($training->date)->format('d/m/Y') }}
                         </td>
                         <td>
                             {{ $training->circuit->name }}
@@ -38,7 +38,7 @@
                             {{ $training->type }}
                         </td>
                         <td class="hidden md:table-cell">
-                            {{ $training->number_of_places }}
+                            {{ $training->max_participants }}
                         </td>
                     </tr>
                 @endforeach

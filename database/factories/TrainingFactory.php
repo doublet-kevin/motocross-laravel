@@ -17,7 +17,7 @@ class TrainingFactory extends Factory
      */
     public function definition()
     {
-        $type = $this->faker->randomElement(['enfant', 'adulte']);
+        $type = $this->faker->randomElement(['Jeune pilote', 'Pilote senior']);
 
         $date = $this->faker->dateTimeBetween('+1 week', '+6 months');
 

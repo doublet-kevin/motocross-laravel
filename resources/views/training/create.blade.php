@@ -20,12 +20,12 @@
         <fieldset>
             <legend>Choisir le type de training</legend>
             <div>
-                <input type="radio" id="type" name="type" value="Adulte" />
-                <label for="Adulte">Adulte</label>
+                <input type="radio" id="type" name="type" value="Pilote senior" />
+                <label for="Pilote senior">Pilote senior</label>
             </div>
             <div>
-                <input type="radio" id="type" name="type" value="Enfant" />
-                <label for="Enfant">Enfant</label>
+                <input type="radio" id="type" name="type" value="Jeune pilote" />
+                <label for="Jeune pilote">Jeune pilote</label>
             </div>
         </fieldset>
         <br>
