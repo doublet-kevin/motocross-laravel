@@ -8,6 +8,9 @@ use App\Models\Club;
 use App\Models\License;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -60,23 +63,41 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'club_id' => 'required|string|max:255',
+        $validator = Validator::make($request->all(), [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'region' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:5',
-            'email' => 'required|string|max:255',
-            'birth_date' => 'required|string|max:255',
-            'license_number' => 'nulllable|string|max:255',
-            'password' => 'required|string|max:255',
-            'role' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($id),
+            ],
+            'birth_date' => 'required|string|max:255|before:-12 years',
+            'license_number' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::exists('licenses', 'license_number')->whereNull('user_id')->where('associate_email', $request['email']),
+            ],
         ]);
+
+        $validator->setCustomMessages([
+            'license_number.exists' => "Le numéro de licence n'existe pas ou est déjà utilisé.",
+            'email.unique' => "L'adresse email est déjà utilisée.",
+            'birth_date.before' => "Vous devez avoir au moins 12 ans pour vous inscrire.",
+            'required' => 'Le champs est requis.',
+        ]);
+
+        if ($validator->fails()) {
+            throw ValidationException::withMessages($validator->errors()->toArray());
+        }
 
         $user = User::findOrFail($id);
         $user->update([
-            'club_id' => $request->club_id,
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'region' => $request->region,
@@ -85,8 +106,6 @@ class UserController extends Controller
             'email' => $request->email,
             'birth_date' => $request->birth_date,
             'license_number' => $request->license_number,
-            'password' => $request->password,
-            'role' => $request->role,
         ]);
 
         return redirect()->route('user.show', $id);

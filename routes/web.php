@@ -52,7 +52,7 @@ Route::resource('training', TrainingController::class)->only([
 //Admin Training routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('training', TrainingController::class)->only([
-        'create', 'destroy', 'edit', 'update', 'store', 'index'
+        'create', 'destroy', 'edit', 'update', 'store'
     ])->names([
         'create' => 'training.create',
         'destroy' => 'training.destroy',
