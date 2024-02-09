@@ -51,14 +51,14 @@ class CircuitController extends Controller
             "name" => $request->name,
         ]);
 
-        return redirect()->route('circuit.index');
+        return redirect()->route('training.board')->with('message', 'Circuit modifié !');
     }
 
     public function destroy($id)
     {
         $circuit = Circuit::find($id);
         $circuit->delete();
-        return back()->with('success', 'Circuit deleted!');
+        return back()->with('message', 'Circuit supprimé !');
     }
 
     public function show($id)

@@ -20,7 +20,8 @@
 
 input,
 select,
-option {
+option,
+textarea {
     @apply bg-transparent border border-light text-light focus:outline-none rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5;
 }
 
