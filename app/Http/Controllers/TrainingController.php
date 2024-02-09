@@ -103,16 +103,15 @@ class TrainingController extends Controller
     public function destroy($id)
     {
         $training = Training::find($id);
-        $circuit = Circuit::where('id', $id)->get();
         $training->delete();
 
-        $destinataires = User::all();
+        // $circuit = Circuit::where('id', $id)->get();
+        // $destinataires = User::all();
+        // foreach ($destinataires as $destinataire) {
+        //     Mail::to($destinataire->email)->send(new EventMail($training, $circuit));
+        // }
 
-        foreach ($destinataires as $destinataire) {
-            Mail::to($destinataire->email)->send(new EventMail($training, $circuit));
-        }
-
-        return back()->with('success', 'Training deleted successfully');
+        return back()->with('message', 'L\'entraînement est annulé !');
     }
 
     public function board()

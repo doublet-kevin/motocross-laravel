@@ -71,6 +71,25 @@
                 @endforeach
             </tbody>
         </table>
+        @if (session('message'))
+            {{ session('message') }}
+            <script>
+                Toastify({
+                    text: {!! json_encode(session('message')) !!},
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    offset: {
+                        x: 20,
+                        y: '80vh'
+                    },
+                    style: {
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                    },
+                    onClick: function() {}
+                }).showToast();
+            </script>
+        @endif
     </div>
     <button onclick="window.location.href='{{ route('user.create') }}'"
         class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter un utilisateur</button>

@@ -118,10 +118,10 @@ class UserController extends Controller
         if (Auth::id() == $user->id) {
             $user->delete();
             Auth::logout();
-            return back()->with('success', 'Votre compte a été supprimé avec succès.');
+            return back()->with('message', 'Votre compte a été supprimé avec succès.');
         } else if (Auth::user()->role->name == 'admin') {
             $user->delete();
-            return back()->with('success', 'L\'utilisateur a été supprimé avec succès.');
+            return back()->with('message', 'L\'utilisateur a été supprimé avec succès.');
         } else {
             return back();
         }
