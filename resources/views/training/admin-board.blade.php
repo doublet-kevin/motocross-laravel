@@ -7,6 +7,7 @@
                 <tr>
                     <th scope="col" class="py-2">Actions</th>
                     <th scope="col" class="py-2 pl-2 text-start">Date</th>
+                    <th scope="col" class="py-2 pl-2 text-start">Heure</th>
                     <th scope="col" class="py-2 pl-2 text-start">Circuit</th>
                     <th scope="col" class="hidden py-2 pl-2 text-start sm:table-cell">Type</th>
                     <th scope="col" class="hidden py-2 pl-2 text-start md:table-cell">Places disponibles</th>
@@ -30,6 +31,9 @@
                         </td>
                         <td>
                             {{ \Carbon\Carbon::parse($training->date)->format('d/m/Y') }}
+                        </td>
+                        <td>
+                            {{ \Carbon\Carbon::parse($training->date)->format('H:i') }}
                         </td>
                         <td>
                             {{ $training->circuit->name }}
