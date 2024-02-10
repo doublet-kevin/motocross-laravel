@@ -12,7 +12,6 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class User extends Authenticatable
 {
@@ -77,6 +76,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Registration::class);
     }
+
 
     public function isAdmin()
     {

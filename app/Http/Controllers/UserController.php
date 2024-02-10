@@ -80,9 +80,13 @@ class UserController extends Controller
         //Check if license number is not already used
         Validator::extend('licenseAlreadyUsed', function ($attribute, $value, $parameters, $validator) use ($user) {
             $liceseUnchanged = $user->license_number === $value;
-            $licenseAlreadyUsed = License::where('license_number', $value)->exists();
+            $licenseAlreadyUsed = License::where('license_number', $value)->whereNotIn('associate_email', [$user->email])->exists();
 
             return $liceseUnchanged || !$licenseAlreadyUsed;
+        });
+
+        Validator::extend('licenseNotExists', function ($attribute, $value, $parameters, $validator) {
+            return License::where('license_number', $value)->exists();
         });
 
         $validator = Validator::make($request->all(), [
@@ -105,6 +109,7 @@ class UserController extends Controller
                 'string',
                 'max:255',
                 'license_already_used:' . $user->id,
+                'license_not_exists'
             ],
         ]);
 
@@ -137,7 +142,7 @@ class UserController extends Controller
             'postal_code' => $request->postal_code,
             'email' => $request->email,
             'birth_date' => $request->birth_date,
-            'license_number' => $request->license_number,
+            'license_number' => !empty($request->license_number) ? $request->license_number : $user->license_number,
         ]);
 
         return redirect()->route('user.show', $id)->with('message', 'Le profil a été mis à jour avec succès.');
@@ -162,7 +167,8 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        return view('user.show', ['user' => $user]);
+        $trainingsHistory = $user->registrations->map->training;
+        return view('user.show', ['user' => $user, 'trainingsHistory' => $trainingsHistory]);
     }
 
     public function board()
