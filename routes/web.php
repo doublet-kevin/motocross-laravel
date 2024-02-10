@@ -91,7 +91,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 //Admin License routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('license', LicenseController::class)->only([
-        'index', 'create', 'destroy', 'edit', 'update', 'store'
+        'index', 'create', 'destroy', 'edit', 'update', 'store',
     ])->names([
         'index' => 'license.index',
         'create' => 'license.create',

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\License;
+use Illuminate\Validation\Rule;
 
 class LicenseController extends Controller
 {
@@ -20,16 +21,26 @@ class LicenseController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
-            'license_number' => 'required|string|max:255',
-        ]);
+        $request->validate(
+            [
+                'license_number' => 'required|unique:licenses|string|max:255',
+                'associate_email' => 'required|unique:licenses|email',
+            ],
+            [
+                'license_number.required' => 'Le numéro de licence est obligatoire',
+                'license_number.unique' => 'Ce numéro de licence est déjà utilisé',
+                'associate_email.required' => 'L\'email est obligatoire',
+                'associate_email.unique' => 'Cet email est déjà associé à une licence',
+                'associate_email.email' => 'L\'email doit être une adresse valide',
+            ]
+        );
 
-        $license = License::create([
+        License::create([
             'license_number' => $request->license_number,
-            'user_id' => $request->user_id,
+            'associate_email' => $request->associate_email,
         ]);
 
-        return redirect()->route('license.index');
+        return redirect()->route('license.board')->with('message', 'La licence a bien été créée');
     }
 
     public function edit($id)

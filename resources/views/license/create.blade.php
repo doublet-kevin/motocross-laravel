@@ -5,17 +5,18 @@
             class="flex justify-center col-span-3 button whitespace-nowrap">Revenir au tableau de bord des
             licences</button>
     </div>
-    <h1>
-        Créer une nouvelle licence
-    </h1>
 @endsection
 @section('content')
-    <form action="{{ route('license.store') }}" method="post">
-        @csrf
-        <input type="text" name="user_id" id="user_id" placeholder="Id utilisateur">
-
-        <input type="text" name="license_number" id="license_number" placeholder="Numéro de licence">
-
-        <button type="submit" class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter la nouvelle
-            licence</button>
-    @endsection
+    <div class="flex w-full max-w-5xl m-auto border rounded-md shadow-2xl md:border-2 border-primary backdrop-blur-lg">
+        <div class="flex flex-grow p-8">
+            <form action="{{ route('license.store') }}" method="post" class="flex flex-col flex-grow gap-4">
+                @csrf
+                <h2 class="text-4xl font-bold text-accent">Ajout d'une nouvelle license</h2>
+                <x-form.input-group type="text" name="license_number" placeholder="Numéro de licence" :errors="$errors->name" />
+                <x-form.input-group type="mail" name="associate_email" placeholder="Mail associé" :errors="$errors->name" />
+                <button type="submit" class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter la
+                    licence</button>
+            </form>
+        </div>
+    </div>
+@endsection
