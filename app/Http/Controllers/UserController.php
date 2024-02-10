@@ -140,7 +140,7 @@ class UserController extends Controller
             'license_number' => $request->license_number,
         ]);
 
-        return redirect()->route('user.show', $id);
+        return redirect()->route('user.show', $id)->with('message', 'Le profil a été mis à jour avec succès.');
     }
 
     public function destroy($id)
