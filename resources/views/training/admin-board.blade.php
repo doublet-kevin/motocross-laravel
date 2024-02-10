@@ -69,8 +69,9 @@
         @endif
     </div>
 
-    <div class="flex gap-8">
-        <a href="{{ route('training.create') }}" class="flex flex-grow col-span-3 button whitespace-nowrap">Ajouter un
+    <div class="flex flex-col-reverse items-center justify-center gap-4 sm:flex-row whitespace-nowrap">
+        <a href="{{ route('training.create') }}" class="flex flex-grow w-full col-span-3 button whitespace-nowrap">Ajouter
+            un
             entraînement</a>
         <div>{{ $trainings->links('_components.navigation.pagination') }}</div>
     </div>

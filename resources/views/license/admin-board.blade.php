@@ -58,9 +58,9 @@
             </script>
         @endif
     </div>
-    <div class="flex gap-8">
+    <div class="flex flex-col-reverse items-center justify-center gap-4 sm:flex-row whitespace-nowrap">
         <a href="{{ route('license.create') }}"
-            class="flex justify-center flex-grow col-span-3 button whitespace-nowrap">Ajouter une licence</a>
+            class="flex justify-center flex-grow w-full col-span-3 button whitespace-nowrap">Ajouter une licence</a>
         <div>{{ $licenses->links('_components.navigation.pagination') }}</div>
     </div>
 @endsection
