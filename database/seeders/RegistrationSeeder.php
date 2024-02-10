@@ -27,5 +27,7 @@ class RegistrationSeeder extends Seeder
             'user_id' => '3',
             'training_id' => '3',
         ]);
+
+        Registration::factory(400)->create();
     }
 }

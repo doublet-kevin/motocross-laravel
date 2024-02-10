@@ -19,7 +19,7 @@ class TrainingFactory extends Factory
     {
         $type = $this->faker->randomElement(['Jeune pilote', 'Pilote senior']);
 
-        $date = $this->faker->dateTimeBetween('+1 week', '+6 months');
+        $date = $this->faker->dateTimeBetween('-3 month', '+6 months');
 
         $hour = $this->faker->randomElement([10, 14, 17]);
 
