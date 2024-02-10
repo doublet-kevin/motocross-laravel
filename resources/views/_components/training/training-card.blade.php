@@ -1,7 +1,7 @@
 @props(['adult' => false])
-<div class="flex flex-col overflow-hidden border rounded-md border-primary shrink-0">
+<div class="flex flex-col w-[350px] overflow-hidden border rounded-md border-primary shrink-0">
     <img src="{{ $circuitImg }}" alt="circuit"
-        class="object-cover w-[300px] h-[100px] rounded-t-md border-b border-primary">
+        class="object-cover w-[350px] h-[100px] rounded-t-md border-b border-primary">
     <div class="flex flex-col p-2 ">
         <span class="text-xl font-bold text-primary">{{ $training->circuit->name }}</span>
         <div class="flex justify-between gap-4 pb-2">
@@ -20,37 +20,42 @@
             </div>
         </div>
 
-        <form method="POST"
-            action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
-            @csrf
-            <div class="flex gap-2">
-                @auth
-                    <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
-                        pilotes</a>
-                    @if (Auth::user()->isAdult() && $adult)
-                        @if (!Auth::user()->isRegistered($training->id))
+        <div class="flex gap-2">
+            @auth
+                <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
+                    pilotes</a>
+                @if (Auth::user()->isAdult() && $adult)
+                    @if (!Auth::user()->isRegistered($training->id))
+                        <form method="POST"
+                            action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
+                            @csrf
                             <button type="submit" class="button">Participer</button>
-                        @else
-                            <div class="button-disabled">
-                                <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
-                                <span>Déja inscrit</span>
-                            </div>
-                        @endif
-                    @elseif (!Auth::user()->isAdult() && !$adult)
-                        @if (!Auth::user()->isRegistered($training->id))
-                            <button type="submit" class="button">Participer</button>
-                        @else
-                            <div class="button-disabled">
-                                <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
-                                <span>Déja inscrit</span>
-                            </div>
-                        @endif
+                        </form>
+                    @else
+                        <div class="button-disabled">
+                            <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
+                            <form method="POST" action="{{ route('registration.destroy', $training->id) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Se désinscrire</button>
+                            </form>
+                        </div>
                     @endif
-                @endauth
-                @guest
-                    <button type="submit" class="w-full button">Participer</button>
-                @endguest
-            </div>
+                @elseif (!Auth::user()->isAdult() && !$adult)
+                    @if (!Auth::user()->isRegistered($training->id))
+                        <button type="submit" class="button">Participer</button>
+                    @else
+                        <div class="button-disabled">
+                            <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
+                            <span>Déja inscrit</span>
+                        </div>
+                    @endif
+                @endif
+            @endauth
+            @guest
+                <button type="submit" class="w-full button">Participer</button>
+            @endguest
+        </div>
 
         </form>
     </div>

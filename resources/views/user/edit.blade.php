@@ -39,7 +39,7 @@
 
 
                 </div>
-                <button class="button-inactive">Modifier le mot de passe</button>
+                <button class="button-inactive" disabled>Modifier le mot de passe</button>
 
                 <button type="submit" class="button">Mettre à jour le profil</button>
             </form>

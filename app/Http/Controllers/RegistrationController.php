@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Registration;
 use App\Models\Training;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller
 {
@@ -63,10 +64,10 @@ class RegistrationController extends Controller
 
     public function destroy($id)
     {
-        $registration = Registration::findOrFail($id);
+        $registration = Registration::where('training_id', $id)->where('user_id', Auth::id())->first();
         $registration->delete();
 
-        return redirect()->route('registration.index');
+        return back()->with('message', "Vous avez bien été désinscrit de l'entrainement");
     }
 
     public function show($id)
