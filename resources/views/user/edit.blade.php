@@ -11,9 +11,17 @@
                         :errors="$errors->firstname" />
                     <x-form.input-group type="text" name="lastname" placeholder="Nom" value="{{ $user->lastname }}" />
 
-                    <x-form.input-group type="select" name="region" placeholder="Région"
-                        value="{{ $user->license_number }}" :options="$regions" :user="$user" />
-
+                    <div class="flex flex-col gap-2 mt-2 whitespace-nowrap">
+                        <label for="region" class="font-bold">Région</label>
+                        <select name="region" id="region">
+                            <option value="" disabled>Choisissez votre région</option>
+                            @foreach ($regions as $region)
+                                <option value="{{ $region['nom'] }}"
+                                    {{ $user->region == $region['nom'] ? 'selected' : '' }}>
+                                    {{ $region['nom'] }} </option>
+                            @endforeach
+                        </select>
+                    </div>
 
                     <x-form.input-group type="text" name="city" placeholder="Ville" value="{{ $user->city }}" />
                     <x-form.input-group type="text" name="postal_code" placeholder="Code postal"

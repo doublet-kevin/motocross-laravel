@@ -11,6 +11,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Number;
+
+use function PHPUnit\Framework\isEmpty;
 
 class UserController extends Controller
 {
@@ -63,6 +67,24 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
+        $user = User::findOrFail($id);
+
+        //Check if email not exist in 'associate_email' column in licenses table
+        Validator::extend('uniqueEmailAndLicense', function ($attribute, $value, $parameters, $validator) use ($user) {
+            $mailUnchanged = $user->email === $value;
+            $licenseAlreadyUsed = License::where('associate_email', $value)->exists();
+
+            return $mailUnchanged || !$licenseAlreadyUsed;
+        });
+
+        //Check if license number is not already used
+        Validator::extend('licenseAlreadyUsed', function ($attribute, $value, $parameters, $validator) use ($user) {
+            $liceseUnchanged = $user->license_number === $value;
+            $licenseAlreadyUsed = License::where('license_number', $value)->exists();
+
+            return $liceseUnchanged || !$licenseAlreadyUsed;
+        });
+
         $validator = Validator::make($request->all(), [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
@@ -74,14 +96,15 @@ class UserController extends Controller
                 'string',
                 'email',
                 'max:255',
-                Rule::unique('users')->ignore($id),
+                Rule::unique('users')->ignore($user->id),
+                'unique_email_and_license:' . $user->id,
             ],
             'birth_date' => 'required|string|max:255|before:-12 years',
             'license_number' => [
                 'nullable',
                 'string',
                 'max:255',
-                Rule::exists('licenses', 'license_number')->whereNull('user_id')->where('associate_email', $request['email']),
+                'license_already_used:' . $user->id,
             ],
         ]);
 
@@ -90,13 +113,22 @@ class UserController extends Controller
             'email.unique' => "L'adresse email est déjà utilisée.",
             'birth_date.before' => "Vous devez avoir au moins 12 ans pour vous inscrire.",
             'required' => 'Le champs est requis.',
+            'unique_email_and_license' => 'L\'adresse email est déjà utilisée.',
+            'license_already_used' => 'Le numéro de licence est déjà utilisé.',
         ]);
 
         if ($validator->fails()) {
             throw ValidationException::withMessages($validator->errors()->toArray());
         }
 
-        $user = User::findOrFail($id);
+        $updateLicense = License::where('associate_email', $user->email)->where('user_id', $id)->first();
+        if ($updateLicense) {
+            $updateLicense->update([
+                'associate_email' => $request->email,
+                'user_id' => $user->id,
+            ]);
+        }
+
         $user->update([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,

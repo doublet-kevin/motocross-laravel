@@ -13,6 +13,7 @@
                 </tr>
             </thead>
             <tbody>
+                {{ $errors }}
                 @foreach ($licenses as $license)
                     <tr>
                         <td scope="row" class="w-24">
