@@ -18,7 +18,7 @@ class RegistrationFactory extends Factory
     {
         return [
             'user_id' => $this->faker->numberBetween(1, 160),
-            'training_id' => $this->faker->numberBetween(1, 16),
+            'training_id' => $this->faker->numberBetween(1, 20),
         ];
     }
 }

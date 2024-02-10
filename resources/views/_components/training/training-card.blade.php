@@ -15,46 +15,63 @@
             </div>
 
             <div class="flex items-center gap-2">
-                {{ $training->occupied_places }}/75
+                {{ $training->occupied_places ?? 'nan' }}/75
                 <img src='{{ Vite::asset('resources/images/icons/users.svg') }}' alt="users" class="w-5 h-5">
             </div>
         </div>
 
         <div class="flex gap-2">
-            @auth
+            @if ($training->date < date('Y-m-d'))
                 <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
                     pilotes</a>
-                @if (Auth::user()->isAdult() && $adult)
-                    @if (!Auth::user()->isRegistered($training->id))
-                        <form method="POST"
-                            action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
-                            @csrf
-                            <button type="submit" class="button">Participer</button>
-                        </form>
-                    @else
-                        <div class="button-disabled">
-                            <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
-                            <form method="POST" action="{{ route('registration.destroy', $training->id) }}">
+                <div class="button-disabled">
+                    <img src='{{ Vite::asset('resources/images/icons/exit.svg') }}' alt="calendar">
+                    <span>Terminé</span>
+                </div>
+            @else
+                <!-- If the user is authenticated -->
+                @auth
+                    <!-- Show pilote list button -->
+                    <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
+                        pilotes</a>
+                    <!-- If the user is an adult -->
+                    @if (Auth::user()->isAdult())
+                        @if (!Auth::user()->isRegistered($training->id))
+                            <form method="POST"
+                                action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
                                 @csrf
-                                @method('DELETE')
-                                <button type="submit">Se désinscrire</button>
+                                <button type="submit" class="button">Participer</button>
                             </form>
-                        </div>
+                        @else
+                            <div class="button-inactive">
+                                <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
+                                <form method="POST" action="{{ route('registration.destroy', $training->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Se désinscrire</button>
+                                </form>
+                            </div>
+                        @endif
+                        <!-- If the user is not an adult -->
+                    @elseif (!Auth::user()->isAdult())
+                        @if (!Auth::user()->isRegistered($training->id))
+                            <button type="submit" class="button">Participer</button>
+                        @else
+                            <div class="button-disabled">
+                                <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
+                                <form method="POST" action="{{ route('registration.destroy', $training->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Se désinscrire</button>
+                                </form>
+                            </div>
+                        @endif
                     @endif
-                @elseif (!Auth::user()->isAdult() && !$adult)
-                    @if (!Auth::user()->isRegistered($training->id))
-                        <button type="submit" class="button">Participer</button>
-                    @else
-                        <div class="button-disabled">
-                            <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
-                            <span>Déja inscrit</span>
-                        </div>
-                    @endif
-                @endif
-            @endauth
-            @guest
-                <button type="submit" class="w-full button">Participer</button>
-            @endguest
+                @endauth
+                @guest
+                    <button type="submit" class="w-full button">Participer</button>
+                @endguest
+            @endif
         </div>
 
         </form>

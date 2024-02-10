@@ -17,7 +17,7 @@
                 <div class="flex w-[350px] md:w-full gap-4">
                     @foreach ($adultTrainings as $adultTraining)
                         <x-training.training-card :training="$adultTraining"
-                            circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" adult />
+                            circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
                     @endforeach
                 </div>
             </div>

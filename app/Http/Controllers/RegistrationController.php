@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Registration;
 use App\Models\Training;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class RegistrationController extends Controller
@@ -25,10 +26,27 @@ class RegistrationController extends Controller
 
     public function store(Request $request)
     {
+        //Already register to this training
         $alereadyExist = Registration::where('training_id', $request->training_id)->where('user_id', $request->user_id)->first();
 
         if ($alereadyExist) {
             return back()->with('message', 'Vous êtes déjà inscrit à cet entrainement');
+        }
+
+        //Registration are closed
+        $training = Training::findOrFail($request->training_id);
+        if ($training->date < date('Y-m-d')) {
+            return back()->with('message', 'Les inscriptions à cet entrainement sont fermées');
+        }
+
+        //User is not allowd to register
+        $user = User::findOrFail($request->user_id);
+        $userYearsOld = Carbon::parse($user->birth_date)->age;
+        if (
+            $userYearsOld < 18 && $training->type === 'Pilote senior'
+            || $userYearsOld >= 18 && $training->type === 'Jeune pilote'
+        ) {
+            return back()->with('message', 'Vous n\'avez pas l\'âge pour vous inscrire à cet entrainement');
         }
 
         Registration::create([
@@ -64,7 +82,12 @@ class RegistrationController extends Controller
 
     public function destroy($id)
     {
+        $user = User::findOrFail(Auth::id());
+
         $registration = Registration::where('training_id', $id)->where('user_id', Auth::id())->first();
+        if ($user->id !== $registration->user_id && !$user->isAdmin()) {
+            return back()->with('message', "Vous n'avez pas les droits pour supprimer une inscription");
+        }
         $registration->delete();
 
         return back()->with('message', "Vous avez bien été désinscrit de l'entrainement");

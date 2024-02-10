@@ -14,6 +14,7 @@ class TrainingSeeder extends Seeder
      */
     public function run(): void
     {
-        Training::factory()->count(16)->create();
+        Training::factory()->count(10)->create(['type' => 'Jeune pilote']);
+        Training::factory()->count(10)->create(['type' => 'Pilote senior']);
     }
 }

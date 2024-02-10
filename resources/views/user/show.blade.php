@@ -25,9 +25,9 @@
                 <div class="flex flex-col gap-2">
                     <h2 class="pb-2 text-2xl font-bold underline text-primary">Entraînement effectuer</h2>
                     <div class="flex w-[350px] md:w-full gap-4">
-                        @foreach ($user->registrations as $registration)
-                            @if ($registration->training->date < date('Y-m-d'))
-                                <x-training.training-card :training="$registration->training"
+                        @foreach ($endedTrainings as $registration)
+                            @if ($registration->date < date('Y-m-d'))
+                                <x-training.training-card :training="$registration"
                                     circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
                             @endif
                         @endforeach
@@ -36,9 +36,9 @@
                 <div class="flex flex-col gap-2">
                     <h2 class="pb-2 text-2xl font-bold underline text-primary">Entraînement à venir</h2>
                     <div class="flex w-[350px] md:w-full gap-4">
-                        @foreach ($user->registrations as $registration)
-                            @if ($registration->training->date > date('Y-m-d'))
-                                <x-training.training-card :training="$registration->training"
+                        @foreach ($nextTrainings as $registration)
+                            @if ($registration->date > date('Y-m-d'))
+                                <x-training.training-card :training="$registration"
                                     circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" adult />
                             @endif
                         @endforeach

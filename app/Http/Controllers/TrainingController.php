@@ -29,7 +29,6 @@ class TrainingController extends Controller
         $young_pilot = $trainings->where('type', 'Jeune pilote');
         $veteran_pilot = $trainings->where('type', 'Pilote senior');
 
-
         return view('training.index')->with([
             'youngTrainings' => $young_pilot,
             'adultTrainings' => $veteran_pilot,
