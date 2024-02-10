@@ -72,7 +72,6 @@
             </tbody>
         </table>
         @if (session('message'))
-            {{ session('message') }}
             <script>
                 Toastify({
                     text: {!! json_encode(session('message')) !!},

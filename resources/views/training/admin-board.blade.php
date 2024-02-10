@@ -42,6 +42,7 @@
                             {{ $training->type }}
                         </td>
                         <td class="hidden md:table-cell">
+                            {{ $training->occupied_places }}/
                             {{ $training->max_participants }}
                         </td>
                     </tr>

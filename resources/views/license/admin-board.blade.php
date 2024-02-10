@@ -13,17 +13,13 @@
                 </tr>
             </thead>
             <tbody>
-                {{ $errors }}
                 @foreach ($licenses as $license)
                     <tr>
                         <td scope="row" class="w-24">
                             <div class="flex items-center justify-center gap-2">
-                                <x-admin.board.actions route="{{ route('user.destroy', $license->id) }}"
+                                <x-admin.board.actions route="{{ route('license.destroy', $license->id) }}"
                                     icon="{{ Vite::asset('resources/images/icons/trash.svg') }}" alt="Trash"
                                     method="DELETE" />
-
-                                <x-admin.board.actions route="{{ route('user.edit', $license->id) }}"
-                                    icon="{{ Vite::asset('resources/images/icons/edit.svg') }}" alt="Edit" />
                             </div>
                         </td>
                         <td>
@@ -43,6 +39,24 @@
                 @endforeach
             </tbody>
         </table>
+        @if (session('message'))
+            <script>
+                Toastify({
+                    text: {!! json_encode(session('message')) !!},
+                    duration: 3000,
+                    gravity: "top",
+                    position: "right",
+                    offset: {
+                        x: 20,
+                        y: '80vh'
+                    },
+                    style: {
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                    },
+                    onClick: function() {}
+                }).showToast();
+            </script>
+        @endif
     </div>
     <button onclick="window.location.href='{{ route('license.create') }}'"
         class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter une licence</button>

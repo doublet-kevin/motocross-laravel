@@ -58,7 +58,7 @@ class LicenseController extends Controller
         $license = License::findOrFail($id);
         $license->delete();
 
-        return redirect()->route('license.index');
+        return back()->with('message', 'License supprimé et utilisateur mis à jour');
     }
 
     public function board()

@@ -116,7 +116,14 @@ class TrainingController extends Controller
 
     public function board()
     {
-        $trainings = Training::all();
+        $trainings = Training::select(
+            'trainings.*',
+            DB::raw('COUNT(registrations.id) as occupied_places')
+        )
+            ->leftJoin('registrations', 'trainings.id', '=', 'registrations.training_id')
+            ->groupBy('trainings.id')
+            ->get();
+
         return view('training.admin-board', ['trainings' => $trainings]);
     }
 }
