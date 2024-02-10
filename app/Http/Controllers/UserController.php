@@ -167,7 +167,7 @@ class UserController extends Controller
 
     public function board()
     {
-        $users = User::all();
+        $users = User::paginate(10);
         return view('user.admin-board', ['users' => $users]);
     }
 }

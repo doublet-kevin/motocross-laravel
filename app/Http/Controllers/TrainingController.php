@@ -122,7 +122,7 @@ class TrainingController extends Controller
         )
             ->leftJoin('registrations', 'trainings.id', '=', 'registrations.training_id')
             ->groupBy('trainings.id')
-            ->get();
+            ->paginate(10);
 
         return view('training.admin-board', ['trainings' => $trainings]);
     }

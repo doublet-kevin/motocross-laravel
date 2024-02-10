@@ -68,7 +68,10 @@
             </script>
         @endif
     </div>
-    <button onclick="window.location.href='{{ route('training.create') }}'"
-        class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter un entraînement</button>
+
+    <div class="flex gap-8">
+        <a href="{{ route('training.create') }}" class="flex flex-grow col-span-3 button whitespace-nowrap">Ajouter un
+            entraînement</a>
+        <div>{{ $trainings->links('_components.navigation.pagination') }}</div>
     </div>
 @endsection

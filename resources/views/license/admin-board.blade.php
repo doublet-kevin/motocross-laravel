@@ -58,6 +58,9 @@
             </script>
         @endif
     </div>
-    <button onclick="window.location.href='{{ route('license.create') }}'"
-        class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter une licence</button>
+    <div class="flex gap-8">
+        <a href="{{ route('license.create') }}"
+            class="flex justify-center flex-grow col-span-3 button whitespace-nowrap">Ajouter une licence</a>
+        <div>{{ $licenses->links('_components.navigation.pagination') }}</div>
+    </div>
 @endsection

@@ -90,6 +90,9 @@
             </script>
         @endif
     </div>
-    <button onclick="window.location.href='{{ route('user.create') }}'"
-        class="flex justify-center col-span-3 button whitespace-nowrap">Ajouter un utilisateur</button>
+    <div class="flex gap-8">
+        <button onclick="window.location.href='{{ route('user.create') }}'"
+            class="flex flex-grow col-span-3 button whitespace-nowrap">Ajouter un utilisateur</button>
+        <div>{{ $users->links('_components.navigation.pagination') }}</div>
+    </div>
 @endsection

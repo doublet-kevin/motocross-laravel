@@ -74,7 +74,7 @@ class LicenseController extends Controller
 
     public function board()
     {
-        $licenses = License::all();
+        $licenses = License::paginate(10);
         return view('license.admin-board', ['licenses' => $licenses]);
     }
 }

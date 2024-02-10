@@ -30,7 +30,7 @@
             <li><a href="{{ route('license.board') }}" class="button-inactive">Licenses</a></li>
         </ul>
     </div>
-    <div class="admin-content">
+    <div class="flex flex-col gap-4">
         @yield('dashboard-content')
     </div>
 @endsection
