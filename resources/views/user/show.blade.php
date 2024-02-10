@@ -18,27 +18,51 @@
 @endpush
 @section('content')
 <div>
-    <h2 class="text-3xl font-bold">Entraînement effectuer</h2>
-</div>
-<div>
-    <h2 class="text-3xl font-bold">Entraînement à venir</h2>
-</div>
-@if (session('message'))
-    <script>
-        Toastify({
-            text: {!! json_encode(session('message')) !!},
-            duration: 3000,
-            gravity: "top",
-            position: "right",
-            offset: {
-                x: 20,
-                y: '80vh'
-            },
-            style: {
-                background: "linear-gradient(to right, #00b09b, #96c93d)",
-            },
-            onClick: function() {}
-        }).showToast();
-    </script>
-@endif
+    <div class="flex flex-col items-center gap-2">
+        <div class="flex flex-col w-full overflow-x-scroll gap-">
+
+            <div class="flex flex-col justify-center gap-4">
+                <div class="flex flex-col gap-2">
+                    <h2 class="pb-2 text-2xl font-bold underline text-primary">Entraînement effectuer</h2>
+                    <div class="flex w-[350px] md:w-full gap-4">
+                        @foreach ($user->registrations as $registration)
+                            @if ($registration->training->date < date('Y-m-d'))
+                                <x-training.training-card :training="$registration->training"
+                                    circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+                <div class="flex flex-col gap-2">
+                    <h2 class="pb-2 text-2xl font-bold underline text-primary">Entraînement à venir</h2>
+                    <div class="flex w-[350px] md:w-full gap-4">
+                        @foreach ($user->registrations as $registration)
+                            @if ($registration->training->date > date('Y-m-d'))
+                                <x-training.training-card :training="$registration->training"
+                                    circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" adult />
+                            @endif
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @if (session('message'))
+        <script>
+            Toastify({
+                text: {!! json_encode(session('message')) !!},
+                duration: 3000,
+                gravity: "top",
+                position: "right",
+                offset: {
+                    x: 20,
+                    y: '80vh'
+                },
+                style: {
+                    background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+                onClick: function() {}
+            }).showToast();
+        </script>
+    @endif
 @endsection

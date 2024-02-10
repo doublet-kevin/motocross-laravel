@@ -37,7 +37,7 @@
             @if (session('message'))
                 <script>
                     Toastify({
-                        text: " {{ session('message') }}",
+                        text: {!! json_encode(session('message')) !!},
                         duration: 2000,
                         gravity: "top",
                         position: "right",

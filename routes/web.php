@@ -110,7 +110,7 @@ Route::resource('registration', RegistrationController::class)->middleware('auth
 //Admin Registration routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('registration', RegistrationController::class)->only([
-        'index', 'create', 'destroy', 'edit', 'update', 'store'
+        'index', 'create', 'destroy', 'edit', 'update',
     ])->names([
         'index' => 'registration.index',
         'create' => 'registration.create',
