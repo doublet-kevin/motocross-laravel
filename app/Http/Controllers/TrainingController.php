@@ -18,12 +18,11 @@ class TrainingController extends Controller
 
         $trainings = Training::select(
             'trainings.*',
-            'type',
             DB::raw('COUNT(registrations.id) as occupied_places')
         )
             ->leftJoin('registrations', 'trainings.id', '=', 'registrations.training_id')
-            ->groupBy('trainings.id', 'type')
-            ->orderBy('date', 'desc')
+            ->groupBy('trainings.id', 'trainings.type', 'trainings.date', 'trainings.max_participants', 'trainings.circuit_id')
+            ->orderBy('trainings.date', 'desc')
             ->get();
 
         // Séparez les entraînements pour les enfants et les adultes
@@ -121,7 +120,7 @@ class TrainingController extends Controller
             DB::raw('COUNT(registrations.id) as occupied_places')
         )
             ->leftJoin('registrations', 'trainings.id', '=', 'registrations.training_id')
-            ->groupBy('trainings.id')
+            ->groupBy('trainings.id', 'trainings.type', 'trainings.date', 'trainings.max_participants', 'trainings.circuit_id')
             ->paginate(10);
 
         return view('training.admin-board', ['trainings' => $trainings]);
