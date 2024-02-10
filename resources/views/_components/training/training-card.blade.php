@@ -68,7 +68,11 @@
                         <!-- If the user is not an adult -->
                     @elseif (!Auth::user()->isAdult())
                         @if (!Auth::user()->isRegistered($training->id))
-                            <button type="submit" class="button">Participer</button>
+                            <form method="POST"
+                                action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
+                                @csrf
+                                <button type="submit" class="button">Participer</button>
+                            </form>
                         @else
                             <div class="button-disabled">
                                 <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
