@@ -104,11 +104,14 @@ class TrainingController extends Controller
         $training = Training::find($id);
         $training->delete();
 
-        // $circuit = Circuit::where('id', $id)->get();
+        $circuit = Circuit::where('id', $id)->get();
         // $destinataires = User::all();
         // foreach ($destinataires as $destinataire) {
         //     Mail::to($destinataire->email)->send(new EventMail($training, $circuit));
         // }
+
+
+        Mail::to('ahounoumeryl@yahoo.fr')->send(new EventMail($training, $circuit));
 
         return back()->with('message', 'L\'entraînement est annulé !');
     }
