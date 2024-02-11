@@ -7,7 +7,7 @@
         class="object-cover w-[350px] h-[100px] rounded-t-md border-b border-primary">
     <div class="flex flex-col p-2 ">
         <span class="text-xl font-bold text-primary">{{ $training->circuit->name }}</span>
-        @if (Carbon::parse($training->date)->isBefore(Carbon\Carbon::now()->subHours(12)))
+        @if (Carbon::parse($training->date)->isBefore(Carbon::now()->subHours(12)))
             <span class="text-sm font-bold text-red-500">Inscriptions fermés</span>
         @else
             @if ($training->type == 'Pilote senior')
