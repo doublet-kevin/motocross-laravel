@@ -7,7 +7,10 @@ use App\Models\Registration;
 use App\Models\Training;
 use App\Models\User;
 use Carbon\Carbon;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Auth;
+=======
+>>>>>>> efc2f7d (fix(controllers): fix registration controller. add constrain for max participants)
 
 class RegistrationController extends Controller
 {
