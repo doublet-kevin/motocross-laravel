@@ -66,7 +66,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
 //User User routes
 Route::resource('user', UserController::class)->only([
-    'show', 'create', 'destroy', 'edit', 'store', 'update'
+    'show', 'destroy', 'edit', 'update'
 ]);
 
 //Admin User routes

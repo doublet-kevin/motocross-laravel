@@ -91,8 +91,6 @@
         @endif
     </div>
     <div class="flex flex-col-reverse items-center justify-center gap-4 sm:flex-row whitespace-nowrap">
-        <button onclick="window.location.href='{{ route('user.create') }}'"
-            class="flex flex-grow w-full col-span-3 button whitespace-nowrap">Ajouter un utilisateur</button>
         <div>{{ $users->links('_components.navigation.pagination') }}</div>
     </div>
 @endsection
