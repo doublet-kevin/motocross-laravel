@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Registration;
 use App\Models\Training;
 use App\Models\User;
+use Carbon\Carbon;
 
 class RegistrationController extends Controller
 {
@@ -57,7 +58,8 @@ class RegistrationController extends Controller
                 'user_id' => $request->user_id,
             ]);
 
-        return back()->with('message', "Vous avez bien été inscrit à l'entrainement");
+            return back()->with('message', "Vous avez bien été inscrit à l'entrainement");
+        }
     }
 
     public function edit($id)
