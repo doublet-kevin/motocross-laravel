@@ -14,9 +14,11 @@ use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
 use App\Models\Training;
+use App\Actions\Fortify\PasswordValidationRules;
 
 class UserController extends Controller
 {
+    use PasswordValidationRules;
     public function create()
     {
         $clubs = Club::all();
@@ -27,33 +29,43 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+
+        $validator = Validator::make($request->all(), [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
             'region' => 'required|string|max:255',
             'city' => 'required|string|max:255',
             'postal_code' => 'required|string|max:5',
-            'email' => 'required|string|max:255',
-            'birth_date' => 'required|string|max:255',
-            'license_number' => 'unique:users,license_number|nullable|string|max:255',
-            'password' => 'required|string|max:255',
+            'birth_date' => 'required|string|max:255|before:-12 years',
+            'license_number' => [
+                'nullable',
+                'string',
+                'max:255',
+                Rule::exists('licenses', 'license_number')->whereNull('user_id')->where('associate_email', $request['email']),
+            ],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique(User::class),
+            ],
+            'password' => $this->passwordRules(),
+        ]);
+        $validator->setCustomMessages([
+            'license_number.exists' => "Le numéro de licence n'existe pas ou est déjà utilisé.",
+            'email.unique' => "L'adresse email est déjà utilisée.",
+            'birth_date.before' => "Vous devez avoir au moins 12 ans pour vous inscrire.",
+            'password.required' => 'Le mot de passe est requis.',
+            'password.min' => 'Le mot de passe doit contenir au moins 8 caractères.',
+            'password.confirmed' => 'Les mots de passe ne correspondent pas.',
         ]);
 
-        User::create([
-            "firstname" => $request->firstname,
-            "lastname" => $request->lastname,
-            "region" => $request->region,
-            "city" => $request->city,
-            "postal_code" => $request->postal_code,
-            "email" => $request->email,
-            "birth_date" => $request->birth_date,
-            "license_number" => $request->license_number,
-            "password" => $request->password,
-            "role_id" => 1,
-            "club_id" => 1,
-        ]);
+        if ($validator->fails()) {
+            throw ValidationException::withMessages($validator->errors()->toArray());
+        }
 
-        return redirect()->route('user.board');
+        return redirect()->route('user.board')->with('message', 'Le profil a été créé avec succès.');
     }
 
     public function edit($id)
