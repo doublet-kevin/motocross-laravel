@@ -35,9 +35,11 @@
 
         <div class="flex gap-2">
             @if ($training->date < date('Y-m-d'))
-                <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
-                    pilotes</a>
-                <div class="button-disabled">
+                @auth
+                    <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
+                        pilotes</a>
+                @endauth
+                <div class="flex-grow button-disabled">
                     <img src='{{ Vite::asset('resources/images/icons/exit.svg') }}' alt="calendar">
                     <span>Terminé</span>
                 </div>
@@ -48,7 +50,7 @@
                     <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
                         pilotes</a>
                     <!-- If the user is an adult -->
-                    @if (Auth::user()->isAdult())
+                    @if (Auth::user()->isAdult() && $training->type == 'Pilote senior')
                         @if (!Auth::user()->isRegistered($training->id))
                             <form method="POST"
                                 action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
@@ -67,7 +69,7 @@
                         @endif
                         <!-- If the user is not an adult -->
                     @elseif (!Auth::user()->isAdult())
-                        @if (!Auth::user()->isRegistered($training->id))
+                        @if (!Auth::user()->isRegistered($training->id) && $training->type == 'Jeune pilote')
                             <form method="POST"
                                 action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
                                 @csrf
