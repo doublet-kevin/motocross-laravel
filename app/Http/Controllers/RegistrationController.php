@@ -35,7 +35,7 @@ class RegistrationController extends Controller
 
         //Registration are closed
         $training = Training::findOrFail($request->training_id);
-        if ($training->date < date('Y-m-d')) {
+        if ($training->date < Carbon::now()->subHours(12)) {
             return back()->with('message', 'Les inscriptions à cet entrainement sont fermées');
         }
 
