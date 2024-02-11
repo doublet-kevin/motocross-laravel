@@ -105,16 +105,15 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
 //User Registration routes
 Route::resource('registration', RegistrationController::class)->middleware('auth')->only([
-    'store'
+    'store', 'destroy'
 ]);
 //Admin Registration routes
 Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('registration', RegistrationController::class)->only([
-        'index', 'create', 'destroy', 'edit', 'update',
+        'index', 'create', 'edit', 'update',
     ])->names([
         'index' => 'registration.index',
         'create' => 'registration.create',
-        'destroy' => 'registration.destroy',
         'edit' => 'registration.edit',
         'update' => 'registration.update',
     ]);

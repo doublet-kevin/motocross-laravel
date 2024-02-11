@@ -7,7 +7,7 @@
                 @method('PUT')
                 <h2 class="text-4xl font-bold text-accent">Modification de l'entraînement</h2>
                 <div class="grid items-end grid-cols-4 gap-x-8">
-                    <x-form.input-group type="date" name="date" placeholder="Date"
+                    <x-form.input-group type="datetime-local" name="date" placeholder="Date"
                         value="{{ \Carbon\Carbon::parse($training->date)->format('Y-m-d') }}" :errors="$errors->date" />
                     <x-form.input-group type="time" name="time" placeholder="Heure"
                         value="{{ \Carbon\Carbon::parse($training->date)->format('H:i') }}" />

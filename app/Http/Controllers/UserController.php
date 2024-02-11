@@ -6,15 +6,14 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Club;
 use App\Models\License;
+use App\Models\Registration;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Number;
-
-use function PHPUnit\Framework\isEmpty;
+use App\Models\Training;
 
 class UserController extends Controller
 {
@@ -167,8 +166,30 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::findOrFail($id);
-        $trainingsHistory = $user->registrations->map->training;
-        return view('user.show', ['user' => $user, 'trainingsHistory' => $trainingsHistory]);
+
+        $endedTrainings = Training::select(
+            'trainings.*',
+            DB::raw('(SELECT COUNT(*) FROM registrations WHERE registrations.training_id = trainings.id) as occupied_places')
+        )
+            ->leftJoin('registrations', 'trainings.id', '=', 'registrations.training_id')
+            ->where('registrations.user_id', $id)
+            ->where('trainings.date', '<', now())
+            ->groupBy('trainings.id', 'trainings.type', 'trainings.date', 'trainings.max_participants', 'trainings.circuit_id')
+            ->orderBy('trainings.date', 'desc')
+            ->get();
+
+        $nextTrainings = Training::select(
+            'trainings.*',
+            DB::raw('(SELECT COUNT(*) FROM registrations WHERE registrations.training_id = trainings.id) as occupied_places')
+        )
+            ->leftJoin('registrations', 'trainings.id', '=', 'registrations.training_id')
+            ->where('registrations.user_id', $id)
+            ->where('trainings.date', '>', now())
+            ->groupBy('trainings.id', 'trainings.type', 'trainings.date', 'trainings.max_participants', 'trainings.circuit_id')
+            ->orderBy('trainings.date', 'desc')
+            ->get();
+
+        return view('user.show', ['user' => $user, 'endedTrainings' => $endedTrainings, 'nextTrainings' => $nextTrainings]);
     }
 
     public function board()

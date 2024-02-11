@@ -3,8 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Registration;
+use App\Models\Training;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
+use Carbon\Carbon;
+
 
 class RegistrationSeeder extends Seeder
 {
@@ -13,21 +17,27 @@ class RegistrationSeeder extends Seeder
      */
     public function run(): void
     {
-        Registration::create([
-            'user_id' => '1',
-            'training_id' => '1',
-        ]);
+        $youngPilots = User::whereDate('birth_date', '>', Carbon::now()->subYears(18))
+            ->get();
+        $seniorPilot = User::whereDate('birth_date', '<=', Carbon::now()->subYears(18))
+            ->get();
 
-        Registration::create([
-            'user_id' => '2',
-            'training_id' => '2',
-        ]);
+        for ($i = 0; $i < 200; $i++) {
+            Registration::factory()->create(
+                [
+                    'user_id' => $youngPilots->random()->id,
+                    'training_id' => Training::all()->where('type', 'Jeune pilote')->random()->id
+                ]
+            );
+        }
 
-        Registration::create([
-            'user_id' => '3',
-            'training_id' => '3',
-        ]);
-
-        Registration::factory(400)->create();
+        for ($i = 0; $i < 200; $i++) {
+            Registration::factory()->create(
+                [
+                    'user_id' => $seniorPilot->random()->id,
+                    'training_id' => Training::all()->where('type', 'Pilote senior')->random()->id
+                ]
+            );
+        }
     }
 }
