@@ -1,3 +1,6 @@
+![image](https://github.com/doublet-kevin/motocross-laravel/assets/91097262/a2f61552-13f5-4581-869b-b9d9081d2e9c)
+
+
 # Gestion des Inscriptions d'Entraînement de Moto-Cross - Cahier des charges
 
 ## Présentation
