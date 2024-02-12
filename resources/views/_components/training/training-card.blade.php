@@ -28,7 +28,7 @@
             </div>
 
             <div class="flex items-center gap-2">
-                {{ $training->occupied_places }}/{{ $training->max_participants}}
+                {{ $training->occupied_places }}/{{ $training->max_participants }}
                 <img src='{{ Vite::asset('resources/images/icons/users.svg') }}' alt="users" class="w-5 h-5">
             </div>
         </div>
@@ -68,8 +68,8 @@
                             </div>
                         @endif
                         <!-- If the user is not an adult -->
-                    @elseif (!Auth::user()->isAdult())
-                        @if (!Auth::user()->isRegistered($training->id) && $training->type == 'Jeune pilote')
+                    @elseif (!Auth::user()->isAdult() && $training->type == 'Jeune pilote')
+                        @if (!Auth::user()->isRegistered($training->id))
                             <form method="POST"
                                 action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
                                 @csrf
