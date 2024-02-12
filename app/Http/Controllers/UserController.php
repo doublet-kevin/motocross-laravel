@@ -205,9 +205,27 @@ class UserController extends Controller
         return view('user.show', ['user' => $user, 'endedTrainings' => $endedTrainings, 'nextTrainings' => $nextTrainings]);
     }
 
-    public function board()
+    public function board(Request $request)
     {
-        $users = User::paginate(10);
-        return view('user.admin-board', ['users' => $users]);
+
+        $query = User::query();
+
+        if ($request->has('search_email')) {
+            $searchMail = $request->input('search_email');
+            $query->where('email', 'like', $searchMail . '%');
+        }
+
+        if ($request->has('search_name')) {
+            $searchName = $request->input('search_name');
+            $query->where('lastname', 'like', $searchName . '%');
+        }
+
+        $users = $query->paginate(10);
+
+        return view('user.admin-board', [
+            'users' => $users,
+            'searchMail' => $searchMail ?? null,
+            'searchName' => $searchName ?? null,
+        ]);
     }
 }

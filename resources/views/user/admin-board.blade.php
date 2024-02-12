@@ -1,5 +1,23 @@
 @extends('board-layout')
 @section('dashboard-content')
+    <div class="search-results">
+        @if (isset($searchMail))
+            <p>Résultats de la recherche par e-mail pour : {{ $searchMail }}</p>
+        @endif
+
+        @if (isset($searchName))
+            <p>Résultats de la recherche par nom de famille pour : {{ $searchName }}</p>
+        @endif
+    </div>
+    <form method="GET" action="{{ route('user.board') }}">
+        <input type="text" name="search_email" placeholder="Rechercher par e-mail">
+        <button type="submit">Rechercher</button>
+    </form>
+    <form method="GET" action="{{ route('user.board') }}">
+        <input type="text" name="search_name" placeholder="Rechercher par nom de famille">
+        <button type="submit">Rechercher</button>
+    </form>
+    </th>
     <div class="table-container">
         <table>
             <thead>
