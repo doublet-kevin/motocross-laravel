@@ -15,6 +15,8 @@
             @auth
                 @if (Auth::user()->isAdmin())
                     <x-navigation.nav-item name="Administration" route="{{ route('user.board') }}" />
+                @else
+                    <x-navigation.nav-item name="Mon profil" route="{{ route('user.show', Auth::id()) }}" />
                 @endif
                 <x-navigation.nav-item name="Déconnexion" route="{{ route('logout') }}" method="POST" />
             @endauth

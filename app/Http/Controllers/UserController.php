@@ -71,6 +71,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
+        $this->authorize('update', $user);
         $clubs = Club::all();
         $regions = Http::get('https://geo.api.gouv.fr/regions')->json();
         return view('user.edit', ['user' => $user, 'clubs' => $clubs, 'regions' => $regions]);

@@ -69,7 +69,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
 
 
 //User User routes
-Route::resource('user', UserController::class)->only([
+Route::resource('user', UserController::class)->middleware('auth')->only([
     'show', 'destroy', 'edit', 'update'
 ]);
 
