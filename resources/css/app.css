@@ -25,6 +25,11 @@ textarea {
     @apply bg-transparent border border-light text-light focus:outline-none rounded-lg focus:ring-primary focus:border-primary block w-full p-2.5;
 }
 
+select option {
+    background-color: var(--light-color); /* Changer en fonction de votre couleur préférée */
+    color: var(--dark-color);
+}
+
 .button {
     @apply block bg-orange-500 hover:bg-orange-600 duration-500 items-center px-3 py-2 gap-2 font-medium text-center rounded-lg  focus:ring-4 focus:outline-none;
 }
