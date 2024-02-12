@@ -28,12 +28,12 @@
             </div>
 
             <div class="flex items-center gap-2">
-                {{ $training->occupied_places }}/{{ $training->max_participants}}
+                {{ $training->occupied_places }}/{{ $training->max_participants }}
                 <img src='{{ Vite::asset('resources/images/icons/users.svg') }}' alt="users" class="w-5 h-5">
             </div>
         </div>
 
-        <div class="flex gap-2">
+        <div class="flex gap-2 items-center">
             @if ($training->date < date('Y-m-d'))
                 @auth
                     <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
@@ -52,7 +52,7 @@
                     <!-- If the user is an adult -->
                     @if (Auth::user()->isAdult() && $training->type == 'Pilote senior')
                         @if (!Auth::user()->isRegistered($training->id))
-                            <form method="POST"
+                            <form class="mb-0" method="POST"
                                 action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
                                 @csrf
                                 <button type="submit" class="button">Participer</button>

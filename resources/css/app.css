@@ -98,3 +98,20 @@ select option {
     clip-path: polygon(20% 0, 100% 0, 80% 100%, 0 100%);
     object-fit: cover;
 }
+
+
+::-webkit-scrollbar {
+    @apply w-[12px] h-[12px] bg-black;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-secondary rounded-lg ;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-accent rounded-lg bg-green-500;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary  rounded-lg;
+}

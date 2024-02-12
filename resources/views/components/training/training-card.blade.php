@@ -23,9 +23,9 @@
         <form method="POST"
             action="{{ route('registration.store', ['id_training' => $training->id, 'id_user' => Auth::id()]) }}">
             @csrf
-            <div class="flex gap-2">
+            <div class="flex gap-2 items-center">
                 @auth
-                    <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
+                    <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive h-min">Liste des
                         pilotes</a>
                     @if (Auth::user()->isAdult() && $adult)
                         <button type="submit" class="button">Participer</button>
