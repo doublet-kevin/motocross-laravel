@@ -24,7 +24,18 @@
         <x-navigation.nav-item name="Accueil" route="{{ route('home') }}" />
         <x-navigation.nav-item name="Notre circuit" route="{{ route('circuit.index') }}" />
         <x-navigation.nav-item name="Nos entraînements" route="{{ route('training.index') }}" />
-        <x-navigation.nav-item name="Connexion" route="{{ route('login') }}" />
-        <x-navigation.nav-item name="Créer un compte" route="{{ route('register') }}" />
+        @guest
+            <x-navigation.nav-item name="Connexion" route="{{ route('login') }}" />
+            <x-navigation.nav-item name="Créer un compte" route="{{ route('register') }}" />
+        @endguest
+        @auth
+            @if (Auth::user()->isAdmin())
+                <x-navigation.nav-item name="Administration" route="{{ route('user.board') }}" />
+            @else
+                <x-navigation.nav-item name="Mon profil" route="{{ route('user.show', Auth::id()) }}" />
+            @endif
+            <x-navigation.nav-item name="Déconnexion" route="{{ route('logout') }}" method="POST" />
+        @endauth
+
     </ul>
 </div>
