@@ -7,7 +7,7 @@
 @endpush
 @vite('resources/css/admin.css')
 @section('content')
-    <ul class="hidden gap-4 py-4 mx-4 sm:flex lg:mx-0">
+    <ul class="hidden gap-4 py-4  sm:flex lg:mx-0">
         <li><a href="{{ route('user.board') }}" class="button-inactive">Utilisateurs</a></li>
         <li><a href="{{ route('training.board') }}" class="button-inactive">Entraînements</a></li>
         <li><a href="{{ route('circuit.board') }}" class="button-inactive">Circuits</a></li>
