@@ -28,7 +28,7 @@
             </div>
 
             <div class="flex items-center gap-2">
-                {{ $training->occupied_places ?? 'nan' }}/75
+                {{ $training->occupied_places }}/{{ $training->max_participants}}
                 <img src='{{ Vite::asset('resources/images/icons/users.svg') }}' alt="users" class="w-5 h-5">
             </div>
         </div>

@@ -22,7 +22,7 @@ class RegistrationSeeder extends Seeder
         $seniorPilot = User::whereDate('birth_date', '<=', Carbon::now()->subYears(18))
             ->get();
 
-        for ($i = 0; $i < 200; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Registration::factory()->create(
                 [
                     'user_id' => $youngPilots->random()->id,
@@ -31,7 +31,7 @@ class RegistrationSeeder extends Seeder
             );
         }
 
-        for ($i = 0; $i < 200; $i++) {
+        for ($i = 0; $i < 100; $i++) {
             Registration::factory()->create(
                 [
                     'user_id' => $seniorPilot->random()->id,
