@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
+use Illuminate\Support\Facades\Http;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -48,7 +49,8 @@ class FortifyServiceProvider extends ServiceProvider
         });
 
         Fortify::registerView(function () {
-            return view('auth.register');
+            $regions = Http::get('https://geo.api.gouv.fr/regions')->json();
+            return view('auth.register', ['regions' => $regions]);
         });
     }
 }

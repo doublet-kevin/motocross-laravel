@@ -23,8 +23,15 @@
                             placeholder="Confirmer le mot de passe" required />
                     </div>
                     <div class="col-span-2">
-                        <x-form.input-group type="text" name="region" placeholder="Région" value="{{ old('region') }}"
-                            required />
+                        <label for="region" class="font-bold">Région *</label>
+                        <select name="region" id="region" required>
+                            <option value="" disabled>Sélectionnez votre région</option>
+                            @foreach ($regions as $region)
+                                <option value="{{ $region['nom'] }}" @if(old('region') == $region['nom']) selected @endif>
+                                    {{ $region['nom'] }}
+                                </option>
+                            @endforeach
+                        </select>
                     </div>
                     <x-form.input-group type="text" name="city" placeholder="Ville" value="{{ old('city') }}"
                         required />

@@ -3,7 +3,6 @@
 namespace App\Actions\Fortify;
 
 use App\Models\License;
-use App\Models\License;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Hash;
@@ -23,7 +22,7 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-        $validator = Validator::make($input, [
+
         $validator = Validator::make($input, [
             'firstname' => 'required|string|max:255',
             'lastname' => 'required|string|max:255',
