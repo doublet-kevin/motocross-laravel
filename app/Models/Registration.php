@@ -26,5 +26,5 @@ class Registration extends Model
         return $this->belongsTo(Training::class);
     }
 
-    public $timestamps = false;
+    public $timestamps = true;
 }

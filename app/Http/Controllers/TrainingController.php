@@ -10,6 +10,12 @@ use App\Mail\EventMail;
 use App\Models\Registration;
 use Illuminate\Support\Facades\Mail;
 use App\Models\User;
+use League\Csv\Writer;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
+use Dompdf\Dompdf;
+
 
 class TrainingController extends Controller
 {
@@ -42,6 +48,78 @@ class TrainingController extends Controller
         $training = Training::find($id);
         $participants = $training->registrations->map->user;
         return view('training.show', ['training' => $training, 'participants' => $participants]);
+    }
+
+    public function dlPilotsPDF($id)
+    {
+
+        $training = Training::find($id);
+
+        $pilots = $training->registrations->map(function ($registration) {
+            return [
+                'Prenom' => $registration->user->firstname,
+                'Nom' => $registration->user->lastname,
+                'Inscrit_le' => Carbon::parse($registration->user->created_at)->format('d/m/Y à H:i'),
+            ];
+        });
+
+        // Création du contenu HTML pour le PDF
+        $html = '<h1>Liste des pilotes</h1><table><tr><th>Prénom</th><th>Nom</th><th>Inscrit le</th></tr>';
+        foreach ($pilots as $pilot) {
+            $html .= '<tr><td>' . $pilot['Prenom'] . '</td><td>' . $pilot['Nom'] . '</td><td>' . $pilot['Inscrit_le'] . '</td></tr>';
+        }
+        $html .= '</table>';
+
+        // Instanciation de Dompdf
+        $dompdf = new Dompdf();
+
+        // Chargement du contenu HTML dans Dompdf
+        $dompdf->loadHtml($html);
+
+        // Génération du PDF
+        $dompdf->render();
+
+        // Téléchargement du PDF avec un nom de fichier spécifié
+        return $dompdf->stream('pilots.pdf');
+    }
+
+    public function dlPilotsCSV($id)
+    {
+        $training = Training::find($id);
+
+        $pilots = $training->registrations->map(function ($registration) {
+            return [
+                'Prenom' => $registration->user->firstname,
+                'Nom' => $registration->user->lastname,
+                'Inscrit_le' => Carbon::parse($registration->user->created_at)->format('d/m/Y à H:i'),
+            ];
+        });
+
+        $csv = Writer::createFromString('');
+        $csv->insertOne(['Prenom', 'Nom', 'Inscrit_le']);
+
+        foreach ($pilots as $pilot) {
+            $csv->insertOne([$pilot['Prenom'], $pilot['Nom'], $pilot['Inscrit_le']]);
+        }
+
+        // Enregistrement du contenu CSV dans un fichier temporaire dans le stockage Laravel
+        $filePath = 'temp/pilots.csv';
+        Storage::put($filePath, $csv->toString());
+
+        // Récupération du contenu du fichier temporaire
+        $fileContent = Storage::get($filePath);
+
+        // Suppression du fichier temporaire après récupération de son contenu
+        Storage::delete($filePath);
+
+        // Création de la réponse avec le contenu CSV
+        $response = new Response($fileContent, 200, [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename="pilots.csv"',
+        ]);
+
+        // Retour de la réponse pour télécharger le fichier CSV
+        return $response;
     }
 
     public function create()
@@ -84,7 +162,7 @@ class TrainingController extends Controller
             'circuit_id' => 'required',
             'date' => 'required',
             'type' => 'required',
-            'max_participants' => 'required|numeric',
+            'max_participants' => 'required',
         ]);
 
         $training = Training::find($id);
