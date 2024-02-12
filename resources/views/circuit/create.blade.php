@@ -1,21 +1,22 @@
 @extends('layout')
 @section('title')
-    <div>
-        <button onclick="window.location.href='{{ route('training.board') }}'"
-            class="flex justify-center col-span-3 button whitespace-nowrap">Revenir au tableau des circuits</button>
+    <div class="w-full">
+        <button onclick="window.location.href='{{ route('circuit.board') }}'"
+            class="flex  col-span-3 button whitespace-nowrap mb-4">Revenir au Dashboard</button>
     </div>
-    <h1>
-        Créer un nouveau circuit
-    </h1>
 @endsection
 @section('content')
-    <form action="{{ route('circuit.store') }}" method="POST">
-        @csrf
-        <label for="circuit_name">Nom du circuit</label>
-        <input type="text" name="name" id="name">
-        <br>
+    <div class="flex w-full max-w-5xl m-auto border rounded-md shadow-2xl md:border-2 border-primary backdrop-blur-lg">
+        <div class="flex flex-grow p-8">
+            <form action="{{ route('circuit.store') }}" method="POST" class="flex flex-col flex-grow gap-4">
+                @csrf
+                <h2 class="text-4xl font-bold text-accent">Ajout d'un nouveau circuit</h2>
+                <x-form.input-group type="text" name="name" placeholder="Nom du circuit" required />
+                <label for="description" class="font-bold">Description</label>
+                <textarea name="description" id="" cols="30" rows="5"></textarea>
 
-        <button type="submit">Créer le circuit</button>
-    </form>
-    </body>
+                <button type="submit" class="button">Créer le circuit</button>
+            </form>
+        </div>
+    </div>
 @endsection

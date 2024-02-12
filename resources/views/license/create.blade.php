@@ -1,9 +1,8 @@
 @extends('layout')
 @section('title')
-    <div>
+    <div class="w-full">
         <button onclick="window.location.href='{{ route('license.board') }}'"
-            class="flex justify-center col-span-3 button whitespace-nowrap">Revenir au tableau de bord des
-            licences</button>
+            class="flex  col-span-3 button whitespace-nowrap mb-4">Revenir au Dashboard</button>
     </div>
 @endsection
 @section('content')

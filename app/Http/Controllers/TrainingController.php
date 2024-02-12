@@ -145,7 +145,7 @@ class TrainingController extends Controller
             "max_participants" => $request->max_participants,
         ]);
 
-        return redirect()->route('training.index');
+        return redirect()->route('training.board')->with('message', "L'entraînement à bien été créer !");
     }
 
     public function edit($id)
