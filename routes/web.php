@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CircuitController;
 use App\Http\Controllers\TrainingController;
 use App\Http\Controllers\UserController;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 //User Circuits routes
 Route::resource('circuit', CircuitController::class)->only([

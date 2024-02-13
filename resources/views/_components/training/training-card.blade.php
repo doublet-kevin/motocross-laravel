@@ -2,7 +2,7 @@
 @php
     use Carbon\Carbon;
 @endphp
-<div class="flex flex-col w-[350px] overflow-hidden border rounded-md border-primary shrink-0">
+<div class="flex flex-col w-[350px] overflow-hidden border text-start rounded-md border-primary shrink-0">
     <img src="{{ $circuitImg }}" alt="circuit"
         class="object-cover w-[350px] h-[100px] rounded-t-md border-b border-primary">
     <div class="flex flex-col p-2 ">
@@ -17,8 +17,8 @@
             @endif
         @endif
 
-        <div class="flex justify-between gap-4 pb-2">
-            <div class="flex items-center gap-2">
+        <div class="flex justify-between font-normal gap-4 pb-2">
+            <div class="flex items-center  gap-2">
                 {{ date('d/m/Y', strtotime($training->date)) }}
                 <img src='{{ Vite::asset('resources/images/icons/calendar.svg') }}' alt="calendar" class="w-4 h-4">
             </div>
@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="flex gap-2">
+        <div class="flex gap-2 items-center">
             @if ($training->date < date('Y-m-d'))
                 @auth
                     <a href="{{ route('training.show', $training->id) }}" class="flex-grow button-inactive">Liste des
@@ -52,7 +52,7 @@
                     <!-- If the user is an adult -->
                     @if (Auth::user()->isAdult() && $training->type == 'Pilote senior')
                         @if (!Auth::user()->isRegistered($training->id))
-                            <form method="POST"
+                            <form class="mb-0" method="POST"
                                 action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
                                 @csrf
                                 <button type="submit" class="button">Participer</button>
@@ -60,7 +60,8 @@
                         @else
                             <div class="button-inactive">
                                 <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
-                                <form method="POST" action="{{ route('registration.destroy', $training->id) }}">
+                                <form method="POST" action="{{ route('registration.destroy', $training->id) }}"
+                                    class="m-0">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit">Se désinscrire</button>
@@ -78,7 +79,8 @@
                         @else
                             <div class="button-disabled">
                                 <img src='{{ Vite::asset('resources/images/icons/check.svg') }}' alt="calendar">
-                                <form method="POST" action="{{ route('registration.destroy', $training->id) }}">
+                                <form method="POST" action="{{ route('registration.destroy', $training->id) }}"
+                                    class="m-0">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit">Se désinscrire</button>

@@ -23,19 +23,21 @@ table tbody tr td:first-child {
     @apply font-medium border-r border-primary whitespace-nowrap;
 }
 
-/* Scrollbar */
+
+/* scrollbar */
+
 .board-scroll::-webkit-scrollbar {
-    @apply w-[12px] h-[12px];
+    @apply w-[12px] h-[12px] bg-black;
 }
 
 .board-scroll::-webkit-scrollbar-track {
-    @apply bg-secondary rounded-b-lg;
+    @apply bg-secondary rounded-lg ;
 }
 
 .board-scroll::-webkit-scrollbar-thumb {
-    @apply bg-accent rounded-b-lg;
+    @apply bg-accent rounded-lg bg-primary;
 }
 
 .board-scroll::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary;
+    @apply bg-primary  rounded-lg bg-orange-500;
 }

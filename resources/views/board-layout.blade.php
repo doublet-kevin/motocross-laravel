@@ -11,7 +11,7 @@
         <li><a href="{{ route('user.board') }}" class="button-inactive">Utilisateurs</a></li>
         <li><a href="{{ route('training.board') }}" class="button-inactive">Entraînements</a></li>
         <li><a href="{{ route('circuit.board') }}" class="button-inactive">Circuits</a></li>
-        <li><a href="{{ route('license.board') }}" class="button-inactive">Licenses</a></li>
+        <li><a href="{{ route('license.board') }}" class="button-inactive">Licences</a></li>
     </ul>
 
     <div x-data="{ open: false }" class="flex flex-col m-4 sm:hidden lg:mx-0">

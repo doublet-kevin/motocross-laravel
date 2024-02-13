@@ -60,7 +60,7 @@
                 </a>
             @endforeach
             @for ($i = 1; $i <= 75 - $participants->count(); $i++)
-                <div class="p-1 text-center border rounded-lg border-primary backdrop-blur-lg w-[120px] h-[60px]">
+                <div class="p-1 text-center border rounded-lg border-green-300 backdrop-blur-lg w-[120px] h-[60px]">
                     Place disponible
                 </div>
             @endfor

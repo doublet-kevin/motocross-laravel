@@ -10,14 +10,20 @@
             <img class="shadow-2xl header-img" src="{{ Vite::asset('resources/images/moto-header-4.jpg') }}" alt="Image 4">
             <img class="shadow-2xl header-img" src="{{ Vite::asset('resources/images/moto-header-5.png') }}" alt="Image 4">
         </div>
-        <div
-            class="grid max-w-6xl gap-8 m-auto mx-6 my-20 font-bold text-center lg:grid-cols-2 text-light lg:text-start lg:mx-auto">
+        <div class="flex flex-col max-w-6xl gap-8 m-auto mx-6 my-10 font-bold text-center text-light lg:mx-auto">
             <h1 class="text-4xl">
                 Commencer l'aventure maintenant en rejoignant le club motocross
                 <span class="text-primary">d'Auribail</span>
                 !
             </h1>
+
             <h1 class="text-4xl">Les prochains entrainements</h1>
+            <div class="flex gap-4 justify-center w-full">
+                <x-training.training-card :training="$nextJuniorTraining"
+                    circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
+                <x-training.training-card :training="$nextSeniorTraining"
+                    circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
+            </div>
         </div>
         <div class="flex flex-col items-center justify-center w-full p-2 mb-8 lg:flex-row gap-x-10 lg:px-4">
             <x-home.card title="technology acquisitions 2021" button="Learn more" link="/">

@@ -27,7 +27,7 @@
                         <select name="region" id="region" required>
                             <option value="" disabled>Sélectionnez votre région</option>
                             @foreach ($regions as $region)
-                                <option value="{{ $region['nom'] }}" @if(old('region') == $region['nom']) selected @endif>
+                                <option value="{{ $region['nom'] }}" @if (old('region') == $region['nom']) selected @endif>
                                     {{ $region['nom'] }}
                                 </option>
                             @endforeach
