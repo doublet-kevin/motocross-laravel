@@ -18,7 +18,7 @@
             </h1>
 
             <h1 class="text-4xl">Les prochains entrainements</h1>
-            <div class="flex gap-4 justify-center w-full">
+            <div class="flex flex-col md:flex-row items-center gap-4 justify-center w-full">
                 <x-training.training-card :training="$nextJuniorTraining"
                     circuitImg="{{ Vite::asset('resources/images/circuit-1.jpg') }}" />
                 <x-training.training-card :training="$nextSeniorTraining"

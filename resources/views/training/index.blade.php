@@ -8,6 +8,7 @@
 @section('title')
     <h1 class="pb-4 text-4xl font-bold text-center">Inscrivez-vous sur les prochains <span
             class="text-primary">entraînements</span></h1>
+    <span class="flex text-red-500 mb-2">Les inscriptions sont ouverte jusqu'à 12h avant l'entraînement</span>
 @endsection
 @section('content')
     <div class="flex flex-col items-center gap-2">
@@ -57,7 +58,7 @@
         <div class="flex flex-col">
             <span class="flex ">(*) Les sessions jeunes pilotes sont accessibles pour les 12-18
                 ans</span>
-            <span class="flex text-red-500">Les inscriptions sont ouverte jusqu'à 12h avant l'entraînement</span>
+
         </div>
     </div>
 @endsection
