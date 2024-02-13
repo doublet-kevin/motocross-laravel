@@ -30,7 +30,7 @@
                         <input type="radio" id="type" name="type" value="Jeune pilote" class="w-min mb-0.5" />
                     </div>
                 </fieldset>
-                <x-form.input-group type="number" name="max_participants" placeholder="Nomre de places max." required />
+                <x-form.input-group type="number" name="max_participants" placeholder="Nombre de places max." required />
                 <button type="submit" class="button">Créer l'entraînement</button>
             </form>
         </div>
