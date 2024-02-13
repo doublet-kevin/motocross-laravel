@@ -10,8 +10,7 @@
             <img class="shadow-2xl header-img" src="{{ Vite::asset('resources/images/moto-header-4.jpg') }}" alt="Image 4">
             <img class="shadow-2xl header-img" src="{{ Vite::asset('resources/images/moto-header-5.png') }}" alt="Image 4">
         </div>
-        <div
-            class="flex flex-col max-w-6xl gap-8 m-auto mx-6 my-20 font-bold text-center text-light lg:text-start lg:mx-auto">
+        <div class="flex flex-col max-w-6xl gap-8 m-auto mx-6 my-10 font-bold text-center text-light lg:mx-auto">
             <h1 class="text-4xl">
                 Commencer l'aventure maintenant en rejoignant le club motocross
                 <span class="text-primary">d'Auribail</span>
