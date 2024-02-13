@@ -35,9 +35,9 @@ table tbody tr td:first-child {
 }
 
 .board-scroll::-webkit-scrollbar-thumb {
-    @apply bg-accent rounded-lg bg-green-500;
+    @apply bg-accent rounded-lg bg-primary;
 }
 
 .board-scroll::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary  rounded-lg;
+    @apply bg-primary  rounded-lg bg-orange-500;
 }

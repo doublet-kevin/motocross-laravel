@@ -109,9 +109,9 @@ select option {
 }
 
 ::-webkit-scrollbar-thumb {
-    @apply bg-accent rounded-lg bg-green-500;
+    @apply bg-accent rounded-lg bg-primary;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary  rounded-lg;
+    @apply bg-primary  rounded-lg bg-orange-500;
 }
