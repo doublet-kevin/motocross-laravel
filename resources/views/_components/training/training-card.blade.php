@@ -71,7 +71,7 @@
                         <!-- If the user is not an adult -->
                     @elseif (!Auth::user()->isAdult() && $training->type == 'Jeune pilote')
                         @if (!Auth::user()->isRegistered($training->id))
-                            <form method="POST"
+                            <form class="mb-0" method="POST"
                                 action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
                                 @csrf
                                 <button type="submit" class="button">Participer</button>

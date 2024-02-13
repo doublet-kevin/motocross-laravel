@@ -12,7 +12,7 @@
         </div>
         <div class="flex flex-col max-w-6xl gap-8 m-auto mx-6 my-10 font-bold text-center text-light lg:mx-auto">
             <h1 class="text-4xl">
-                Commencer l'aventure maintenant en rejoignant le club motocross
+                Commencez l'aventure maintenant en rejoignant le club motocross
                 <span class="text-primary">d'Auribail</span>
                 !
             </h1>
