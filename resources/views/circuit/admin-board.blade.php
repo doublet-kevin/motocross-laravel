@@ -21,7 +21,7 @@
                                 <x-admin.board.actions route="{{ route('circuit.edit', $circuit->id) }}"
                                     icon="{{ Vite::asset('resources/images/icons/edit.svg') }}" alt="Edit" />
 
-                                <x-admin.board.actions route="{{ route('circuit.show', $circuit->id) }}"
+                                <x-admin.board.actions route="{{ route('circuit.index', $circuit->id) }}"
                                     icon="{{ Vite::asset('resources/images/icons/eye.svg') }}" alt="Show" />
                             </div>
                         </td>

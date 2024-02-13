@@ -69,8 +69,8 @@
                             </div>
                         @endif
                         <!-- If the user is not an adult -->
-                    @elseif (!Auth::user()->isAdult())
-                        @if (!Auth::user()->isRegistered($training->id) && $training->type == 'Jeune pilote')
+                    @elseif (!Auth::user()->isAdult() && $training->type == 'Jeune pilote')
+                        @if (!Auth::user()->isRegistered($training->id))
                             <form method="POST"
                                 action="{{ route('registration.store', ['training_id' => $training->id, 'user_id' => Auth::id()]) }}">
                                 @csrf
