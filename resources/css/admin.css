@@ -22,3 +22,22 @@ table tbody tr td {
 table tbody tr td:first-child {
     @apply font-medium border-r border-primary whitespace-nowrap;
 }
+
+
+/* scrollbar */
+
+.board-scroll::-webkit-scrollbar {
+    @apply w-[12px] h-[12px] bg-black;
+}
+
+.board-scroll::-webkit-scrollbar-track {
+    @apply bg-secondary rounded-lg ;
+}
+
+.board-scroll::-webkit-scrollbar-thumb {
+    @apply bg-accent rounded-lg bg-green-500;
+}
+
+.board-scroll::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary  rounded-lg;
+}
